@@ -1039,7 +1039,8 @@ kbd {
   color: var(--accent);
   text-decoration: none;
   border-bottom: 1px solid var(--accent);
-  padding-bottom: 1px;
+  padding: 6px 0;
+  min-height: 44px;
 }
 
 .work-link:hover {

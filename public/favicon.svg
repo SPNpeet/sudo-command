@@ -1,5 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="#14161a"/>
-  <text x="32" y="40" font-family="'IBM Plex Mono', Consolas, monospace" font-size="26" font-weight="700" letter-spacing="1" text-anchor="middle" fill="#faf8f4">SC</text>
-  <rect x="17" y="48" width="30" height="3" fill="#c93f00"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="Sudo Command logo">
+  <defs>
+    <linearGradient id="gGreen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2ee6a6"/>
+      <stop offset="45%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#078a5f"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.12"/>
+      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+    <linearGradient id="gHighlight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="white" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- white rounded square on transparent -->
+  <rect x="6" y="6" width="88" height="88" rx="22" fill="white" filter="url(#shadow)"/>
+  <!-- green squiggle -->
+  <path d="M 18 72 C 18 72 22 52 32 42 C 38 36 46 36 52 42 C 58 48 64 56 74 56 C 80 56 84 52 84 48" fill="none" stroke="url(#gGreen)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- highlight on squiggle -->
+  <path d="M 20 66 C 24 50 33 40 48 48 C 58 56 68 58 82 51" fill="none" stroke="url(#gHighlight)" stroke-width="3.5" stroke-linecap="round" opacity="0.9"/>
+  <!-- dot -->
+  <rect x="72.5" y="18" width="13" height="21" rx="6.5" fill="url(#gGreen)"/>
+  <rect x="73.5" y="19.5" width="11" height="9" rx="4.5" fill="url(#gHighlight)" opacity="0.9"/>
 </svg>
