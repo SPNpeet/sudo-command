@@ -71,6 +71,8 @@ function App() {
   const [faqQ, setFaqQ] = useState('')
   const [msg, setMsg] = useState('')
   const [budget, setBudget] = useState('')
+  const [showAllWork, setShowAllWork] = useState(false)
+  const [showAllGallery, setShowAllGallery] = useState(false)
 
   const L = L10N[lang]
   const D = DATA[lang]
@@ -698,24 +700,6 @@ function App() {
                           <div className="svc-body">
                             <h3>{s.title}</h3>
                             <p className="svc-short">{s.short}</p>
-                            <p className="svc-desc">{s.desc}</p>
-                            {s.includes?.length > 0 && (
-                              <ul className="svc-includes">
-                                {s.includes.map((it) => (
-                                  <li key={it}>{it}</li>
-                                ))}
-                              </ul>
-                            )}
-                            <p className="svc-gain">
-                              <span className="svc-gain-label">{L.services.gainLabel}</span>
-                              {s.gain}
-                            </p>
-                            {s.sample && (
-                              <p className="svc-sample">
-                                <span className="svc-gain-label">{L.services.sampleLabel}</span>
-                                {s.sample}
-                              </p>
-                            )}
                             <div className="svc-foot">
                               <span className="svc-quote">
                                 {s.price && <strong className="svc-price">{s.price}</strong>}
@@ -746,7 +730,7 @@ function App() {
             <div className="wrap">
               <SectionHead num={numOf('work')} title={L.work.head} note={L.work.note} />
               <ul className="work-list">
-                {WORKS.map((w) => {
+                {(showAllWork ? WORKS : WORKS.slice(0, 3)).map((w) => {
                   const WVisual = VISUAL_BY_KEY[w.visual]
                   return (
                     <li className="work" key={w.title} data-reveal>
@@ -780,6 +764,17 @@ function App() {
                   )
                 })}
               </ul>
+              {WORKS.length > 3 && (
+                <button
+                  type="button"
+                  className="btn btn-line"
+                  onClick={() => setShowAllWork((v) => !v)}
+                  style={{ marginTop: 'var(--s6)', minHeight: '44px' }}
+                >
+                  {showAllWork ? L.work.showLess : `${L.work.showAll} (${WORKS.length})`}
+                  <Icon name={showAllWork ? 'close' : 'chevron'} />
+                </button>
+              )}
             </div>
           </section>
         )}
@@ -808,7 +803,7 @@ function App() {
             <div className="wrap">
               <SectionHead num={numOf('gallery')} title={L.gallery.head} note={L.gallery.note} />
               <ul className="gallery-list">
-                {GALLERY.map((g) => (
+                {(showAllGallery ? GALLERY : GALLERY.slice(0, 2)).map((g) => (
                   <li key={g.src} data-reveal>
                     <figure className="gallery-item">
                       <img
@@ -827,6 +822,17 @@ function App() {
                   </li>
                 ))}
               </ul>
+              {GALLERY.length > 2 && (
+                <button
+                  type="button"
+                  className="btn btn-line"
+                  onClick={() => setShowAllGallery((v) => !v)}
+                  style={{ marginTop: 'var(--s6)', minHeight: '44px' }}
+                >
+                  {showAllGallery ? L.gallery.showLess : `${L.gallery.showAll} (${GALLERY.length})`}
+                  <Icon name={showAllGallery ? 'close' : 'chevron'} />
+                </button>
+              )}
             </div>
           </section>
         )}

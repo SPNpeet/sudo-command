@@ -53,13 +53,13 @@
   --s6: 32px;
   --s7: 44px;
   --s8: 64px;
-  --s-sec: clamp(64px, 8vw, 104px);
+  --s-sec: clamp(80px, 10vw, 136px);
 
-  /* ---- มุมโค้ง: เล็ก คม แบบเครื่องมือ ไม่ใช่แคปซูลการตลาด ---- */
+  /* ---- มุมโค้ง: พรีเมียมขึ้น — โค้งมนขึ้นเล็กน้อยให้ดูนุ่มนวลระดับโลก ---- */
   --r-xs: 4px;
-  --r-sm: 6px;
-  --r-md: 8px;
-  --r-lg: 12px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
 
   /* ---- ขนาดไอคอน: เดิมกระจายเป็น 14/15/16/17/20 ทีละที่ ---- */
   --ic-xs: 14px;
@@ -633,26 +633,26 @@ kbd {
   overflow: clip;
 }
 
-/* เส้นตารางจาง ๆ ให้ความรู้สึกเครื่องมือวิศวกรรม แต่เบามากจนไม่รบกวนการอ่าน */
+/* เส้นตารางจาง ๆ ให้ความรู้สึกเครื่องมือวิศวกรรม — ทำจางลงอีกให้โปร่ง โฟกัสที่ตัวหนังสือ */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background-image: linear-gradient(var(--rule) 1px, transparent 1px),
     linear-gradient(90deg, var(--rule) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(120% 80% at 15% 0%, #000 0%, transparent 70%);
-  opacity: 0.5;
+  background-size: 72px 72px;
+  mask-image: radial-gradient(125% 85% at 12% 0%, #000 0%, transparent 75%);
+  opacity: 0.22;
   pointer-events: none;
 }
 
 .hero-grid {
   position: relative;
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: clamp(var(--s6), 5vw, var(--s8));
+  grid-template-columns: 1.45fr 1fr;
+  gap: clamp(var(--s7), 6vw, 88px);
   align-items: center;
-  padding-block: clamp(var(--s8), 7vw, 96px);
+  padding-block: clamp(88px, 9vw, 128px);
 }
 
 /* terminal ยืดเต็มความสูงคอลัมน์ — ไม่ให้เหลือช่องว่างลอย ๆ ใต้กล่อง */

@@ -154,10 +154,14 @@ export const L10N = {
       note: 'แต่ละโปรเจกต์ออกแบบตามธุรกิจของคุณ — ภาพเป็นสัญลักษณ์แทนรายละเอียดงานจริง',
       metricLabel: 'ผลลัพธ์',
       visitLabel: 'เปิดเว็บจริง',
+      showAll: 'ดูผลงานทั้งหมด',
+      showLess: 'ย่อลง',
     },
     gallery: {
       head: 'ภาพจากงานจริง',
       note: 'เว็บที่เราทำให้ลูกค้า — ภาพแคปจากเว็บจริง ไม่ใช่ภาพสต็อก',
+      showAll: 'ดูภาพทั้งหมด',
+      showLess: 'ย่อลง',
       items: [
         { src: '/sudo-command/gallery/work-zingstar.jpg', title: 'เว็บ Zing Star Inspector', cap: 'zingstarengineering.com — เว็บใหม่ + SEO + ระบบจัดการราคา' },
         { src: '/sudo-command/gallery/work-curtain-web.jpg', title: 'เว็บ CURTAIN STORY HOME', cap: 'curtainstoryhome.com — เว็บร้านม่าน + SEO + Google Ads 1 ปี' },
@@ -440,10 +444,14 @@ export const L10N = {
       note: "Each project is tailored to the client's business — visuals are symbolic stand-ins for the actual work.",
       metricLabel: 'Result',
       visitLabel: 'Visit live site',
+      showAll: 'Show all work',
+      showLess: 'Show less',
     },
     gallery: {
       head: 'Photos from real work',
       note: 'Screenshots from the live sites we built — not stock images',
+      showAll: 'Show all photos',
+      showLess: 'Show less',
       items: [
         { src: '/sudo-command/gallery/work-zingstar.jpg', title: 'Zing Star Inspector site', cap: 'zingstarengineering.com — new site + SEO + pricing admin' },
         { src: '/sudo-command/gallery/work-curtain-web.jpg', title: 'CURTAIN STORY HOME site', cap: 'curtainstoryhome.com — store site + SEO + 1-year Google Ads' },
