@@ -5,6 +5,7 @@ import { VISUAL_BY_KEY } from './ServiceVisuals'
 import CommandPalette from './CommandPalette'
 import FloatingContact from './FloatingContact'
 import ServiceModal from './ServiceModal'
+import RoiCalc from './RoiCalc'
 import { useDismiss, useLang, useReveal, useScrollSpy, useTheme } from './hooks'
 import { DATA, L10N } from './i18n'
 
@@ -105,6 +106,7 @@ function App() {
   const order = [
     'paths',
     'services',
+    'roi',
     'why',
     'about',
     ...(WORKS.length ? ['work'] : []),
@@ -159,8 +161,12 @@ function App() {
   const goto = useCallback((id) => {
     const el = document.getElementById(id)
     if (!el) return
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    el.focus({ preventScroll: true })
+    const run = () => {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      el.focus({ preventScroll: true })
+    }
+    if (document.startViewTransition) document.startViewTransition(run)
+    else run()
   }, [])
 
   const nav = (id) => (e) => {
@@ -488,7 +494,11 @@ function App() {
               ))}
             </div>
 
-            <div className="theme-switch lang-switch" role="group" aria-label={L.ui.langGroup}>
+            <a className="btn btn-solid nav-cta" href="#contact" onClick={nav('contact')}>
+              {L.ui.navCta}
+            </a>
+
+            <div className="theme-switch lang-switch lang-switch--mobile" role="group" aria-label={L.ui.langGroup}>
               <button
                 type="button"
                 className={lang === 'th' ? 'on' : ''}
@@ -506,11 +516,27 @@ function App() {
                 EN
               </button>
             </div>
-
-            <a className="btn btn-solid nav-cta" href="#contact" onClick={nav('contact')}>
-              {L.ui.navCta}
-            </a>
           </nav>
+
+          <div className="theme-switch lang-switch lang-switch--header" role="group" aria-label={L.ui.langGroup}>
+            <Icon name="monitor" className="lang-globe" />
+            <button
+              type="button"
+              className={lang === 'th' ? 'on' : ''}
+              aria-pressed={lang === 'th'}
+              onClick={() => setLang('th')}
+            >
+              ไทย
+            </button>
+            <button
+              type="button"
+              className={lang === 'en' ? 'on' : ''}
+              aria-pressed={lang === 'en'}
+              onClick={() => setLang('en')}
+            >
+              EN
+            </button>
+          </div>
 
           <button
             type="button"
@@ -722,6 +748,15 @@ function App() {
                 </div>
               )
             })}
+          </div>
+        </section>
+
+        <section className="sec" id="roi" tabIndex={-1}>
+          <div className="wrap">
+            <SectionHead num={numOf('roi')} title={L.roi.head} note={L.roi.note} />
+            <div data-reveal>
+              <RoiCalc t={L} />
+            </div>
           </div>
         </section>
 

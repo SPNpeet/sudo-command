@@ -149,6 +149,11 @@ export const L10N = {
       quoteBtn: 'ขอใบเสนอราคา',
       viewAria: 'ดูรายละเอียด',
     },
+    roi: {
+      head: 'ลองคำนวณ ROI ก่อนคุย',
+      note: 'ขยับงบ/CPC/อัตราปิดดู — เห็นภาพก่อนตัดสินใจ ไม่ต้องเดา',
+      label: 'คำนวณ ROI',
+    },
     work: {
       head: 'ตัวอย่างงานที่ส่งมอบจริง',
       note: 'แต่ละโปรเจกต์ออกแบบตามธุรกิจของคุณ — ภาพเป็นสัญลักษณ์แทนรายละเอียดงานจริง',
@@ -438,6 +443,11 @@ export const L10N = {
       details: 'Details',
       quoteBtn: 'Request a quote',
       viewAria: 'View details',
+    },
+    roi: {
+      head: 'Try the ROI calculator',
+      note: 'Slide the budget/CPC/conv. rate — see the picture before you decide',
+      label: 'ROI Calculator',
     },
     work: {
       head: 'Work we have delivered',

@@ -5,6 +5,21 @@
    ถ้าต้องใช้ขนาดใหม่ ให้เพิ่มเข้าสเกล ไม่ใช่ hardcode ลงใน rule
    ============================================================ */
 
+/* View Transitions — โคตรใหม่ โคตรเท่ ให้เปลี่ยนภาษา/ธีมลื่นแบบเนทีฟ */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.22s;
+}
+.site-head {
+  view-transition-name: site-head;
+}
+.hero {
+  view-transition-name: hero;
+}
+
 :root {
   /* ---- สี ---- */
   --bg: #ffffff;
@@ -1046,6 +1061,128 @@ kbd {
 .work-link:hover {
   color: var(--accent-2);
   border-color: var(--accent-2);
+}
+
+.lang-switch--header {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--bg-2);
+  margin-left: 8px;
+}
+.lang-switch--header .lang-globe {
+  width: 16px;
+  height: 16px;
+  color: var(--ink-2);
+  margin-left: 4px;
+}
+.lang-switch--header button {
+  min-height: 32px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+}
+.lang-switch--header button.on {
+  background: var(--ink);
+  color: var(--bg);
+}
+.lang-switch--mobile {
+  display: none;
+}
+@media (max-width: 400px) {
+  .lang-switch--header {
+    display: none;
+  }
+  .lang-switch--mobile {
+    display: inline-flex;
+  }
+  .cmdk-trigger .cmdk-trigger-label {
+    display: none;
+  }
+  .cmdk-trigger kbd {
+    display: none;
+  }
+}
+
+/* ROI — วิศวกรคำนวณสด ใช้ input range + grid แบบ container query */
+.roi {
+  border: 1px solid var(--rule);
+  border-radius: var(--r-lg);
+  background: var(--bg);
+  padding: var(--s6);
+  container-type: inline-size;
+}
+.roi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s5);
+}
+@container (max-width: 560px) {
+  .roi-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.roi-grid label {
+  display: grid;
+  gap: var(--s2);
+  font-size: var(--fs-sm);
+}
+.roi-grid input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent);
+}
+.roi-result {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s4);
+  margin-top: var(--s6);
+  padding-top: var(--s5);
+  border-top: 1px solid var(--rule);
+}
+@container (max-width: 560px) {
+  .roi-result {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.roi-result div {
+  display: grid;
+  gap: 2px;
+  padding: var(--s3);
+  border-radius: var(--r-sm);
+  background: var(--bg-2);
+  text-align: center;
+}
+.roi-result span {
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+}
+.roi-result strong {
+  font-size: var(--fs-md);
+}
+.roi-result .pos strong {
+  color: var(--ok);
+}
+.roi-result .neg strong {
+  color: #b91c1c;
+}
+.roi-result em {
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+}
+.roi-note {
+  margin-top: var(--s4);
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+  text-align: center;
+}
+
+/* Work list — container query ให้การ์ดเรียงสวยทุกขนาด */
+.work-list {
+  container-type: inline-size;
 }
 
 /* ---------------- ภาพจากงานจริง ---------------- */

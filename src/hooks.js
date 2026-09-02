@@ -3,11 +3,15 @@ import { useEffect, useState } from 'react'
 const THEME_KEY = 'sc-theme'
 const LANG_KEY = 'sc-lang'
 
-/** ภาษาเว็บ: th | en (default th) */
+/** ภาษาเว็บ: th | en — auto-detect ต่างชาติจาก browser ตั้งแต่ครั้งแรก */
 export function useLang() {
   const [lang, setLang] = useState(() => {
     try {
-      return localStorage.getItem(LANG_KEY) || 'th'
+      const saved = localStorage.getItem(LANG_KEY)
+      if (saved === 'th' || saved === 'en') return saved
+      const nav = (navigator.language || '').toLowerCase()
+      if (nav.startsWith('en')) return 'en'
+      return 'th'
     } catch {
       return 'th'
     }
