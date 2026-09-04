@@ -774,7 +774,10 @@ kbd {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--s6);
-  padding-block: var(--s7);
+  padding-block: clamp(var(--s7), 7vw, 88px);
+}
+.band-grid strong {
+  font-size: var(--fs-h3);
 }
 
 .band-num {
@@ -1326,11 +1329,16 @@ kbd {
 
 .perk-list li {
   display: grid;
-  gap: var(--s2);
-  padding: var(--s5);
+  gap: var(--s3);
+  padding: var(--s6);
   border: 1px solid var(--rule);
   border-radius: var(--r-lg);
   background: var(--bg);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.perk-list li:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .perk-list .icon {
@@ -3088,11 +3096,17 @@ button.svc-visual:focus-visible {
 
 .why-list li {
   display: grid;
-  gap: var(--s3);
-  padding: var(--s5);
+  gap: var(--s4);
+  padding: var(--s6);
   background: var(--bg);
   border: 1px solid var(--rule);
   border-radius: var(--r-lg);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.why-list li:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--rule-strong);
 }
 
 /* เลขกำกับ + ไอคอนในวงกลม — ให้การ์ดมีมิติไม่แบน */
@@ -3107,12 +3121,13 @@ button.svc-visual:focus-visible {
 .why-ic {
   display: grid;
   place-items: center;
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   border: 1px solid var(--rule);
   border-radius: var(--r-md);
-  background: var(--bg-2);
+  background: linear-gradient(135deg, var(--bg-2), var(--bg-3));
   color: var(--accent);
+  box-shadow: var(--shadow-sm);
 }
 
 .why-ic .icon {
