@@ -154,6 +154,16 @@ export const L10N = {
       note: 'ขยับงบ/CPC/อัตราปิดดู — เห็นภาพก่อนตัดสินใจ ไม่ต้องเดา',
       label: 'คำนวณ ROI',
     },
+    categories: {
+      head: 'หมวดบริการทั้ง 6',
+      note: 'ครอบคลุมตาม Rate Card จริง 18 รายการ — กดดูรายละเอียดแต่ละหมวดได้',
+      label: 'หมวดบริการ',
+    },
+    packs: {
+      head: 'แพ็กเกจแนะนำ',
+      note: 'จัดชุดตามประเภทธุรกิจ — เริ่มง่าย เห็นผลเร็ว ไม่ต้องทำทุกอย่างพร้อมกัน',
+      label: 'แพ็กเกจ',
+    },
     work: {
       head: 'ตัวอย่างงานที่ส่งมอบจริง',
       note: 'แต่ละโปรเจกต์ออกแบบตามธุรกิจของคุณ — ภาพเป็นสัญลักษณ์แทนรายละเอียดงานจริง',
@@ -449,6 +459,16 @@ export const L10N = {
       note: 'Slide the budget/CPC/conv. rate — see the picture before you decide',
       label: 'ROI Calculator',
     },
+    categories: {
+      head: 'All 6 Service Categories',
+      note: 'Covering all 18 services on the Rate Card — tap for details',
+      label: 'Categories',
+    },
+    packs: {
+      head: 'Recommended Packages',
+      note: 'Bundled by business type — start lean, see results fast',
+      label: 'Packages',
+    },
     work: {
       head: 'Work we have delivered',
       note: "Each project is tailored to the client's business — visuals are symbolic stand-ins for the actual work.",
@@ -598,6 +618,39 @@ export const L10N = {
       },
     },
   },
+}
+
+// ─────────── หมวดและแพ็กเกจจาก Rate Card — ให้ครบทั้ง 6 หมวด 18 รายการ ───────────
+export const CATS = {
+  th: [
+    { code: '01', id: 'DPO', icon: 'shield', title: 'ที่ปรึกษาข้อมูลองค์กร', sub: 'กฎหมาย PDPA และ AI Governance', range: '10,000 – 50,000+', items: ['DPO-01 AI & PDPA Readiness Assessment', 'DPO-02 Enterprise DPO Operations Support', 'DPO-03 IT System & Security Audit'] },
+    { code: '02', id: 'CLD', icon: 'chip', title: 'วางระบบคลาวด์ เว็บแอป Automation', sub: 'ลดงานคนด้วย Cloud & Code', range: '500 – 50,000+', icon2: 'cube', items: ['CLD-01 Cloud Architecture & Database', 'CLD-02 Custom Web Application', 'CLD-03 Business Workflow Automation (n8n)', 'CLD-04 Legacy Code Debugging — 500–1,500 (นศ.)'] },
+    { code: '03', id: 'COM', icon: 'layers', title: 'ระบบร้านอาหาร/ค้าปลีก', sub: 'ตัดค่า GP ทิ้ง', range: '3,000 – 5,000', items: ['COM-01 Zero GP Delivery (LINE OA) 3,500', 'COM-02 Digital Recipe & Dashboard'] },
+    { code: '04', id: 'MKT', icon: 'megaphone', title: 'การตลาดสาย Data', sub: 'วัดผลได้ทุกบาท', range: '1,500 – 15,000+', items: ['MKT-01 SEO, GTM & Tracking', 'MKT-02 Ads Audit & Optimization', 'MKT-03 Full-Service Ads Management', 'MKT-04 Content Production'] },
+    { code: '05', id: 'EDU', icon: 'layers', title: 'สอนตัวต่อตัว & ที่ปรึกษา', sub: '1-on-1 ไม่หวงวิชา', range: '3,500 – 20,000+', items: ['EDU-01 สอนยิงแอด & SEO', 'EDU-02 สอน Automation & Tech', 'EDU-03 Fractional Consultant รายเดือน'] },
+    { code: '06', id: 'ENG', icon: 'cube', title: 'งานวิศวกรรม & 3D', sub: 'Simulation & Prototyping', range: '500 – 5,000+', items: ['ENG-01 Engineering Simulation', 'ENG-02 3D Printing & Hardware'] },
+  ],
+  en: [
+    { code: '01', id: 'DPO', icon: 'shield', title: 'Enterprise Data & DPO', sub: 'PDPA & AI Governance', range: '10,000 – 50,000+ THB', items: ['DPO-01 AI & PDPA Readiness', 'DPO-02 DPO Operations', 'DPO-03 IT Audit'] },
+    { code: '02', id: 'CLD', icon: 'chip', title: 'Cloud, Web & Automation', sub: 'Cut manual work', range: '500 – 50,000+ THB', items: ['CLD-01 Cloud & DB', 'CLD-02 Custom Web App', 'CLD-03 Workflow Automation', 'CLD-04 Legacy Debugging'] },
+    { code: '03', id: 'COM', icon: 'layers', title: 'E-Commerce & F&B Tech', sub: 'Cut GP fees', range: '3,000 – 5,000 THB', items: ['COM-01 Zero GP Delivery', 'COM-02 Recipe & Dashboard'] },
+    { code: '04', id: 'MKT', icon: 'megaphone', title: 'Performance Marketing', sub: 'Data-driven', range: '1,500 – 15,000+ THB', items: ['MKT-01 SEO & Tracking', 'MKT-02 Ads Audit', 'MKT-03 Ads Management', 'MKT-04 Content'] },
+    { code: '05', id: 'EDU', icon: 'layers', title: 'Masterclass & Consulting', sub: '1-on-1', range: '3,500 – 20,000+ THB', items: ['EDU-01 Ads & SEO Class', 'EDU-02 Automation Class', 'EDU-03 Fractional Consultant'] },
+    { code: '06', id: 'ENG', icon: 'cube', title: 'Engineering & Prototyping', sub: 'Simulation & 3D', range: '500 – 5,000+ THB', items: ['ENG-01 Simulation', 'ENG-02 3D Printing'] },
+  ],
+}
+
+export const PACKS = {
+  th: [
+    { id: 'A', title: 'ร้านค้า / ร้านอาหาร — เริ่มขายออนไลน์', price: '8,000+', sub: 'บาท · 2–3 สัปดาห์', items: ['COM-01 ระบบสั่งผ่าน LINE OA (ไม่เสีย GP)', 'COM-02 ฐานข้อมูลสูตร + หน้าปัดต้นทุน-กำไร', 'MKT-02 รื้อและปรับแคมเปญ 1 ครั้ง'] },
+    { id: 'B', title: 'แบรนด์ที่อยากโตแบบวัดผลได้', price: '18,000+', sub: 'บาท/เดือน · ยกเลิกได้ทุกเดือน', items: ['MKT-01 วางระบบ Tracking (GTM, GA4)', 'MKT-03 ดูแลแคมเปญรายเดือน', 'MKT-04 คลิปสั้น 10 คลิป/เดือน'] },
+    { id: 'C', title: 'องค์กรที่ต้องพร้อมทั้ง PDPA และ AI', price: '50,000+', sub: 'บาท · ทำร่วมกับทีม IT/กฎหมาย', items: ['DPO-01 ประเมินความพร้อม AI & PDPA', 'DPO-02 งานปฏิบัติการ DPO (ROPA, Data Flow)', 'CLD-01 วางฐานข้อมูลและคลาวด์รองรับ AI'] },
+  ],
+  en: [
+    { id: 'A', title: 'Shop / Restaurant — Start Online', price: '8,000+ THB', sub: '2–3 weeks', items: ['COM-01 LINE OA ordering (Zero GP)', 'COM-02 Recipe DB + dashboard', 'MKT-02 Ads audit (one-time)'] },
+    { id: 'B', title: 'Brand that wants measurable growth', price: '18,000+ THB', sub: '/month · cancel anytime', items: ['MKT-01 Tracking (GTM, GA4)', 'MKT-03 Monthly ads care', 'MKT-04 10 short clips / month'] },
+    { id: 'C', title: 'Org that needs PDPA & AI ready', price: '50,000+ THB', sub: 'with IT/Legal team', items: ['DPO-01 AI & PDPA readiness', 'DPO-02 DPO operations', 'CLD-01 DB & cloud for AI'] },
+  ],
 }
 
 // ─────────── ข้อมูลหลัก (สองภาษา) ───────────

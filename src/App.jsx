@@ -7,7 +7,7 @@ import FloatingContact from './FloatingContact'
 import ServiceModal from './ServiceModal'
 import RoiCalc from './RoiCalc'
 import { useDismiss, useLang, useReveal, useScrollSpy, useTheme } from './hooks'
-import { DATA, L10N } from './i18n'
+import { CATS, DATA, L10N, PACKS } from './i18n'
 
 // ───────────── ช่องทางติดต่อ ─────────────
 // ช่องไหนเว้นว่าง = ปุ่มนั้นจะไม่ขึ้นบนเว็บ (กันปุ่มกดแล้วไม่ไปไหน)
@@ -106,6 +106,8 @@ function App() {
   const order = [
     'paths',
     'services',
+    'categories',
+    'packs',
     'roi',
     'why',
     'about',
@@ -748,6 +750,53 @@ function App() {
                 </div>
               )
             })}
+          </div>
+        </section>
+
+        <section className="sec sec-alt" id="categories" tabIndex={-1}>
+          <div className="wrap">
+            <SectionHead num={numOf('categories')} title={L.categories.head} note={L.categories.note} />
+            <ul className="cat-grid" data-reveal>
+              {CATS[lang].map((c) => (
+                <li key={c.id} className="cat">
+                  <span className="cat-code">{c.code} · {c.id}</span>
+                  <Icon name={c.icon} />
+                  <h3>{c.title}</h3>
+                  <p className="cat-sub">{c.sub}</p>
+                  <p className="cat-range">{c.range}</p>
+                  <ul className="cat-items">
+                    {c.items.map((it) => (
+                      <li key={it}>{it}</li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="sec" id="packs" tabIndex={-1}>
+          <div className="wrap">
+            <SectionHead num={numOf('packs')} title={L.packs.head} note={L.packs.note} />
+            <ul className="pack-grid" data-reveal>
+              {PACKS[lang].map((p) => (
+                <li key={p.id} className="pack">
+                  <span className="pack-id">PACK-{p.id}</span>
+                  <h3>{p.title}</h3>
+                  <p className="pack-price">
+                    {p.price} <span>{p.sub}</span>
+                  </p>
+                  <ul>
+                    {p.items.map((it) => (
+                      <li key={it}>{it}</li>
+                    ))}
+                  </ul>
+                  <a className="btn btn-solid btn-sm" href="#contact" onClick={nav('contact')}>
+                    {L.services.quoteBtn}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

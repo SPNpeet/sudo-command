@@ -1111,6 +1111,126 @@ kbd {
   }
 }
 
+/* 6 หมวด — กระชับ ครบ ไม่รก */
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s4);
+}
+@media (max-width: 900px) {
+  .cat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .cat-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.cat {
+  border: 1px solid var(--rule);
+  border-radius: var(--r-lg);
+  background: var(--bg);
+  padding: var(--s5);
+  display: grid;
+  gap: var(--s2);
+}
+.cat-code {
+  font-family: var(--mono);
+  font-size: var(--fs-micro);
+  color: var(--ink-2);
+  letter-spacing: var(--ls-label);
+}
+.cat h3 {
+  font-size: var(--fs-h3);
+}
+.cat-sub {
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+}
+.cat-range {
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--accent);
+}
+.cat-items {
+  margin-top: var(--s2);
+  display: grid;
+  gap: 4px;
+}
+.cat-items li {
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+  padding-left: 12px;
+  position: relative;
+}
+.cat-items li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--rule-strong);
+}
+
+/* 3 แพ็ก — เด่น ราคาใหญ่ */
+.pack-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s5);
+}
+@media (max-width: 900px) {
+  .pack-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.pack {
+  border: 1px solid var(--rule);
+  border-radius: var(--r-lg);
+  background: var(--bg);
+  padding: var(--s6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+.pack-id {
+  font-family: var(--mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--ls-label);
+  color: var(--accent);
+}
+.pack h3 {
+  font-size: var(--fs-h3);
+}
+.pack-price {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  color: var(--accent);
+}
+.pack-price span {
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  color: var(--ink-2);
+}
+.pack ul {
+  display: grid;
+  gap: var(--s2);
+  margin-block: var(--s2);
+  flex: 1;
+}
+.pack li {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  padding-left: 14px;
+  position: relative;
+}
+.pack li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--ok);
+  font-size: var(--fs-xs);
+}
+
 /* ROI — วิศวกรคำนวณสด ใช้ input range + grid แบบ container query */
 .roi {
   border: 1px solid var(--rule);
