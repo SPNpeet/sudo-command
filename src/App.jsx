@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { Suspense, lazy, useCallback, useEffect, useRef, useState } from 'react'
 import Icon from './Icon'
 import Terminal from './Terminal'
 import { VISUAL_BY_KEY } from './ServiceVisuals'
-import CommandPalette from './CommandPalette'
 import FloatingContact from './FloatingContact'
-import ServiceModal from './ServiceModal'
-import RoiCalc from './RoiCalc'
+const CommandPalette = lazy(() => import('./CommandPalette'))
+const ServiceModal = lazy(() => import('./ServiceModal'))
+const RoiCalc = lazy(() => import('./RoiCalc'))
 import { useDismiss, useLang, useReveal, useScrollSpy, useTheme } from './hooks'
 import { CATS, DATA, L10N, PACKS } from './i18n'
 
@@ -167,7 +167,8 @@ function App() {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' })
       el.focus({ preventScroll: true })
     }
-    if (document.startViewTransition) document.startViewTransition(run)
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (document.startViewTransition && !reduced) document.startViewTransition(run)
     else run()
   }, [])
 
@@ -352,7 +353,13 @@ function App() {
       const body = encodeURIComponent(
         `Name: ${payload.name}\nEmail: ${payload.email || '-'}\nLINE: ${payload.line || '-'}\nPhone: ${payload.phone || '-'}\nTopic: ${payload.topic || '-'}\nBudget: ${payload.budget || '-'}\n\nMessage:\n${payload.message || '-'}`
       )
-      window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${body}`
+      const href = `mailto:${CONTACT.email}?subject=${subject}&body=${body}`
+      if (href.length > 1800) {
+        setStatus('tooLong')
+        return
+      }
+      flash(L.contact.openMail)
+      window.location.href = href
       return
     }
 
@@ -383,7 +390,8 @@ function App() {
 
   const msgTemplate = (id) => {
     const s = SERVICES.find((x) => x.id === id)
-    return lang === 'th' ? `สวัสดีครับ สนใจบริการ ${s.title} ครับ` : `Hi, I'm interested in your ${s.title} service.`
+    const title = s?.title ?? (lang === 'th' ? 'บริการของคุณ' : 'your service')
+    return lang === 'th' ? `สวัสดีครับ สนใจบริการ ${title} ครับ` : `Hi, I'm interested in your ${title} service.`
   }
 
   return (
@@ -804,7 +812,9 @@ function App() {
           <div className="wrap">
             <SectionHead num={numOf('roi')} title={L.roi.head} note={L.roi.note} />
             <div data-reveal>
-              <RoiCalc t={L} />
+              <Suspense fallback={null}>
+                <RoiCalc t={L} />
+              </Suspense>
             </div>
           </div>
         </section>
@@ -1050,7 +1060,7 @@ function App() {
               <form className="form" onSubmit={sendForm} data-reveal>
                 <div className="field">
                   <label htmlFor="f-name">{L.contact.formName}</label>
-                  <input id="f-name" name="name" type="text" required placeholder={L.contact.formNamePh} />
+                  <input id="f-name" name="name" type="text" required maxLength={80} autoComplete="name" placeholder={L.contact.formNamePh} />
                 </div>
                 <div className="field">
                   <span className="field-label" id="f-chan-label">
@@ -1059,11 +1069,11 @@ function App() {
                   </span>
                   <div className="field-chan" role="group" aria-labelledby="f-chan-label">
                     <label className="sr-only" htmlFor="f-email">{L.contact.fEmail}</label>
-                    <input id="f-email" name="email" type="email" placeholder={L.contact.fEmailPh} />
+                    <input id="f-email" name="email" type="email" maxLength={120} autoComplete="email" placeholder={L.contact.fEmailPh} />
                     <label className="sr-only" htmlFor="f-line">{L.contact.fLine}</label>
-                    <input id="f-line" name="line" type="text" placeholder={L.contact.fLinePh} />
+                    <input id="f-line" name="line" type="text" maxLength={60} autoComplete="username" placeholder={L.contact.fLinePh} />
                     <label className="sr-only" htmlFor="f-phone">{L.contact.fPhone}</label>
-                    <input id="f-phone" name="phone" type="tel" placeholder={L.contact.fPhonePh} />
+                    <input id="f-phone" name="phone" type="tel" maxLength={30} autoComplete="tel" inputMode="tel" placeholder={L.contact.fPhonePh} />
                   </div>
                 </div>
                 <div className="field">
@@ -1117,6 +1127,7 @@ function App() {
                     id="f-msg"
                     name="message"
                     rows="3"
+                    maxLength={1000}
                     value={msg}
                     onChange={(e) => setMsg(e.target.value)}
                     placeholder={L.contact.formMsgPh}
@@ -1132,6 +1143,7 @@ function App() {
                   {status === 'ok' && <span className="ok">{L.contact.ok}</span>}
                   {status === 'error' && <span className="err">{L.contact.error}</span>}
                   {status === 'nochan' && <span className="err">{L.contact.nochan}</span>}
+                  {status === 'tooLong' && <span className="err">{L.contact.tooLong}</span>}
                 </p>
                 <p className="fine">
                   {CONTACT.web3formsKey ? L.contact.fineKey : L.contact.fineNoKey}
@@ -1199,22 +1211,26 @@ function App() {
 
       <ScrollTop label={L.ui.scrollTop} />
 
-      <CommandPalette
-        open={paletteOpen}
-        onClose={() => setPaletteOpen(false)}
-        actions={actions}
-        t={L}
-      />
+      <Suspense fallback={null}>
+        <CommandPalette
+          open={paletteOpen}
+          onClose={() => setPaletteOpen(false)}
+          actions={actions}
+          t={L}
+        />
+      </Suspense>
 
-      <ServiceModal
-        service={SERVICES.find((s) => s.id === svcOpen)}
-        t={L}
-        onClose={() => setSvcOpen(null)}
-        onQuote={() => {
-          setSvcOpen(null)
-          goto('contact')
-        }}
-      />
+      <Suspense fallback={null}>
+        <ServiceModal
+          service={SERVICES.find((s) => s.id === svcOpen)}
+          t={L}
+          onClose={() => setSvcOpen(null)}
+          onQuote={() => {
+            setSvcOpen(null)
+            goto('contact')
+          }}
+        />
+      </Suspense>
 
       <div className="toast" role="status" aria-live="polite">
         {toast && <span>{toast}</span>}

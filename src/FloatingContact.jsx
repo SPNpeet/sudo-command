@@ -64,7 +64,7 @@ export default function FloatingContact({ channels, t }) {
     <div
       className={`fab ${shown ? 'in' : ''} ${open ? 'open' : ''}`}
       ref={wrapRef}
-      inert={!shown}
+      inert={shown ? undefined : true}
     >
       <div className="fab-panel" ref={panelRef} hidden={!open}>
         <p className="fab-head">{F.head}</p>
