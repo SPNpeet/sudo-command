@@ -174,14 +174,10 @@ export const L10N = {
     },
     gallery: {
       head: 'ภาพจากงานจริง',
-      note: 'เว็บที่เราทำให้ลูกค้า — ภาพแคปจากเว็บจริง ไม่ใช่ภาพสต็อก',
-      showAll: 'ดูภาพทั้งหมด',
-      showLess: 'ย่อลง',
+      note: 'แคปหน้าจอเว็บจริงที่เราทำให้ลูกค้า — ไม่ใช่ภาพสต็อก ไม่ใช่ภาพงานติดตั้ง',
       items: [
         { src: '/sudo-command/gallery/work-zingstar.jpg', title: 'เว็บ Zing Star Inspector', cap: 'zingstarengineering.com — เว็บใหม่ + SEO + ระบบจัดการราคา' },
         { src: '/sudo-command/gallery/work-curtain-web.jpg', title: 'เว็บ CURTAIN STORY HOME', cap: 'curtainstoryhome.com — เว็บร้านม่าน + SEO + Google Ads 1 ปี' },
-        { src: '/sudo-command/gallery/work-curtain-1.jpg', title: 'ผลงานลูกค้าบนเว็บที่เราทำ', cap: 'ภาพติดตั้งจริงของร้าน CURTAIN STORY HOME ที่เว็บเราโชว์ให้ลูกค้าเลือก' },
-        { src: '/sudo-command/gallery/work-real-3.jpg', title: 'สอนใช้ระบบ + ประชุมออนไลน์', cap: 'ลงดูหน้างาน/สอนทีมลูกค้าใช้ระบบ และประชุมออนไลน์อัปเดตการใช้งาน' },
       ],
     },
     testimonials: {
@@ -481,14 +477,10 @@ export const L10N = {
     },
     gallery: {
       head: 'Photos from real work',
-      note: 'Screenshots from the live sites we built — not stock images',
-      showAll: 'Show all photos',
-      showLess: 'Show less',
+      note: 'Screenshots from the live sites we built — not stock images, not installation work',
       items: [
         { src: '/sudo-command/gallery/work-zingstar.jpg', title: 'Zing Star Inspector site', cap: 'zingstarengineering.com — new site + SEO + pricing admin' },
         { src: '/sudo-command/gallery/work-curtain-web.jpg', title: 'CURTAIN STORY HOME site', cap: 'curtainstoryhome.com — store site + SEO + 1-year Google Ads' },
-        { src: '/sudo-command/gallery/work-curtain-1.jpg', title: 'Client portfolio on the site we built', cap: 'Real curtain installation photos displayed on the site for customers to browse' },
-        { src: '/sudo-command/gallery/work-real-3.jpg', title: 'Training + online review', cap: 'On-site walkthrough / team training and online check-ins on how to use the system' },
       ],
     },
     testimonials: {
@@ -797,10 +789,10 @@ export const DATA = {
         href: 'https://www.curtainstoryhome.com',
       },
       {
-        title: 'เว็บไซต์ร้านค้า — โชว์ผลงานติดตั้งจริงของลูกค้าบนเว็บที่เราทำ',
+        title: 'เว็บไซต์ร้านค้า — โชว์ผลงานของลูกค้าบนเว็บที่เราทำ',
         client: 'CURTAIN STORY HOME',
         tags: ['Website', 'E-commerce', 'Catalog'],
-        desc: 'เว็บร้านครบชุดที่เราทำให้ — หน้าแรก, หมวดบริการ, และหน้าโชว์ผลงานติดตั้งจริงของทางร้าน (ภาพตัวอย่างในเว็บเป็นผลงานของลูกค้า) พร้อมช่องทางติดต่อครบทุกจุด',
+        desc: 'เว็บร้านครบชุดที่เราทำให้ — หน้าแรก, หมวดบริการ, และหน้าโชว์ผลงานของทางร้าน (ภาพในเว็บเป็นของลูกค้าเอง) พร้อมช่องทางติดต่อครบทุกจุด',
         visual: 'web',
         metric: 'เว็บเป็นเจ้าของร้านม่าน 100% · เปิด 24 ชม.',
         href: 'https://www.curtainstoryhome.com',
@@ -1090,7 +1082,7 @@ export const DATA = {
         title: 'Store website — client portfolio on the site we built',
         client: 'CURTAIN STORY HOME',
         tags: ['Website', 'E-commerce', 'Catalog'],
-        desc: 'Full store site we built — homepage, service sections, and a portfolio of the client’s real installation work (photos are the client’s work displayed on the site) with every contact channel.',
+        desc: 'Full store site we built — homepage, service sections, and the client’s own portfolio pages (photos belong to the client) with every contact channel.',
         visual: 'web',
         metric: 'Client owns the site 100% · open 24h',
         href: 'https://www.curtainstoryhome.com',
