@@ -46,7 +46,7 @@ export function useTheme() {
     // ตอน system ปล่อยให้ <meta media> เดิมใน index.html ตอบสนองเครื่องผู้ใช้
     if (theme !== 'system') {
       const m = document.querySelector('meta[name="theme-color"]')
-      if (m) m.setAttribute('content', theme === 'dark' ? '#09090b' : '#ffffff')
+      if (m) m.setAttribute('content', theme === 'dark' ? '#121b16' : '#f5f5ef')
     }
     try {
       localStorage.setItem(THEME_KEY, theme)
