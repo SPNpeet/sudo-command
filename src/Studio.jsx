@@ -14,7 +14,7 @@ const TYPE = ['web', 'app', 'app', 'web', 'web', 'app', 'web']
 const HERO_IMAGES = [0, 1, 2]
 
 function Mark({ className = '' }) {
-  return <svg className={`s-mark ${className}`} viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M16 22L46 50L16 78" stroke="currentColor" strokeWidth="12" strokeLinecap="square"/><path d="M55 77H86" stroke="currentColor" strokeWidth="12" strokeLinecap="square"/></svg>
+  return <img className={`s-mark ${className}`} src={`${BASE}favicon.svg`} width="100" height="100" alt="" aria-hidden="true"/>
 }
 function Arrow() { return <Icon name="arrow" /> }
 function External({ href, children, className = '' }) { return <a className={className} href={href} target="_blank" rel="noopener noreferrer">{children}<Arrow /></a> }
