@@ -1336,6 +1336,8 @@ kbd {
   border-block: 1px solid var(--rule);
 }
 .video-sample h3 { margin: var(--s3) 0; }
+.video-workflow { list-style: decimal; padding-left: 1.5em; margin-top: var(--s4); }
+.video-workflow li { padding-left: var(--s2); margin-block: var(--s3); }
 .video-sample p { max-width: 65ch; color: var(--ink-2); }
 .video-sample-action { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: var(--s3); }
 .video-sample-action .btn { white-space: normal; }

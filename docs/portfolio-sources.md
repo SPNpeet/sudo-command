@@ -19,6 +19,10 @@ The headline count is the number of portfolio entries (including existing servic
 
 ## Real media additions
 
+### Owner-confirmed production scope — Hia Tum Trucks
+
+The owner explicitly confirmed in this conversation that they built the full n8n workflow for the truck page shown at https://www.facebook.com/kp468/reels/: daily proposed topics go to LINE, the owner can reply there, and after more than two hours without a reply the system generates and publishes content automatically using fresh topics or news. The generic Content Automation portfolio entry is replaced with this specific owner-confirmed project in both languages. This does not assert that the earlier public workflow JSON is the production implementation. No engagement, revenue, news-accuracy, or uninterrupted-uptime claims are added. The prior financial-news reel stays as a separate example, not a truck-page clip.
+
 The owner supplied five project URLs and a screenshot identifying Facebook Reel `1064723289865271` as a daily automation example. The reel is linked directly; no financial-news assertions from that screenshot are reproduced. Playback and public availability were not independently confirmed (Facebook fetch was throttled). This example does not establish that the earlier n8n workflow is the exact production pipeline.
 
 - Phon Chao Rai: owner-supplied https://www.phonchaorai-th.com/ and existing local project screenshot `client-home-desktop.jpg`. Added as the fourteenth portfolio entry. The screenshot represents the captured revision, not a claim of current pixel-for-pixel appearance.

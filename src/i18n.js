@@ -180,10 +180,19 @@ export const L10N = {
       "viewImage": "เปิดภาพเต็ม",
       "visit": "เปิดเว็บไซต์",
       "video": {
-        "label": "DAILY CONTENT AUTOMATION",
-        "title": "ตัวอย่างคลิปจากระบบอัตโนมัติรายวัน",
-        "desc": "จากการเตรียมเนื้อหา สร้างเสียงและวิดีโอ ไปจนถึงคลิปพร้อมเผยแพร่ ดูตัวอย่างงานที่นำไปโพสต์บน Facebook Reels",
-        "cta": "ดูคลิปตัวอย่างบน Facebook",
+        "label": "n8n · LINE · AUTO PUBLISH",
+        "title": "ระบบผลิตและโพสต์คลิปรายวัน — เฮียตั้มรถบรรทุก ถูกและดี",
+        "desc": "วางระบบ n8n ครบวงจร ตั้งแต่หัวข้อประจำวันจนถึงสร้างคอนเทนต์และโพสต์อัตโนมัติ เจ้าของดูเรื่องที่จะโพสต์และตอบกลับผ่าน LINE ได้",
+        "steps": [
+          "ส่งหัวข้อที่จะโพสต์ในแต่ละวันเข้า LINE",
+          "เจ้าของตอบกลับทาง LINE เพื่อกำหนดเรื่องที่จะทำ",
+          "หากไม่มีการตอบกลับเกิน 2 ชั่วโมง ระบบเลือกเรื่องหรือข่าวใหม่มาสร้างคอนเทนต์ต่อ",
+          "สร้างคลิปและโพสต์อัตโนมัติตามขั้นตอนที่ตั้งไว้"
+        ],
+        "href": "https://www.facebook.com/kp468/reels/",
+        "cta": "ดูคลิปของเฮียตั้มบน Facebook",
+        "extraLabel": "ดูตัวอย่างคลิปอีกโครงการ",
+        "extraHref": "https://www.facebook.com/reel/1064723289865271",
         "note": "เปิดบน Facebook · การรับชมขึ้นอยู่กับสิทธิ์ของโพสต์และบัญชีผู้ชม"
       },
       "items": [
@@ -532,10 +541,19 @@ export const L10N = {
       "viewImage": "Open full image",
       "visit": "Visit website",
       "video": {
-        "label": "DAILY CONTENT AUTOMATION",
-        "title": "A sample from the daily automated video workflow",
-        "desc": "From content preparation, voice and video production to a clip ready for publication. View a sample posted to Facebook Reels.",
-        "cta": "Watch the sample on Facebook",
+        "label": "n8n · LINE · AUTO PUBLISH",
+        "title": "Daily video production and publishing — Hia Tum Trucks",
+        "desc": "An end-to-end n8n workflow that takes daily topics through content creation and automatic publishing. The owner receives proposed topics and replies through LINE.",
+        "steps": [
+          "Send the proposed daily topics to LINE",
+          "The owner can reply in LINE to guide the content",
+          "After more than two hours without a reply, continue automatically with a fresh topic or news item",
+          "Generate the video and publish through the configured workflow"
+        ],
+        "href": "https://www.facebook.com/kp468/reels/",
+        "cta": "View the truck page’s Facebook Reels",
+        "extraLabel": "Watch a sample from another project",
+        "extraHref": "https://www.facebook.com/reel/1064723289865271",
         "note": "Opens on Facebook · Playback depends on post visibility and viewer access"
       },
       "items": [
@@ -860,18 +878,18 @@ const ADDITIONAL_WORKS = {
       "linkLabel": "ดูรายละเอียดโครงการ"
     },
     {
-      "client": "Content Automation",
+      "client": "เฮียตั้มรถบรรทุก ถูกและดี",
       "visual": "marketing",
       "tags": [
-        "Automation",
         "n8n",
-        "Content"
+        "LINE",
+        "Auto Publishing"
       ],
-      "href": "https://github.com/SPNpeet/3d-print-shop/blob/claude/tender-johnson-p76myc/n8n-video-content-workflow.json",
-      "title": "เวิร์กโฟลว์ผลิตและกระจายคอนเทนต์วิดีโอ",
-      "desc": "ออกแบบเวิร์กโฟลว์ n8n รับหัวข้อจาก Google Sheets เชื่อมขั้นตอนสร้างสคริปต์ เสียง วิดีโอ และแคปชัน พร้อมขั้นตอนส่งต่อหลายช่องทางและบันทึกสถานะ ต้องตั้งค่าบัญชีและบริการก่อนใช้งาน",
-      "status": "เวิร์กโฟลว์สำหรับติดตั้ง",
-      "linkLabel": "ดูรายละเอียดเวิร์กโฟลว์"
+      "href": "https://www.facebook.com/kp468/reels/",
+      "title": "ระบบสร้างคลิปและโพสต์อัตโนมัติ สั่งงานผ่าน LINE",
+      "desc": "ระบบ n8n ส่งหัวข้อประจำวันเข้า LINE ให้เจ้าของตอบกลับ หากไม่มีการตอบเกิน 2 ชั่วโมง ระบบนำเรื่องหรือข่าวใหม่มาสร้างคอนเทนต์และโพสต์เองอัตโนมัติ ครอบคลุมการผลิตคลิปจนถึงเผยแพร่",
+      "status": "ระบบใช้งานจริง · มีคลิปตัวอย่าง",
+      "linkLabel": "ดูคลิปผลงานจริง"
     }
   ],
   "en": [
@@ -984,18 +1002,18 @@ const ADDITIONAL_WORKS = {
       "linkLabel": "View project details"
     },
     {
-      "client": "Content Automation",
+      "client": "Hia Tum Trucks",
       "visual": "marketing",
       "tags": [
-        "Automation",
         "n8n",
-        "Content"
+        "LINE",
+        "Auto Publishing"
       ],
-      "href": "https://github.com/SPNpeet/3d-print-shop/blob/claude/tender-johnson-p76myc/n8n-video-content-workflow.json",
-      "title": "Video content production and distribution workflow",
-      "desc": "An n8n workflow connecting Google Sheets topics to script, voice, video and caption generation, with distribution steps and status logging. Connected accounts and services must be configured before use.",
-      "status": "Workflow for setup",
-      "linkLabel": "View workflow details"
+      "href": "https://www.facebook.com/kp468/reels/",
+      "title": "Automated video creation and publishing, managed through LINE",
+      "desc": "An n8n workflow sends daily topics to LINE for the owner’s reply. After more than two hours without a response, it creates content from a fresh topic or news item and publishes automatically, covering video production through posting.",
+      "status": "Live workflow · Published samples",
+      "linkLabel": "View published Reels"
     }
   ]
 }
