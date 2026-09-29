@@ -173,12 +173,61 @@ export const L10N = {
       showLess: 'ย่อลง',
     },
     gallery: {
-      head: 'ภาพจากงานจริง',
-      note: 'แคปหน้าจอเว็บจริงที่เราทำให้ลูกค้า — ไม่ใช่ภาพสต็อก ไม่ใช่ภาพงานติดตั้ง',
-      items: [
-        { src: '/sudo-command/gallery/work-zingstar.jpg', title: 'เว็บ Zing Star Inspector', cap: 'zingstarengineering.com — เว็บใหม่ + SEO + ระบบจัดการราคา' },
-        { src: '/sudo-command/gallery/work-curtain-web.jpg', title: 'เว็บ CURTAIN STORY HOME', cap: 'curtainstoryhome.com — เว็บร้านม่าน + SEO + Google Ads 1 ปี' },
-      ],
+      "head": "ตัวอย่างเว็บไซต์ เว็บแอป และหลังบ้าน",
+      "note": "ภาพหน้าจอจากผลงานที่พัฒนา เปิดดูภาพเต็มหรือไปยังเว็บไซต์ได้ โดยภาพหลังบ้านระบุไว้ว่าเป็นหน้าจอตัวอย่างจากคู่มือ",
+      "showAll": "ดูภาพทั้งหมด",
+      "showLess": "แสดงน้อยลง",
+      "viewImage": "เปิดภาพเต็ม",
+      "visit": "เปิดเว็บไซต์",
+      "video": {
+        "label": "DAILY CONTENT AUTOMATION",
+        "title": "ตัวอย่างคลิปจากระบบอัตโนมัติรายวัน",
+        "desc": "จากการเตรียมเนื้อหา สร้างเสียงและวิดีโอ ไปจนถึงคลิปพร้อมเผยแพร่ ดูตัวอย่างงานที่นำไปโพสต์บน Facebook Reels",
+        "cta": "ดูคลิปตัวอย่างบน Facebook",
+        "note": "เปิดบน Facebook · การรับชมขึ้นอยู่กับสิทธิ์ของโพสต์และบัญชีผู้ชม"
+      },
+      "items": [
+        {
+          "src": "/sudo-command/gallery/work-phonchaorai.jpg",
+          "title": "ผลชาวไร่ · Phon Chao Rai",
+          "cap": "เว็บไซต์แบรนด์ผลไม้อบแห้ง — สินค้า เรื่องราวแบรนด์ และบทความ",
+          "href": "https://www.phonchaorai-th.com/"
+        },
+        {
+          "src": "/sudo-command/gallery/work-sudochatbot.png",
+          "title": "SudoChatBot · เว็บแอปบัญชี",
+          "cap": "หน้าทดลองออกใบแจ้งหนี้สาธารณะ — ตัวอย่างฟอร์มว่าง",
+          "href": "https://sudochatbot.online/try"
+        },
+        {
+          "src": "/sudo-command/gallery/work-natee-admin.jpg",
+          "title": "ธารนที · ระบบหลังบ้าน",
+          "cap": "หน้าจอตัวอย่างจากคู่มือ — จัดการข้อความหน้าเว็บภาษาไทยและอังกฤษ",
+          "href": "https://xn--22cki0cqma4cdedf2ixczace9c1mmc1fh6g.com/"
+        },
+        {
+          "src": "/sudo-command/gallery/work-southside.png",
+          "title": "Southside Ink Tattoo Pattaya",
+          "cap": "เว็บไซต์ร้านสักสองภาษา พร้อมแกลเลอรีผลงานและช่องทางติดต่อ",
+          "href": "https://southsideinkpattaya.com/"
+        },
+        {
+          "src": "/sudo-command/gallery/work-curtain-web.jpg",
+          "title": "CURTAIN STORY HOME",
+          "cap": "เว็บไซต์ร้านม่าน — ตัวอย่างงานเว็บไซต์และการตลาดออนไลน์",
+          "href": "https://www.curtainstoryhome.com/"
+        },
+        {
+          "src": "/sudo-command/gallery/work-crew-app.jpg",
+          "title": "Crew Change Tracker · เว็บแอปปฏิบัติงาน",
+          "cap": "ภาพจากคู่มือ — แบบฟอร์มเปิดงานเปลี่ยนลูกเรือก่อนกรอกข้อมูล"
+        },
+        {
+          "src": "/sudo-command/gallery/work-zingstar.jpg",
+          "title": "Zing Star Inspector",
+          "cap": "เว็บไซต์ธุรกิจตรวจสอบอาคาร พร้อมระบบจัดการราคา"
+        }
+      ]
     },
     testimonials: {
       head: 'ลูกค้าพูดถึงเรายังไง',
@@ -476,12 +525,61 @@ export const L10N = {
       showLess: 'Show less',
     },
     gallery: {
-      head: 'Photos from real work',
-      note: 'Screenshots from the live sites we built — not stock images, not installation work',
-      items: [
-        { src: '/sudo-command/gallery/work-zingstar.jpg', title: 'Zing Star Inspector site', cap: 'zingstarengineering.com — new site + SEO + pricing admin' },
-        { src: '/sudo-command/gallery/work-curtain-web.jpg', title: 'CURTAIN STORY HOME site', cap: 'curtainstoryhome.com — store site + SEO + 1-year Google Ads' },
-      ],
+      "head": "Websites, web apps and admin screens",
+      "note": "Screenshots of developed projects. Open the full image or visit the website. Admin examples are identified as screens from project manuals.",
+      "showAll": "View all screenshots",
+      "showLess": "Show fewer",
+      "viewImage": "Open full image",
+      "visit": "Visit website",
+      "video": {
+        "label": "DAILY CONTENT AUTOMATION",
+        "title": "A sample from the daily automated video workflow",
+        "desc": "From content preparation, voice and video production to a clip ready for publication. View a sample posted to Facebook Reels.",
+        "cta": "Watch the sample on Facebook",
+        "note": "Opens on Facebook · Playback depends on post visibility and viewer access"
+      },
+      "items": [
+        {
+          "src": "/sudo-command/gallery/work-phonchaorai.jpg",
+          "title": "Phon Chao Rai",
+          "cap": "Dried-fruit brand website — products, brand story and articles",
+          "href": "https://www.phonchaorai-th.com/"
+        },
+        {
+          "src": "/sudo-command/gallery/work-sudochatbot.png",
+          "title": "SudoChatBot · Accounting web app",
+          "cap": "Public invoice trial — an empty document form",
+          "href": "https://sudochatbot.online/try"
+        },
+        {
+          "src": "/sudo-command/gallery/work-natee-admin.jpg",
+          "title": "Natee · Content administration",
+          "cap": "Example screen from the manual — Thai and English website content",
+          "href": "https://xn--22cki0cqma4cdedf2ixczace9c1mmc1fh6g.com/"
+        },
+        {
+          "src": "/sudo-command/gallery/work-southside.png",
+          "title": "Southside Ink Tattoo Pattaya",
+          "cap": "Bilingual studio website with a work gallery and contact channels",
+          "href": "https://southsideinkpattaya.com/"
+        },
+        {
+          "src": "/sudo-command/gallery/work-curtain-web.jpg",
+          "title": "CURTAIN STORY HOME",
+          "cap": "Curtain store website — website and online marketing work",
+          "href": "https://www.curtainstoryhome.com/"
+        },
+        {
+          "src": "/sudo-command/gallery/work-crew-app.jpg",
+          "title": "Crew Change Tracker · Operations app",
+          "cap": "Manual screenshot — an empty form for opening a crew-change job"
+        },
+        {
+          "src": "/sudo-command/gallery/work-zingstar.jpg",
+          "title": "Zing Star Inspector",
+          "cap": "Building inspection business website with pricing administration"
+        }
+      ]
     },
     testimonials: {
       head: 'What clients say',
@@ -654,6 +752,19 @@ export const PACKS = {
 const ADDITIONAL_WORKS = {
   "th": [
     {
+      "client": "ผลชาวไร่ · Phon Chao Rai",
+      "visual": "web",
+      "tags": [
+        "Website",
+        "Brand",
+        "Content"
+      ],
+      "href": "https://www.phonchaorai-th.com/",
+      "title": "เว็บไซต์แบรนด์ผลไม้อบแห้ง จากสวนถึงผู้บริโภค",
+      "desc": "นำเสนอสินค้า เรื่องราวของแบรนด์ และบทความในเว็บไซต์เดียว พร้อมหน้าเว็บสำหรับมือถือและช่องทางติดต่อธุรกิจ",
+      "status": "เว็บไซต์ออนไลน์"
+    },
+    {
       "client": "SOUTHSIDE INK TATTOO PATTAYA",
       "visual": "web",
       "tags": [
@@ -764,6 +875,19 @@ const ADDITIONAL_WORKS = {
     }
   ],
   "en": [
+    {
+      "client": "Phon Chao Rai",
+      "visual": "web",
+      "tags": [
+        "Website",
+        "Brand",
+        "Content"
+      ],
+      "href": "https://www.phonchaorai-th.com/",
+      "title": "A dried-fruit brand website, from farm to customers",
+      "desc": "Products, brand stories and articles in one website, with mobile layouts and business contact channels.",
+      "status": "Live website"
+    },
     {
       "client": "SOUTHSIDE INK TATTOO PATTAYA",
       "visual": "web",

@@ -897,10 +897,24 @@ function App() {
           <section className="sec sec-alt" id="gallery" tabIndex={-1}>
             <div className="wrap">
               <SectionHead num={numOf('gallery')} title={L.gallery.head} note={L.gallery.note} />
-              <ul className="gallery-list">
-                {(showAllGallery ? GALLERY : GALLERY.slice(0, 2)).map((g) => (
+              <article className="video-sample">
+                <div>
+                  <span className="mono">{L.gallery.video.label}</span>
+                  <h3>{L.gallery.video.title}</h3>
+                  <p>{L.gallery.video.desc}</p>
+                </div>
+                <div className="video-sample-action">
+                  <a className="btn btn-solid" href="https://www.facebook.com/reel/1064723289865271" target="_blank" rel="noopener noreferrer">
+                    {L.gallery.video.cta}<Icon name="arrow" />
+                  </a>
+                  <small>{L.gallery.video.note}</small>
+                </div>
+              </article>
+              <ul className="gallery-list" id="gallery-images">
+                {(showAllGallery ? GALLERY : GALLERY.slice(0, 4)).map((g) => (
                   <li key={g.src} data-reveal>
                     <figure className="gallery-item">
+                      <a href={g.src} target="_blank" rel="noopener noreferrer" aria-label={`${L.gallery.viewImage}: ${g.title}`}>
                       <img
                         className="gallery-photo"
                         src={g.src}
@@ -909,18 +923,22 @@ function App() {
                         loading="lazy"
                         decoding="async"
                       />
+                      </a>
                       <figcaption>
                         <strong>{g.title}</strong>
                         <span>{g.cap}</span>
+                        {g.href && <a className="gallery-visit" href={g.href} target="_blank" rel="noopener noreferrer">{L.gallery.visit}<Icon name="arrow" /></a>}
                       </figcaption>
                     </figure>
                   </li>
                 ))}
               </ul>
-              {GALLERY.length > 2 && (
+              {GALLERY.length > 4 && (
                 <button
                   type="button"
                   className="btn btn-line"
+                  aria-expanded={showAllGallery}
+                  aria-controls="gallery-images"
                   onClick={() => setShowAllGallery((v) => !v)}
                   style={{ marginTop: 'var(--s6)', minHeight: '44px' }}
                 >

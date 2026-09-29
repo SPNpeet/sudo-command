@@ -16,3 +16,14 @@ The eight added entries were researched in public repositories owned by SPNpeet.
 The 3d-print-shop repository description does not describe its current default-branch contents; only the inspected workflow was included. Empty repositories, profile repositories and private projects were not added. No client documents, credentials, user records or operational screenshots were copied.
 
 The headline count is the number of portfolio entries (including existing service entries), not the number of unique clients or delivered projects. Both languages use the actual array length.
+
+## Real media additions
+
+The owner supplied five project URLs and a screenshot identifying Facebook Reel `1064723289865271` as a daily automation example. The reel is linked directly; no financial-news assertions from that screenshot are reproduced. Playback and public availability were not independently confirmed (Facebook fetch was throttled). This example does not establish that the earlier n8n workflow is the exact production pipeline.
+
+- Phon Chao Rai: owner-supplied https://www.phonchaorai-th.com/ and existing local project screenshot `client-home-desktop.jpg`. Added as the fourteenth portfolio entry. The screenshot represents the captured revision, not a claim of current pixel-for-pixel appearance.
+- SudoChatBot: captured the public, empty invoice trial at https://sudochatbot.online/try on 2026-09-29. No account login or customer document was used.
+- Southside Ink: captured the public homepage on 2026-09-29.
+- Natee: `docs/manual/images/03-home.jpg` from the local project, inspected before copying; example account is `admin@example.test`. Caption explicitly labels it a manual example.
+- Crew Change Tracker: `docs/img/newjob-1280.jpg`, an empty new-job form from the project manual. No crew records, customer email addresses or job values are present.
+- Curtain Story and Zing Star: preserve the existing gallery assets. The gallery now contains seven screenshots, each with a full-image link, and website links where supplied.
