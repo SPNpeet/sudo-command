@@ -299,6 +299,7 @@ kbd {
   display: flex;
   align-items: center;
   gap: var(--s3);
+  max-width: 1440px;
   min-height: var(--h-head);
 }
 
@@ -328,6 +329,7 @@ kbd {
   font-size: var(--fs-sm);
   line-height: 1.52;
   letter-spacing: -0.012em;
+  white-space: nowrap;
 }
 
 .brand-sub {
@@ -2273,8 +2275,9 @@ kbd {
   .cmdk-trigger kbd {
     display: none;
   }
+}
 
-  /* ย่อแบรนด์ให้เหลือชื่อ พอพื้นที่เริ่มคับ — ป้องกัน header แตกบรรทัด */
+@media (max-width: 1440px) {
   .brand-sub {
     display: none;
   }
