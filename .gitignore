@@ -30,3 +30,7 @@ dist-ssr
 *.pem
 *.key
 *.p12
+
+# Python verification cache
+__pycache__/
+*.pyc
