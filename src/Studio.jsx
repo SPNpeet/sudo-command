@@ -1,6 +1,8 @@
 import { Suspense, lazy, useCallback, useEffect, useRef, useState } from 'react'
 import { DATA, L10N, PACKS, CATS } from './i18n'
 import { STUDIO } from './studio-copy'
+import { UX } from './ux-copy'
+import ProjectPreview from './ProjectPreview'
 import { useLang, useTheme } from './hooks'
 import { SEARCH_PAGES } from './search-pages'
 import Icon from './Icon'
@@ -8,7 +10,7 @@ const CommandPalette = lazy(() => import('./CommandPalette'))
 const BASE = '/sudo-command/'
 const CONTACT = { line: 'https://line.me/ti/p/~nongpeetza', messenger: 'https://m.me/61590190966678', email: 'sudocoffee.home@gmail.com', phone: '+66611699332' }
 const NAV_IDS = ['work', 'services', 'process', 'faq', 'contact']
-const TYPE = ['web', 'app', 'app', 'web', 'web', 'app']
+const TYPE = ['web', 'app', 'app', 'web', 'web', 'app', 'web']
 const HERO_IMAGES = [0, 1, 2]
 
 function Mark({ className = '' }) {
@@ -30,13 +32,16 @@ export default function Studio() {
   const [brief, setBrief] = useState('')
   const [service, setService] = useState('')
   const [copyStatus, setCopyStatus] = useState('')
+  const [preview, setPreview] = useState(null)
+  const [manualCopy, setManualCopy] = useState(false)
+  const briefPreview = useRef(null)
   const [contactVisible, setContactVisible] = useState(false)
   const menu = useRef(null)
   const menuSummary = useRef(null)
-  const T = STUDIO[lang], L = L10N[lang], D = DATA[lang]
+  const T = STUDIO[lang], L = L10N[lang], D = DATA[lang], U = UX[lang]
   const images = L.gallery.items
   const selected = images[HERO_IMAGES[hero]]
-  const cases = images.slice(0, 6).map((item, index) => ({ ...item, type: TYPE[index], typeLabel: T.caseTypes[index] }))
+  const cases = images.map((item, index) => ({ ...item, number: index + 1, type: TYPE[index] || 'web', typeLabel: T.caseTypes[index] || T.filters[1] }))
   const visibleCases = cases.filter(item => filter === 'all' || item.type === filter)
   const suggestion = T.suggestions[need]
   const closePalette = useCallback(() => setPalette(false), [])
@@ -45,6 +50,7 @@ export default function Studio() {
     closeMenu()
     const element = document.getElementById(id)
     if (!element) return
+    if (element.tagName === 'DETAILS') element.open = true
     window.location.hash = id
     element.focus({ preventScroll: true })
     element.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })
@@ -63,27 +69,41 @@ export default function Studio() {
     document.addEventListener('keydown', onKey)
     document.addEventListener('pointerdown', onPointer)
     // Support existing shared section links after the React tree is mounted.
-    const timer = window.setTimeout(() => {
-      const id = decodeURIComponent(window.location.hash.slice(1))
+    const followHash = () => {
+      if (window.location.hash === '#gallery') setFilter('all')
+      window.setTimeout(() => {
+      let id
+      try { id = decodeURIComponent(window.location.hash.slice(1)) } catch { return }
       const target = document.getElementById(id)
       if (target?.tagName === 'DETAILS') target.open = true
       if (target) target.scrollIntoView({ behavior: 'instant' })
-    }, 0)
+      }, 0)
+    }
+    followHash()
+    window.addEventListener('hashchange', followHash)
     const observer = 'IntersectionObserver' in window ? new IntersectionObserver(([entry]) => setContactVisible(entry.isIntersecting), { threshold: 0 }) : null
     const contact = document.getElementById('contact')
     if (contact) observer?.observe(contact)
-    return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onPointer); clearTimeout(timer); observer?.disconnect() }
+    return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onPointer); window.removeEventListener('hashchange', followHash); observer?.disconnect() }
   }, [])
   const actions = [
     ...NAV_IDS.map((id, i) => ({ id, icon: id === 'contact' ? 'chat' : 'arrow', label: T.nav[i], keywords: [id, ...(L.paletteKeywords?.[id] || [])], run: () => go(id) })),
-    ...D.services.map(s => ({ id: s.id, icon: s.icon, label: s.title, hint: s.short, run: () => { go('services'); const el = document.getElementById(s.id); if (el) { el.open = true; el.scrollIntoView({ block: 'center' }) } } })),
-    ...SEARCH_PAGES.map(p => ({ id: p.slug, icon: 'web', label: lang === 'th' ? p.label : p.en, hint: '↗', run: () => { window.location.href = BASE + 'services/' + p.slug + '/' } })),
+    ...D.services.map(s => ({ id: s.id, icon: s.icon, label: s.title, hint: s.short, run: () => go(s.id) })),
+    { id: 'gallery', icon: 'web', label: T.filters[3], keywords: ['n8n', 'LINE', 'video', 'คลิป'], run: () => { setFilter('all'); window.setTimeout(() => go('gallery'), 0) } },
+    { id: 'packs', icon: 'tag', label: T.budget, run: () => go('packs') },
+    { id: 'portfolio', icon: 'web', label: T.portfolio, run: () => { window.location.href = BASE + 'portfolio/' } },
+    ...SEARCH_PAGES.map(p => ({ id: 'page-' + p.slug, icon: 'web', label: lang === 'th' ? p.label : p.en, hint: '↗', run: () => { window.location.href = BASE + 'services/' + p.slug + '/' } })),
   ]
-  const textBrief = `${T.business}: ${business}\n${T.need}: ${service || T.remaining}\n\n${brief}`
+  const serviceTitle = [...D.services, ...PACKS[lang]].find(item => item.id === service)?.title || T.remaining
+  const textBrief = `${T.business}: ${business}\n${T.need}: ${serviceTitle}\n\n${brief}`
   const emailHref = `mailto:${CONTACT.email}?subject=${encodeURIComponent(T.formSubject)}&body=${encodeURIComponent(textBrief)}`
-  const copyBrief = async () => { try { await navigator.clipboard.writeText(textBrief); setCopyStatus(T.copied) } catch { setCopyStatus(T.copyError) } }
-  const quote = (title) => { setService(title); go('contact') }
-  const faqs = D.faqs.filter(f => `${f.q} ${f.a}`.toLocaleLowerCase().includes(query.toLocaleLowerCase().trim()))
+  const copyBrief = async () => {
+    try { await navigator.clipboard.writeText(textBrief); setCopyStatus(T.copied) }
+    catch { setCopyStatus(T.copyError); setManualCopy(true); window.setTimeout(() => { briefPreview.current?.focus(); briefPreview.current?.select() }, 0) }
+  }
+  const quote = (id) => { setService(id); setCopyStatus(''); go('contact') }
+  const normalize = text => text.normalize('NFKD').replace(/[\u0E31\u0E34-\u0E3A\u0E47-\u0E4E]/g, '').toLocaleLowerCase().trim()
+  const faqs = D.faqs.filter(f => normalize(`${f.q} ${f.a}`).includes(normalize(query)))
 
   return <div className="studio">
     <a className="s-skip" href="#main">{L.ui.skip}</a>
@@ -94,7 +114,7 @@ export default function Studio() {
         <a className="s-button s-button-dark s-header-cta" href="#contact">{T.start}<Arrow/></a>
         <button className="s-icon-button" onClick={()=>setPalette(true)} aria-label={L.ui.searchTitle}><Icon name="search"/></button>
         <button className="s-language" onClick={()=>setLang(lang === 'th' ? 'en' : 'th')} aria-label={lang === 'th' ? 'Switch to English' : 'เปลี่ยนเป็นภาษาไทย'}>{lang === 'th' ? 'EN' : 'ไทย'}</button>
-        <details className="s-menu" ref={menu}>
+        <details className="s-menu" ref={menu} onBlur={e => { if (e.relatedTarget && !e.currentTarget.contains(e.relatedTarget)) closeMenu() }}>
           <summary ref={menuSummary}><span className="s-menu-lines" aria-hidden="true"/><span className="sr-only">{T.menu}</span></summary>
           <div className="s-menu-panel">
             <button className="s-menu-close" onClick={()=>{closeMenu();menuSummary.current?.focus()}}>{T.close}<Icon name="close"/></button>
@@ -113,10 +133,10 @@ export default function Studio() {
           <div className="s-showcase-word" aria-hidden="true">sudo<span>↗</span></div>
           <div className="s-stage">
             <div className="s-stage-back" aria-hidden="true"><Mark/></div>
-            <a className="s-stage-window" href={selected.href} target="_blank" rel="noopener noreferrer" aria-label={`${T.project}: ${selected.title}`}>
+            <button type="button" className="s-stage-window" onClick={() => setPreview(HERO_IMAGES[hero])} aria-label={`${U.preview}: ${selected.title}`}>
               <div className="s-window-bar"><span className="s-window-dots" aria-hidden="true">● ● ●</span><span>{selected.title}</span><Arrow/></div>
               <img key={selected.src} src={selected.src} alt={selected.title} width="720" height="500" fetchPriority="high"/>
-            </a>
+            </button>
             <div className="s-stage-stamp"><span>IDEA → BUILD<br/>→ YOUR NEXT MOVE</span><Mark/></div>
           </div>
           <div className="s-showcase-controls" role="group" aria-label={T.featured}>{T.categories.map((label,i)=><button key={label} aria-pressed={hero===i} onClick={()=>setHero(i)}><span>0{i+1}</span>{label}<span className="s-control-dot" aria-hidden="true"/></button>)}</div>
@@ -127,15 +147,15 @@ export default function Studio() {
       <section className="s-section s-container" id="work" tabIndex={-1}>
         <div className="s-heading-row"><Heading eyebrow={T.workEyebrow} title={T.workTitle} note={T.workNote}/><a className="s-text-link" href={`${BASE}portfolio/`}>{T.workAll}<Arrow/></a></div>
         <div className="s-filter-bar"><div className="s-filters" role="group" aria-label={T.nav[0]}>{['all','web','app','auto'].map((value,i)=><button aria-pressed={filter===value} onClick={()=>setFilter(value)} key={value}>{T.filters[i]}</button>)}</div><span className="s-counter" role="status">{visibleCases.length + (filter==='all'||filter==='auto'?1:0)} {T.resultCount}</span></div>
-        <div className="s-case-grid">{visibleCases.map((item,i)=><article className="s-case" key={item.src}>
-          <a className="s-case-image" href={item.href || item.src} target="_blank" rel="noopener noreferrer" aria-label={`${item.href ? T.project : T.imageFull}: ${item.title}`}><img src={item.src} alt={item.title} width="720" height="500" loading="lazy" decoding="async"/><span className="s-case-arrow"><Arrow/></span></a>
-          <div className="s-case-caption"><div><span className="s-kicker">{item.typeLabel}</span><h3>{item.title}</h3></div><span className="s-case-number">/{String(i+1).padStart(2,'0')}</span></div><p>{item.cap}</p>
+        <div className="s-case-grid">{visibleCases.map(item=><article className="s-case" key={item.src}>
+          <button type="button" className="s-case-image" onClick={() => setPreview(item.number - 1)} aria-label={`${U.preview}: ${item.title}`}><img src={item.src} alt={item.title} width="720" height="500" loading="lazy" decoding="async"/><span className="s-case-arrow"><Icon name="search"/></span></button>
+          <div className="s-case-caption"><div><span className="s-kicker">{item.typeLabel}</span><h3>{item.title}</h3></div><span className="s-case-number">/{String(item.number).padStart(2,'0')}</span></div><p>{item.cap}</p><div className="s-case-actions"><button className="s-text-link" onClick={() => setPreview(item.number - 1)}>{U.preview}<Arrow/></button>{item.href && <a className="s-text-link" href={item.href} target="_blank" rel="noopener noreferrer">{U.visit}<span aria-hidden="true">↗</span><span className="sr-only">{U.newTab}</span></a>}</div>
         </article>)}</div>
         {(filter==='all'||filter==='auto') && <article className="s-automation" id="gallery" tabIndex={-1}>
           <div className="s-auto-copy"><p className="s-kicker">n8n / LINE / AUTO PUBLISH</p><h3>{T.autoTitle}</h3><p>{T.autoNote}</p><External className="s-button s-button-green" href={L.gallery.video.href}>{T.watch}</External><a className="s-auto-extra" href={L.gallery.video.extraHref} target="_blank" rel="noopener noreferrer">{L.gallery.video.extraLabel}<Arrow/></a></div>
           <div className="s-auto-visual"><div className="s-auto-symbol" aria-hidden="true"><Mark/><span>→</span><Icon name="line"/></div><ol>{T.autoSteps.map((step,i)=><li key={step}><span>0{i+1}</span>{step}{i===1&&<b>2h</b>}</li>)}</ol><p>{T.autoFoot}</p></div>
         </article>}
-        {filter!=='all' && filter!=='auto' && <a className="s-text-link s-auto-reveal" href="#gallery" onClick={()=>setFilter('all')}>{L.gallery.video.label}<Arrow/></a>}
+        {filter!=='all' && filter!=='auto' && <a className="s-text-link s-auto-reveal" href="#gallery" onClick={e=>{e.preventDefault();setFilter('all');window.setTimeout(()=>go('gallery'),0)}}>{L.gallery.video.label}<Arrow/></a>}
       </section>
 
       <section className="s-fit-section" id="paths" tabIndex={-1}><div className="s-container s-fit-grid">
@@ -145,22 +165,23 @@ export default function Studio() {
 
       <section className="s-section s-container" id="services" tabIndex={-1}>
         <Heading eyebrow="WHAT WE DO" title={T.servicesTitle} note={T.servicesNote}/>
-        <div className="s-services">{D.services.map((s,i)=><details className="s-service" key={s.id} id={s.id}><summary><span className="s-service-index">0{i+1}</span><span className="s-service-name"><strong>{s.title}</strong><small>{s.short}</small></span><span className="s-service-plus" aria-hidden="true">+</span></summary><div className="s-service-body"><div><p>{s.desc}</p><p className="s-service-price">{s.price}</p><small>{T.priceNote}</small></div><div><h4>{T.includes}</h4><ul>{s.includes.map(item=><li key={item}>{item}</li>)}</ul><button className="s-button s-button-dark" onClick={()=>quote(s.title)}>{T.quote}<Arrow/></button></div></div></details>)}</div>
+        <div className="s-services">{D.services.map((s,i)=><details className="s-service" key={s.id} id={s.id} tabIndex={-1}><summary><span className="s-service-index">0{i+1}</span><span className="s-service-name"><strong>{s.title}</strong><small>{s.short}</small></span><span className="s-service-plus" aria-hidden="true">+</span></summary><div className="s-service-body"><div><p>{s.desc}</p><p className="s-service-price">{s.price}</p><small>{T.priceNote}</small></div><div><h4>{T.includes}</h4><ul>{s.includes.map(item=><li key={item}>{item}</li>)}</ul><button className="s-button s-button-dark" onClick={()=>quote(s.id)}>{T.quote}<Arrow/></button></div></div></details>)}</div>
         <details className="s-more-services" id="categories"><summary>{T.more}<span aria-hidden="true">+</span></summary><div className="s-category-grid">{CATS[lang].map(c=><div key={c.id}><h3>{c.title}</h3><ul>{c.items.map(item=><li key={item}>{item}</li>)}</ul></div>)}</div></details>
-        <details className="s-packages" id="packs"><summary>{T.budget}<span aria-hidden="true">+</span></summary><div className="s-package-grid">{PACKS[lang].map(p=><article key={p.id}><span className="s-kicker">PACK / {p.id}</span><h3>{p.title}</h3><strong>{p.price}</strong><p>{p.sub}</p><ul>{p.items.map(item=><li key={item}>{item}</li>)}</ul><button className="s-text-link" onClick={()=>quote(p.title)}>{T.quote}<Arrow/></button></article>)}</div></details>
+        <details className="s-packages" id="packs" tabIndex={-1}><summary>{T.budget}<span aria-hidden="true">+</span></summary><div className="s-package-grid">{PACKS[lang].map(p=><article key={p.id}><span className="s-kicker">PACK / {p.id}</span><h3>{p.title}</h3><strong>{p.price}</strong><p>{p.sub}</p><ul>{p.items.map(item=><li key={item}>{item}</li>)}</ul><button className="s-text-link" onClick={()=>quote(p.id)}>{T.quote}<Arrow/></button></article>)}</div></details>
       </section>
 
       <section className="s-about" id="about" tabIndex={-1}><div className="s-container s-about-grid"><div><p className="s-kicker">{T.aboutEyebrow}</p><h2>{T.aboutTitle}</h2><p>{T.aboutText}</p><div className="s-about-signature"><Mark/><span>sudo.<small>COMMAND</small></span></div></div><ul>{T.values.map(([title,text],i)=><li key={title}><span>0{i+1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ul></div></section>
       <section className="s-section s-container" id="process" tabIndex={-1}><Heading eyebrow={T.processEyebrow} title={T.processTitle}/><ol className="s-process">{T.process.map(([title,text],i)=><li key={title}><span>0{i+1}</span><h3>{title}</h3><p>{text}</p></li>)}</ol></section>
-      <section className="s-faq-section" id="faq" tabIndex={-1}><div className="s-container s-faq-grid"><div><Heading eyebrow="GOOD QUESTIONS" title={T.faqTitle} note={T.faqNote}/><label className="s-faq-search"><Icon name="search"/><input type="search" aria-label={T.faqSearch} placeholder={T.faqSearch} value={query} onChange={e=>setQuery(e.target.value)}/></label></div><div>{faqs.map(f=><details className="s-faq" key={f.q}><summary>{f.q}<span aria-hidden="true">+</span></summary><p>{f.a}</p></details>)}{!faqs.length&&<p role="status">{T.noFaq}</p>}</div></div></section>
+      <section className="s-faq-section" id="faq" tabIndex={-1}><div className="s-container s-faq-grid"><div><Heading eyebrow="GOOD QUESTIONS" title={T.faqTitle} note={T.faqNote}/><div className="s-faq-search" role="search"><Icon name="search"/><input id="faq-search" type="search" aria-label={T.faqSearch} placeholder={T.faqSearch} value={query} onChange={e=>setQuery(e.target.value)}/>{query && <button type="button" aria-label={U.clear} onClick={()=>{setQuery('');document.getElementById('faq-search')?.focus()}}><Icon name="close"/></button>}</div><p className="s-search-count" role="status">{faqs.length} {U.faqCount}</p></div><div>{faqs.map(f=><details className="s-faq" key={f.q}><summary>{f.q}<span aria-hidden="true">+</span></summary><p>{f.a}</p></details>)}{!faqs.length&&<p role="status">{T.noFaq}</p>}</div></div></section>
 
       <section className="s-section s-container" id="contact" tabIndex={-1}><div className="s-contact-grid"><div><Heading eyebrow={T.contactEyebrow} title={T.contactTitle} note={T.contactText}/><div className="s-contact-buttons"><External className="s-button s-button-green" href={CONTACT.line}>{T.direct}</External><External className="s-button s-button-outline" href={CONTACT.messenger}>{T.messenger}</External></div><div className="s-contact-address"><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}<Arrow/></a><a href={`tel:${CONTACT.phone}`}>061 169 9332<Arrow/></a><p>{T.location}</p></div></div>
-        <div className="s-brief"><h3>{T.orBrief}</h3><label>{T.business}<input autoComplete="organization" value={business} maxLength={120} placeholder={T.businessPh} onChange={e=>{setBusiness(e.target.value);setCopyStatus('')}}/></label><label>{T.need}<select value={service} onChange={e=>{setService(e.target.value);setCopyStatus('')}}><option value="">{T.remaining}</option>{D.services.map(s=><option key={s.id} value={s.title}>{s.title}</option>)}{service&&!D.services.some(s=>s.title===service)&&<option value={service}>{service}</option>}</select></label><label>{T.brief}<textarea value={brief} rows={4} maxLength={1800} placeholder={T.briefPh} onChange={e=>{setBrief(e.target.value);setCopyStatus('')}}/></label><div className="s-brief-actions"><a className="s-button s-button-dark" href={emailHref}>{T.email}<Arrow/></a><button className="s-text-link" onClick={copyBrief}>{T.copy}</button></div><small>{T.emailNote}</small><p className="s-copy-status" role="status">{copyStatus}</p></div>
+        <div className="s-brief"><h3>{T.orBrief}</h3><p className="s-brief-help">{U.briefHelp}</p>{service && <p className="s-selected-service">{U.selected}: {serviceTitle}</p>}<label>{T.business}<input autoComplete="organization" value={business} maxLength={120} placeholder={T.businessPh} onChange={e=>{setBusiness(e.target.value);setCopyStatus('')}}/></label><label>{T.need}<select value={service} onChange={e=>{setService(e.target.value);setCopyStatus('')}}><option value="">{T.remaining}</option>{D.services.map(s=><option key={s.id} value={s.id}>{s.title}</option>)}{PACKS[lang].map(p=><option key={p.id} value={p.id}>{p.title}</option>)}</select></label><label>{T.brief}<textarea value={brief} rows={4} maxLength={1800} placeholder={T.briefPh} onChange={e=>{setBrief(e.target.value);setCopyStatus('')}}/></label><div className="s-brief-actions"><a className="s-button s-button-dark" href={emailHref}>{T.email}<Arrow/></a><button className="s-text-link" onClick={copyBrief}>{T.copy}</button></div><small>{T.emailNote}</small><p className="s-copy-status" role="status">{copyStatus}</p><details className="s-brief-preview" open={manualCopy} onToggle={e=>setManualCopy(e.currentTarget.open)}><summary>{U.briefPreview}</summary><textarea ref={briefPreview} readOnly value={textBrief} aria-label={U.briefPreview} rows={6}/></details></div>
       </div></section>
     </main>
 
     <footer className="s-footer"><div className="s-container"><div className="s-footer-top"><p>{T.footer}</p><a className="s-text-link" href="#top">{T.backTop}<span aria-hidden="true">↑</span></a></div><a className="s-footer-word" href="#top" aria-label="Sudo Command">sudo<Mark/></a><nav className="s-service-links" aria-label={T.more}>{SEARCH_PAGES.map(p=><a href={`${BASE}services/${p.slug}/`} key={p.slug}>{lang==='th'?p.label:`${p.en} (TH)`}</a>)}<a href={`${BASE}portfolio/`}>{T.portfolio}</a></nav><div className="s-footer-bottom"><span>© {new Date().getFullYear()} Sudo Command</span><span>BANGKOK, THAILAND</span><a href={`${BASE}privacy.html`}>{T.privacy}</a></div></div></footer>
     {!contactVisible && <div className="s-mobile-dock"><a href="#work">{T.seeWork}</a><a href={CONTACT.line} target="_blank" rel="noopener noreferrer">{T.direct}<Arrow/></a></div>}
-    {palette&&<Suspense fallback={null}><CommandPalette open={palette} onClose={closePalette} actions={actions} t={L}/></Suspense>}
+    {preview !== null && <ProjectPreview item={images[preview]} labels={U} onClose={()=>setPreview(null)}/>}
+    {palette&&<Suspense fallback={<p className="s-search-loading" role="status">{U.loading}</p>}><CommandPalette open={palette} onClose={closePalette} actions={actions} t={L}/></Suspense>}
   </div>
 }

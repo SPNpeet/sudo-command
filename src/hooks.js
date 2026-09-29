@@ -32,7 +32,8 @@ export function useLang() {
 export function useTheme() {
   const [theme, setTheme] = useState(() => {
     try {
-      return localStorage.getItem(THEME_KEY) || 'system'
+      const saved = localStorage.getItem(THEME_KEY)
+      return ['light', 'dark', 'system'].includes(saved) ? saved : 'system'
     } catch {
       return 'system'
     }

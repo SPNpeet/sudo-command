@@ -24,7 +24,7 @@ export default function CommandPalette({ open, onClose, actions, t }) {
   const P = t.palette
 
   const results = useMemo(() => {
-    const term = norm(q)
+    const term = norm(q).trim()
     if (!term) return actions
     return actions.filter((a) =>
       norm(`${a.label} ${a.hint || ''} ${(a.keywords || []).join(' ')}`).includes(term)
@@ -36,6 +36,7 @@ export default function CommandPalette({ open, onClose, actions, t }) {
     const el = dialogRef.current
     if (!el) return
     if (open && !el.open) {
+      const previous = document.activeElement
       el.showModal()
       setQ('')
       setCursor(0)
@@ -49,7 +50,7 @@ export default function CommandPalette({ open, onClose, actions, t }) {
         if (document.activeElement === inputRef.current) window.clearInterval(focusTimer)
         if (++tries > 12) window.clearInterval(focusTimer)
       }, 80)
-      return () => window.clearInterval(focusTimer)
+      return () => { window.clearInterval(focusTimer); window.setTimeout(() => { if (!el.isConnected) previous?.focus({ preventScroll: true }) }, 0) }
     } else if (!open && el.open) {
       el.close()
     }
@@ -98,18 +99,13 @@ export default function CommandPalette({ open, onClose, actions, t }) {
   }
 
   const onKeyDown = (e) => {
+    if (e.nativeEvent.isComposing) return
     if (e.key === 'ArrowDown') {
       e.preventDefault()
       setCursor((c) => (results.length ? (c + 1) % results.length : 0))
     } else if (e.key === 'ArrowUp') {
       e.preventDefault()
       setCursor((c) => (results.length ? (c - 1 + results.length) % results.length : 0))
-    } else if (e.key === 'Home') {
-      e.preventDefault()
-      setCursor(0)
-    } else if (e.key === 'End') {
-      e.preventDefault()
-      setCursor(results.length ? results.length - 1 : 0)
     } else if (e.key === 'Enter') {
       e.preventDefault()
       const a = results[cursor]
@@ -130,7 +126,7 @@ export default function CommandPalette({ open, onClose, actions, t }) {
       aria-label={P.title}
       onClick={onDialogClick}
     >
-      <div className="cmdk-box" onKeyDown={onKeyDown}>
+      <div className="cmdk-box">
         <div className="cmdk-search">
           <span className="cmdk-prompt" aria-hidden="true">
             $
@@ -138,6 +134,12 @@ export default function CommandPalette({ open, onClose, actions, t }) {
           <input
             ref={inputRef}
             type="text"
+            role="combobox"
+            aria-expanded={open}
+            aria-controls="cmdk-results"
+            aria-autocomplete="list"
+            aria-activedescendant={results[cursor] ? `cmdk-opt-${cursor}` : undefined}
+            onKeyDown={onKeyDown}
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder={P.ph}
@@ -152,18 +154,19 @@ export default function CommandPalette({ open, onClose, actions, t }) {
 
         <ul
           className="cmdk-list"
+          id="cmdk-results"
           ref={listRef}
           role="listbox"
           aria-label={P.results}
-          aria-activedescendant={results.length ? `cmdk-opt-${cursor}` : undefined}
         >
           {results.map((a, i) => (
-            <li key={a.id}>
+            <li key={a.id} role="presentation">
               <button
                 type="button"
                 id={`cmdk-opt-${i}`}
                 data-i={i}
                 role="option"
+                tabIndex={-1}
                 aria-selected={i === cursor}
                 className={i === cursor ? 'on' : ''}
                 onMouseMove={() => setCursor(i)}
