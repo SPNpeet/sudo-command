@@ -2,6 +2,7 @@ import { Suspense, lazy, useCallback, useEffect, useRef, useState } from 'react'
 import { DATA, L10N, PACKS, CATS } from './i18n'
 import { STUDIO } from './studio-copy'
 import { UX } from './ux-copy'
+import { REELS } from './reels'
 import ProjectPreview from './ProjectPreview'
 import { useLang, useTheme } from './hooks'
 import { SEARCH_PAGES } from './search-pages'
@@ -152,6 +153,11 @@ export default function Studio() {
           <div className="s-case-caption"><div><span className="s-kicker">{item.typeLabel}</span><h3>{item.title}</h3></div><span className="s-case-number">/{String(item.number).padStart(2,'0')}</span></div><p>{item.cap}</p><div className="s-case-actions"><button className="s-text-link" onClick={() => setPreview(item.number - 1)}>{U.preview}<Arrow/></button>{item.href && <a className="s-text-link" href={item.href} target="_blank" rel="noopener noreferrer">{U.visit}<span aria-hidden="true">↗</span><span className="sr-only">{U.newTab}</span></a>}</div>
         </article>)}</div>
         {(filter==='all'||filter==='auto') && <article className="s-automation" id="gallery" tabIndex={-1}>
+          <div className="s-reels">
+            <header className="s-reels-heading"><div><p className="s-kicker">PUBLISHED REELS / 06</p><h3>{lang==='th'?'คลิปจริง เห็นผลงานก่อนคุย':'Real clips. See the work first.'}</h3><p>{lang==='th'?'เฮียตั้มรถบรรทุก ถูกและดี · ตัวอย่างงานวิดีโอจากระบบอัตโนมัติ':'Hia Tum Trucks · Video examples from the automation workflow'}</p></div><a href="https://www.facebook.com/kp468/reels/" target="_blank" rel="noopener noreferrer">{lang==='th'?'ดูคลิปทั้งหมด':'All reels'} ↗</a></header>
+            <div className="s-reel-grid">{REELS.map(reel=><a className="s-reel-card" key={reel.id} href={reel.href} target="_blank" rel="noopener noreferrer" aria-label={`${lang==='th'?'ดูคลิปตัวอย่าง':'Watch sample'} ${reel.number} — Facebook (${U.newTab})`}><div className="s-reel-image"><img src={reel.poster} alt={lang==='th'?`ภาพปกคลิปเฮียตั้มรถบรรทุก ${reel.number}`:`Hia Tum Trucks reel cover ${reel.number}`} width="720" height="1280" loading="lazy" decoding="async"/><span className="s-reel-number">REEL / {reel.number}</span><span className="s-reel-play" aria-hidden="true">▶</span></div><span className="s-reel-caption">{lang==='th'?'ดูคลิปบน Facebook':'Watch on Facebook'} <span aria-hidden="true">↗</span></span></a>)}</div>
+            <p className="s-reels-note">{lang==='th'?'ภาพปกจากคลิปที่เผยแพร่จริง · กดภาพเพื่อเปิดคลิปนั้นบน Facebook ในแท็บใหม่':'Original covers from published reels · Select a cover to open that reel on Facebook in a new tab'}</p>
+          </div>
           <div className="s-auto-copy"><p className="s-kicker">n8n / LINE / AUTO PUBLISH</p><h3>{T.autoTitle}</h3><p>{T.autoNote}</p><External className="s-button s-button-green" href={L.gallery.video.href}>{T.watch}</External><a className="s-auto-extra" href={L.gallery.video.extraHref} target="_blank" rel="noopener noreferrer">{L.gallery.video.extraLabel}<Arrow/></a></div>
           <div className="s-auto-visual"><div className="s-auto-symbol" aria-hidden="true"><Mark/><span>→</span><Icon name="line"/></div><ol>{T.autoSteps.map((step,i)=><li key={step}><span>0{i+1}</span>{step}{i===1&&<b>2h</b>}</li>)}</ol><p>{T.autoFoot}</p></div>
         </article>}
