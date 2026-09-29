@@ -174,7 +174,7 @@ export const L10N = {
     },
     gallery: {
       "head": "ตัวอย่างเว็บไซต์ เว็บแอป และหลังบ้าน",
-      "note": "ภาพหน้าจอจากผลงานที่พัฒนา เปิดดูภาพเต็มหรือไปยังเว็บไซต์ได้ โดยภาพหลังบ้านระบุไว้ว่าเป็นหน้าจอตัวอย่างจากคู่มือ",
+      "note": "ชมภาพผลงานเว็บไซต์และโฟลว์แนวคิดของงานระบบ โดยไม่เปิดหน้าจอหลังบ้าน ซอร์สโค้ด หรือทางเข้าระบบจริง",
       "showAll": "ดูภาพทั้งหมด",
       "showLess": "แสดงน้อยลง",
       "viewImage": "เปิดภาพเต็ม",
@@ -200,36 +200,34 @@ export const L10N = {
           "src": "/sudo-command/gallery/work-phonchaorai.jpg",
           "title": "ผลชาวไร่ · Phon Chao Rai",
           "cap": "เว็บไซต์แบรนด์ผลไม้อบแห้ง — สินค้า เรื่องราวแบรนด์ และบทความ",
-          "href": "https://www.phonchaorai-th.com/"
         },
         {
-          "src": "/sudo-command/gallery/work-sudochatbot.png",
+          "src": "/sudo-command/gallery/flow-accounting.svg",
           "title": "SudoChatBot · เว็บแอปบัญชี",
-          "cap": "หน้าทดลองออกใบแจ้งหนี้สาธารณะ — ตัวอย่างฟอร์มว่าง",
-          "href": "https://sudochatbot.online/try"
+          "cap": "ภาพรวมแนวคิด: รับข้อมูล → จัดการเอกสาร → ดูภาพรวม ไม่แสดงระบบจริง",
+          "flowOnly": true,
         },
         {
-          "src": "/sudo-command/gallery/work-natee-admin.jpg",
+          "src": "/sudo-command/gallery/flow-content.svg",
           "title": "ธารนที · ระบบหลังบ้าน",
-          "cap": "หน้าจอตัวอย่างจากคู่มือ — จัดการข้อความหน้าเว็บภาษาไทยและอังกฤษ",
-          "href": "https://xn--22cki0cqma4cdedf2ixczace9c1mmc1fh6g.com/"
+          "cap": "ภาพรวมแนวคิด: เตรียมเนื้อหา → ตรวจความเรียบร้อย → เผยแพร่ ไม่แสดงระบบจริง",
+          "flowOnly": true,
         },
         {
           "src": "/sudo-command/gallery/work-southside.png",
           "title": "Southside Ink Tattoo Pattaya",
           "cap": "เว็บไซต์ร้านสักสองภาษา พร้อมแกลเลอรีผลงานและช่องทางติดต่อ",
-          "href": "https://southsideinkpattaya.com/"
         },
         {
           "src": "/sudo-command/gallery/work-curtain-web.jpg",
           "title": "CURTAIN STORY HOME",
           "cap": "เว็บไซต์ร้านม่าน — ตัวอย่างงานเว็บไซต์และการตลาดออนไลน์",
-          "href": "https://www.curtainstoryhome.com/"
         },
         {
-          "src": "/sudo-command/gallery/work-crew-app.jpg",
+          "src": "/sudo-command/gallery/flow-operations.svg",
           "title": "Crew Change Tracker · เว็บแอปปฏิบัติงาน",
-          "cap": "ภาพจากคู่มือ — แบบฟอร์มเปิดงานเปลี่ยนลูกเรือก่อนกรอกข้อมูล"
+          "cap": "ภาพรวมแนวคิด: รับเรื่อง → ประสานงาน → ติดตามสถานะ ไม่แสดงระบบจริง",
+          "flowOnly": true
         },
         {
           "src": "/sudo-command/gallery/work-zingstar.jpg",
@@ -535,7 +533,7 @@ export const L10N = {
     },
     gallery: {
       "head": "Websites, web apps and admin screens",
-      "note": "Screenshots of developed projects. Open the full image or visit the website. Admin examples are identified as screens from project manuals.",
+      "note": "Explore website visuals and conceptual system flows. Internal screens, source code and access to working systems are not published.",
       "showAll": "View all screenshots",
       "showLess": "Show fewer",
       "viewImage": "Open full image",
@@ -561,36 +559,34 @@ export const L10N = {
           "src": "/sudo-command/gallery/work-phonchaorai.jpg",
           "title": "Phon Chao Rai",
           "cap": "Dried-fruit brand website — products, brand story and articles",
-          "href": "https://www.phonchaorai-th.com/"
         },
         {
-          "src": "/sudo-command/gallery/work-sudochatbot.png",
+          "src": "/sudo-command/gallery/flow-accounting.svg",
           "title": "SudoChatBot · Accounting web app",
-          "cap": "Public invoice trial — an empty document form",
-          "href": "https://sudochatbot.online/try"
+          "cap": "Conceptual workflow overview only; internal screens and implementation are not published.",
+          "flowOnly": true,
         },
         {
-          "src": "/sudo-command/gallery/work-natee-admin.jpg",
+          "src": "/sudo-command/gallery/flow-content.svg",
           "title": "Natee · Content administration",
-          "cap": "Example screen from the manual — Thai and English website content",
-          "href": "https://xn--22cki0cqma4cdedf2ixczace9c1mmc1fh6g.com/"
+          "cap": "Conceptual workflow overview only; internal screens and implementation are not published.",
+          "flowOnly": true,
         },
         {
           "src": "/sudo-command/gallery/work-southside.png",
           "title": "Southside Ink Tattoo Pattaya",
           "cap": "Bilingual studio website with a work gallery and contact channels",
-          "href": "https://southsideinkpattaya.com/"
         },
         {
           "src": "/sudo-command/gallery/work-curtain-web.jpg",
           "title": "CURTAIN STORY HOME",
           "cap": "Curtain store website — website and online marketing work",
-          "href": "https://www.curtainstoryhome.com/"
         },
         {
-          "src": "/sudo-command/gallery/work-crew-app.jpg",
+          "src": "/sudo-command/gallery/flow-operations.svg",
           "title": "Crew Change Tracker · Operations app",
-          "cap": "Manual screenshot — an empty form for opening a crew-change job"
+          "cap": "Conceptual workflow overview only; internal screens and implementation are not published.",
+          "flowOnly": true
         },
         {
           "src": "/sudo-command/gallery/work-zingstar.jpg",
@@ -777,7 +773,6 @@ const ADDITIONAL_WORKS = {
         "Brand",
         "Content"
       ],
-      "href": "https://www.phonchaorai-th.com/",
       "title": "เว็บไซต์แบรนด์ผลไม้อบแห้ง จากสวนถึงผู้บริโภค",
       "desc": "นำเสนอสินค้า เรื่องราวของแบรนด์ และบทความในเว็บไซต์เดียว พร้อมหน้าเว็บสำหรับมือถือและช่องทางติดต่อธุรกิจ",
       "status": "เว็บไซต์ออนไลน์"
@@ -790,7 +785,6 @@ const ADDITIONAL_WORKS = {
         "TH / EN",
         "Portfolio"
       ],
-      "href": "https://southsideinkpattaya.com",
       "title": "เว็บร้านสักสองภาษา พร้อมแกลเลอรีผลงาน",
       "desc": "เว็บไซต์ร้านสักพัทยา แยกหน้าไทยและอังกฤษ รวมผลงานตามสไตล์รอยสักและช่องทางติดต่อ พร้อมเตรียมเนื้อหาหน้าเว็บสำหรับการค้นหา",
       "status": "เว็บไซต์ออนไลน์"
@@ -803,7 +797,6 @@ const ADDITIONAL_WORKS = {
         "AI",
         "Accounting"
       ],
-      "href": "https://sudochatbot.online",
       "title": "ระบบบัญชีออนไลน์ พร้อมผู้ช่วย AI",
       "desc": "เว็บแอปสำหรับงานขาย ค่าใช้จ่าย ใบแจ้งหนี้ และรายงานบัญชี มีผู้ช่วย AI อ่านเอกสารและช่วยทำงานในระบบ รวมถึงหน้าจอกระทบยอดและจัดการสินค้า",
       "status": "เว็บแอปออนไลน์"
@@ -816,7 +809,6 @@ const ADDITIONAL_WORKS = {
         "Dashboard",
         "Mobile"
       ],
-      "href": "https://github.com/SPNpeet/crew-change-tracker",
       "title": "ระบบติดตามงานเปลี่ยนลูกเรือ",
       "desc": "พัฒนาระบบติดตามงาน 9 ขั้นตอน เชื่อมสำนักงานกับพนักงานภาคสนามผ่านมือถือ มีสถานะเวลา รูปประกอบ ลิงก์ติดตามสำหรับผู้เกี่ยวข้อง และส่งออกรายงาน Excel",
       "status": "โครงการพัฒนาระบบ",
@@ -830,7 +822,6 @@ const ADDITIONAL_WORKS = {
         "TH / EN",
         "Admin"
       ],
-      "href": "https://xn--22cki0cqma4cdedf2ixczace9c1mmc1fh6g.com",
       "title": "เว็บบริการรถส่งน้ำ พร้อมระบบจัดการเนื้อหา",
       "desc": "เว็บไซต์บริการรถส่งน้ำในเชียงใหม่และลำพูน รองรับไทยและอังกฤษ พร้อมระบบหลังบ้านจัดการข้อความ บริการ ราคา รูป คลิป และข้อความติดต่อ รวมถึงบทความความรู้เรื่องน้ำ",
       "status": "เว็บไซต์ออนไลน์"
@@ -843,9 +834,8 @@ const ADDITIONAL_WORKS = {
         "Calculator",
         "PWA"
       ],
-      "href": "https://spnpeet.github.io/T-Ded/",
       "title": "เครื่องคำนวณและผู้ช่วยฟาร์มปลาน้ำจืด",
-      "desc": "พัฒนาเครื่องมือคำนวณอาหารปลา การเติบโต และต้นทุน พร้อมโครงสร้างแอปบันทึกข้อมูลบ่อและฟาร์ม ลิงก์นี้เปิดส่วนเครื่องคำนวณสาธารณะให้ลองใช้งาน",
+      "desc": "พัฒนาเครื่องมือคำนวณอาหารปลา การเติบโต และต้นทุน พร้อมโครงสร้างแอปบันทึกข้อมูลบ่อและฟาร์ม แสดงเฉพาะภาพรวมแนวคิดของงาน",
       "status": "เครื่องคำนวณสาธารณะ",
       "linkLabel": "เปิดเครื่องคำนวณ"
     },
@@ -857,7 +847,6 @@ const ADDITIONAL_WORKS = {
         "Dashboard",
         "B2B"
       ],
-      "href": "https://harbor-ocean.spnpeet.workers.dev",
       "title": "ตลาดกลางสัตว์น้ำและแดชบอร์ดราคา",
       "desc": "เว็บแอปต้นแบบสำหรับประกาศซื้อขาย ดูราคา ประมูล และติดตามคำสั่งซื้อสัตว์น้ำ พร้อมหน้าผู้ซื้อ ผู้ขาย และผู้ดูแล การชำระเงินและข้อมูลขนส่งบางส่วนเป็นการจำลองสำหรับสาธิต",
       "status": "เว็บแอปสาธิต",
@@ -871,7 +860,6 @@ const ADDITIONAL_WORKS = {
         "TH / EN",
         "Admin"
       ],
-      "href": "https://github.com/SPNpeet/sudo-home",
       "title": "ร้านค้าออนไลน์สำหรับสินค้าตกแต่งบ้าน",
       "desc": "โปรเจกต์อีคอมเมิร์ซสองภาษา มีแคตตาล็อกสินค้า ตะกร้า ขั้นตอนสั่งซื้อ ประวัติคำสั่งซื้อ และหน้าผู้ดูแลสำหรับสินค้า สต็อก และสถานะออเดอร์",
       "status": "โปรเจกต์อีคอมเมิร์ซ",
@@ -901,7 +889,6 @@ const ADDITIONAL_WORKS = {
         "Brand",
         "Content"
       ],
-      "href": "https://www.phonchaorai-th.com/",
       "title": "A dried-fruit brand website, from farm to customers",
       "desc": "Products, brand stories and articles in one website, with mobile layouts and business contact channels.",
       "status": "Live website"
@@ -914,7 +901,6 @@ const ADDITIONAL_WORKS = {
         "TH / EN",
         "Portfolio"
       ],
-      "href": "https://southsideinkpattaya.com",
       "title": "Bilingual tattoo studio website and portfolio",
       "desc": "A Pattaya tattoo studio website with separate Thai and English pages, a gallery organized by tattoo style, contact channels and pages prepared for search engines.",
       "status": "Live website"
@@ -927,7 +913,6 @@ const ADDITIONAL_WORKS = {
         "AI",
         "Accounting"
       ],
-      "href": "https://sudochatbot.online",
       "title": "Online accounting with an AI assistant",
       "desc": "A business web app for sales, expenses, invoices and accounting reports, with AI document extraction, an in-app assistant, reconciliation tools and product management.",
       "status": "Live web app"
@@ -940,7 +925,6 @@ const ADDITIONAL_WORKS = {
         "Dashboard",
         "Mobile"
       ],
-      "href": "https://github.com/SPNpeet/crew-change-tracker",
       "title": "Crew change operations tracker",
       "desc": "A nine-step operations tracker connecting office and field teams, with mobile updates, timestamps, photos, stakeholder tracking links and Excel reports.",
       "status": "System development project",
@@ -954,7 +938,6 @@ const ADDITIONAL_WORKS = {
         "TH / EN",
         "Admin"
       ],
-      "href": "https://xn--22cki0cqma4cdedf2ixczace9c1mmc1fh6g.com",
       "title": "Water delivery website with content management",
       "desc": "A Thai and English website for water delivery in Chiang Mai and Lamphun, with an admin system for content, services, pricing, media, contact enquiries and water knowledge articles.",
       "status": "Live website"
@@ -967,9 +950,8 @@ const ADDITIONAL_WORKS = {
         "Calculator",
         "PWA"
       ],
-      "href": "https://spnpeet.github.io/T-Ded/",
       "title": "Freshwater fish farm calculator and assistant",
-      "desc": "Tools for feed planning, growth and cost calculations, alongside an app structure for pond and farm records. The linked page provides the public calculator.",
+      "desc": "Tools for feed planning, growth and cost calculations, alongside an app structure for pond and farm records. Only a conceptual project overview is presented.",
       "status": "Public calculator",
       "linkLabel": "Open calculator"
     },
@@ -981,7 +963,6 @@ const ADDITIONAL_WORKS = {
         "Dashboard",
         "B2B"
       ],
-      "href": "https://harbor-ocean.spnpeet.workers.dev",
       "title": "Aquaculture marketplace and price dashboard",
       "desc": "A marketplace prototype with listings, price views, auctions and order tracking for buyers, sellers and administrators. Payments and parts of shipment tracking are simulated for demonstration.",
       "status": "Demo web app",
@@ -995,7 +976,6 @@ const ADDITIONAL_WORKS = {
         "TH / EN",
         "Admin"
       ],
-      "href": "https://github.com/SPNpeet/sudo-home",
       "title": "Home decor e-commerce platform",
       "desc": "A bilingual e-commerce project with a product catalog, cart, checkout, order history and administration for products, stock and order status.",
       "status": "E-commerce project",
@@ -1142,10 +1122,9 @@ export const DATA = {
         title: 'เว็บไซต์บริษัทตรวจบ้าน + ระบบจัดการราคา + SEO',
         client: 'ZING STAR ENGINEERING · zingstarengineering.com — เราทำเว็บใหม่ให้ (แทนเว็บเก่าของผู้ดูแลรายก่อน)',
         tags: ['Website', 'SEO', 'Google Search', 'Admin'],
-        desc: 'ทำเว็บใหม่ zingstarengineering.com ให้บริษัทตรวจบ้าน Zing Star แทนเว็บเก่า zing-star-inspector.pages.dev — ทำ SEO, ติด GA4/Search Console, และทำระบบหลังบ้านให้เจ้าของแก้ราคาค่าบริการเองได้ที่ /admin/ ไม่ต้องรอคนทำเว็บ พร้อมคู่มือส่งมอบให้ทีมใหม่ทำต่อได้เลย',
+        desc: 'ทำเว็บใหม่ zingstarengineering.com ให้บริษัทตรวจบ้าน Zing Star แทนเว็บเก่า zing-star-inspector.pages.dev — ทำ SEO, ติด GA4/Search Console, และทำระบบหลังบ้านให้เจ้าของแก้ราคาค่าบริการเองได้ ไม่ต้องรอคนทำเว็บ พร้อมคู่มือส่งมอบให้ทีมใหม่ทำต่อได้เลย',
         visual: 'web',
         metric: 'เว็บใหม่ + SEO + GA4/Search Console · เจ้าของแก้ราคาเองได้',
-        href: 'https://zingstarengineering.com',
       },
       {
         title: 'เว็บแอป + SEO + ดูแล Google Ads รายเดือน — ต่อเนื่อง 1 ปี',
@@ -1154,7 +1133,6 @@ export const DATA = {
         desc: 'รับทำเว็บแอปร้านม่านบน curtainstoryhome.com พร้อมทำ SEO ให้ติดค้นหา และดูแล Google Ads รายเดือนให้ทั้งหมด — ปรับระบบลดต้นทุนคลิกจาก ~7 บาท เหลือ 4.66 บาท/คลิก ลูกค้าพึงพอใจต่อสัญญายาวต่อเนื่องถึง 1 ปี',
         visual: 'web',
         metric: 'CPC 4.66 บาท จาก ~7 บาท · ดูแลรายเดือนต่อเนื่อง 1 ปี',
-        href: 'https://www.curtainstoryhome.com',
       },
       {
         title: 'เว็บไซต์ร้านค้า — โชว์ผลงานของลูกค้าบนเว็บที่เราทำ',
@@ -1163,7 +1141,6 @@ export const DATA = {
         desc: 'เว็บร้านครบชุดที่เราทำให้ — หน้าแรก, หมวดบริการ, และหน้าโชว์ผลงานของทางร้าน (ภาพในเว็บเป็นของลูกค้าเอง) พร้อมช่องทางติดต่อครบทุกจุด',
         visual: 'web',
         metric: 'เว็บเป็นเจ้าของร้านม่าน 100% · เปิด 24 ชม.',
-        href: 'https://www.curtainstoryhome.com',
       },
       {
         title: 'LINE OA — ตอบลูกค้าและรับออเดอร์',
@@ -1433,10 +1410,9 @@ export const DATA = {
         title: 'House inspection website + pricing admin + SEO',
         client: 'ZING STAR ENGINEERING · zingstarengineering.com — we rebuilt the site (replaced old admin)',
         tags: ['Website', 'SEO', 'Google Search', 'Admin'],
-        desc: 'Rebuilt zingstarengineering.com for Zing Star house inspection — SEO, GA4/Search Console, and an admin at /admin/ where the owner edits prices without touching code. Handover docs included.',
+        desc: 'Rebuilt zingstarengineering.com for Zing Star house inspection — SEO, GA4/Search Console, and an admin  where the owner edits prices without touching code. Handover docs included.',
         visual: 'web',
         metric: 'New site + SEO + GA4/Search Console · owner edits prices',
-        href: 'https://zingstarengineering.com',
       },
       {
         title: 'Web app + SEO + monthly Google Ads — retained for 1 year',
@@ -1445,7 +1421,6 @@ export const DATA = {
         desc: 'Built the web app at curtainstoryhome.com, did SEO, and ran monthly Google Ads — cut CPC from ~7 THB to 4.66 THB, retained for a full year (we do not do curtain installation).',
         visual: 'web',
         metric: 'CPC 4.66 THB from ~7 THB · 1-year retainer',
-        href: 'https://www.curtainstoryhome.com',
       },
       {
         title: 'Store website — client portfolio on the site we built',
@@ -1454,7 +1429,6 @@ export const DATA = {
         desc: 'Full store site we built — homepage, service sections, and the client’s own portfolio pages (photos belong to the client) with every contact channel.',
         visual: 'web',
         metric: 'Client owns the site 100% · open 24h',
-        href: 'https://www.curtainstoryhome.com',
       },
       {
         title: 'LINE OA — auto-replies and order intake',
