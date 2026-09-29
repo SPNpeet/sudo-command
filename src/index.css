@@ -1098,7 +1098,7 @@ kbd {
 .lang-switch--mobile {
   display: none;
 }
-@media (max-width: 400px) {
+@media (max-width: 560px) {
   .lang-switch--header {
     display: none;
   }
@@ -2348,7 +2348,7 @@ kbd {
     min-height: 44px;
   }
 
-  .theme-switch {
+  .site-nav .theme-switch {
     align-self: flex-start;
     margin: var(--s4) 0 0;
   }
