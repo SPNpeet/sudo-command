@@ -16,8 +16,8 @@
       content="Sudo Command — อดีต IT Auditor บริษัทมหาชน รับยิงแอด สอนยิงแอด รับทำเว็บไซต์ SEO LINE OA Chatbot Google Ads และวางระบบหลังบ้าน พร้อมตรวจความพร้อม AI และ PDPA สำหรับองค์กร ตัวเลขทุกตัวตรวจสอบได้"
     />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f5f5ef" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#121b16" media="(prefers-color-scheme: dark)" />
     <title>Sudo Command — รับยิงแอด รับทำเว็บไซต์ LINE OA SEO Google Ads | วางระบบหลังบ้าน จบในทีมเดียว</title>
 
     <!-- ฟอนต์ที่ CSS เรียกใช้ ต้องโหลดจริง ไม่งั้นเครื่องลูกค้าจะ fallback เป็นฟอนต์ระบบ -->
@@ -323,18 +323,6 @@
         if (l === 'en') document.documentElement.setAttribute('lang', 'en')
       } catch (e) {}
 
-      // เปิดโหมดค่อย ๆ เผยเนื้อหา ต้องใส่ก่อนวาดเช่นกัน
-      // ถ้าใส่ทีหลัง เนื้อหาจะโผล่มาแล้วค่อยจางหาย เห็นเป็นภาพกระพริบ
-      // เปิดเฉพาะเครื่องที่รองรับจริงและผู้ใช้ไม่ได้ขอลดการเคลื่อนไหว
-      // ถ้าสคริปต์หลักไม่ทำงาน hooks.js จะถอดคลาสนี้คืนให้เนื้อหาแสดงครบ
-      try {
-        if (
-          'IntersectionObserver' in window &&
-          !window.matchMedia('(prefers-reduced-motion: reduce)').matches
-        ) {
-          document.documentElement.classList.add('js-reveal')
-        }
-      } catch (e) {}
     </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
