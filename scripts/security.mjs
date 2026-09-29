@@ -49,8 +49,10 @@ async function run(mode) {
   for (const page of REQUIRED_PAGES) if (!published.has(page)) throw new Error('Missing required page: '+page)
   for (const file of all) {
     if (/(?:^|[\\/])\.env|\.(?:pem|key|p12|map)$/i.test(file)) throw new Error('Forbidden deployment file: '+relative('dist',file))
+    if (/work-(?:sudochatbot|natee-admin|crew-app|real-3|curtain-[12])\.(?:png|jpg)$/.test(file)) throw new Error('Non-public portfolio material in deployment')
     if (/\.(?:html|js|css|json|txt|xml|svg)$/.test(file)) {
       const text = await readFile(file,'utf8')
+      if (/sudochatbot\.online|github\.com\/SPNpeet\/(?:crew-change-tracker|sudo-home|SudoChatBot-ORG)|harbor-ocean\.spnpeet\.workers\.dev/i.test(text)) throw new Error('Internal project destination in deployment: '+relative('dist',file))
       if (/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|gh[pousr]_[A-Za-z0-9]{30,}|AKIA[A-Z0-9]{16}/.test(text)) throw new Error('Potential credential in deployment file: '+relative('dist',file))
     }
     if (!/\.html$/.test(file)) continue
