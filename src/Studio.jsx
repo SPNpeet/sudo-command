@@ -3,6 +3,7 @@ import { DATA, L10N, PACKS, CATS } from './i18n'
 import { STUDIO } from './studio-copy'
 import { UX } from './ux-copy'
 import ReelShowcase from './ReelShowcase'
+import SignalField from './SignalField'
 import ProjectPreview from './ProjectPreview'
 import { useLang, useTheme } from './hooks'
 import { SEARCH_PAGES } from './search-pages'
@@ -25,6 +26,7 @@ export default function Studio() {
   const [lang, setLang] = useLang()
   const [theme, setTheme] = useTheme()
   const [hero, setHero] = useState(0)
+  const [motionPaused, setMotionPaused] = useState(false)
   const [filter, setFilter] = useState('all')
   const [need, setNeed] = useState(0)
   const [query, setQuery] = useState('')
@@ -132,16 +134,17 @@ export default function Studio() {
       <section className="s-hero s-container" id="top" tabIndex={-1}>
         <div className="s-hero-heading"><p className="s-kicker"><span className="s-status-dot"/>{T.tagline}</p><h1>{T.hero1}<br/><span>{T.hero2}</span></h1><p className="s-hero-intro">{T.intro}</p><div className="s-hero-buttons"><a className="s-button s-button-green" href="#contact">{T.start}<Arrow/></a><a className="s-button s-button-quiet" href="#work">{T.seeWork}<span aria-hidden="true">↘</span></a></div><p className="s-hero-note">{T.note}</p></div>
         <div className="s-showcase">
-          <div className="s-showcase-word" aria-hidden="true">sudo<span>↗</span></div>
+          <SignalField paused={motionPaused}/>
+          <div className="s-showcase-heading"><div><p className="s-kicker">SUDO / SELECTED SYSTEMS</p><h2>{lang==='th'?'ไอเดียที่ใช้ได้จริง.':'Ideas, made real.'}</h2></div><button type="button" className="s-motion-toggle" aria-pressed={motionPaused} onClick={()=>setMotionPaused(v=>!v)}>{motionPaused?(lang==='th'?'เปิดการเคลื่อนไหว':'Resume motion'):(lang==='th'?'พักการเคลื่อนไหว':'Pause motion')} <span aria-hidden="true">{motionPaused?'▶':'Ⅱ'}</span></button></div>
           <div className="s-stage">
             <div className="s-stage-back" aria-hidden="true"><Mark/></div>
             <button type="button" className="s-stage-window" onClick={() => setPreview(HERO_IMAGES[hero])} aria-label={`${U.preview}: ${selected.title}`}>
               <div className="s-window-bar"><span className="s-window-dots" aria-hidden="true">● ● ●</span><span>{selected.title}</span><Arrow/></div>
               <img key={selected.src} src={selected.src} alt={selected.title} width="720" height="500" fetchPriority="high"/>
             </button>
-            <div className="s-stage-stamp"><span>IDEA → BUILD<br/>→ YOUR NEXT MOVE</span><Mark/></div>
+            <div className="s-stage-stamp"><span>{lang==='th'?'เปิดดูผลงาน':'Explore project'}</span><Arrow/></div>
           </div>
-          <div className="s-showcase-controls" role="group" aria-label={T.featured}>{T.categories.map((label,i)=><button key={label} aria-pressed={hero===i} onClick={()=>setHero(i)}><span>0{i+1}</span>{label}<span className="s-control-dot" aria-hidden="true"/></button>)}</div>
+          <div className="s-showcase-controls" role="group" aria-label={T.featured}>{T.categories.map((label,i)=><button key={label} aria-pressed={hero===i} onClick={()=>setHero(i)}><img src={images[HERO_IMAGES[i]].src} alt="" width="96" height="64" loading="lazy"/><span className="s-project-tab"><small>0{i+1} / {label}</small><strong>{images[HERO_IMAGES[i]].title}</strong></span><span className="s-control-dot" aria-hidden="true"/></button>)}</div>
         </div>
       </section>
 
