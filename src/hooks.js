@@ -44,10 +44,10 @@ export function useTheme() {
     else root.setAttribute('data-theme', theme)
     // ตั้งสีแถบเบราว์เซอร์ให้ตรงกับธีมที่ผู้ใช้เลือกเอง
     // ตอน system ปล่อยให้ <meta media> เดิมใน index.html ตอบสนองเครื่องผู้ใช้
-    if (theme !== 'system') {
-      const m = document.querySelector('meta[name="theme-color"]')
-      if (m) m.setAttribute('content', theme === 'dark' ? '#121b16' : '#f5f5ef')
-    }
+    document.querySelectorAll('meta[name="theme-color"]').forEach(meta => {
+      const dark = theme === 'system' ? meta.media.includes('dark') : theme === 'dark'
+      meta.setAttribute('content', dark ? '#10121a' : '#f0f2f8')
+    })
     try {
       localStorage.setItem(THEME_KEY, theme)
     } catch {

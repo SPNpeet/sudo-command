@@ -19,3 +19,7 @@ The owner requested a complete UX/UI redesign, a stronger Sudo identity, modern 
 Continue deploying to the existing free GitHub Pages site. No new hosting, paid tools, subscriptions, ads, analytics or third-party JavaScript were added. Keep the current `/sudo-command/` base until the owner supplies a domain and requests migration. Existing Search Console owner-account selection is still pending.
 
 Production build completed successfully. Desktop light and mobile dark compositions were viewed during authoring. No automated tests were added or run, and no conversion uplift, search ranking, or comprehensive accessibility certification is claimed.
+
+## Owner revision: Command identity
+
+The owner rejected the green/ivory direction and requested every surface be changed. The active design now uses carbon, electric cobalt and coral, a code-native >_ mark, square/cut corners and a different composition: full-width hero heading and showcase, leading project feature, service cards, numbered process rows, new menu/search/form treatments. `src/command.css` supplies the new composition after the base stylesheet. Service, portfolio and privacy pages share the new destination design. Real client imagery remains original. No client brand assets are recolored. Free Pages hosting and factual content remain.

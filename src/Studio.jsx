@@ -12,7 +12,7 @@ const TYPE = ['web', 'app', 'app', 'web', 'web', 'app']
 const HERO_IMAGES = [0, 1, 2]
 
 function Mark({ className = '' }) {
-  return <svg className={`s-mark ${className}`} viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M12 76C20 38 34 28 48 43S75 66 88 48" stroke="currentColor" strokeWidth="12" strokeLinecap="round"/><path d="M81 16v15" stroke="currentColor" strokeWidth="12" strokeLinecap="round"/></svg>
+  return <svg className={`s-mark ${className}`} viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M16 22L46 50L16 78" stroke="currentColor" strokeWidth="12" strokeLinecap="square"/><path d="M55 77H86" stroke="currentColor" strokeWidth="12" strokeLinecap="square"/></svg>
 }
 function Arrow() { return <Icon name="arrow" /> }
 function External({ href, children, className = '' }) { return <a className={className} href={href} target="_blank" rel="noopener noreferrer">{children}<Arrow /></a> }
@@ -110,14 +110,14 @@ export default function Studio() {
       <section className="s-hero s-container" id="top" tabIndex={-1}>
         <div className="s-hero-heading"><p className="s-kicker"><span className="s-status-dot"/>{T.tagline}</p><h1>{T.hero1}<br/><span>{T.hero2}</span></h1><p className="s-hero-intro">{T.intro}</p><div className="s-hero-buttons"><a className="s-button s-button-green" href="#contact">{T.start}<Arrow/></a><a className="s-button s-button-quiet" href="#work">{T.seeWork}<span aria-hidden="true">↘</span></a></div><p className="s-hero-note">{T.note}</p></div>
         <div className="s-showcase">
-          <div className="s-showcase-word" aria-hidden="true">sudo.</div>
+          <div className="s-showcase-word" aria-hidden="true">sudo<span>↗</span></div>
           <div className="s-stage">
             <div className="s-stage-back" aria-hidden="true"><Mark/></div>
             <a className="s-stage-window" href={selected.href} target="_blank" rel="noopener noreferrer" aria-label={`${T.project}: ${selected.title}`}>
               <div className="s-window-bar"><span className="s-window-dots" aria-hidden="true">● ● ●</span><span>{selected.title}</span><Arrow/></div>
               <img key={selected.src} src={selected.src} alt={selected.title} width="720" height="500" fetchPriority="high"/>
             </a>
-            <div className="s-stage-stamp"><span>DESIGN<br/>& SYSTEMS</span><Mark/></div>
+            <div className="s-stage-stamp"><span>IDEA → BUILD<br/>→ YOUR NEXT MOVE</span><Mark/></div>
           </div>
           <div className="s-showcase-controls" role="group" aria-label={T.featured}>{T.categories.map((label,i)=><button key={label} aria-pressed={hero===i} onClick={()=>setHero(i)}><span>0{i+1}</span>{label}<span className="s-control-dot" aria-hidden="true"/></button>)}</div>
         </div>
