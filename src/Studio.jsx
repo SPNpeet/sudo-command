@@ -1,4 +1,4 @@
-import { Suspense, lazy, useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { DATA, L10N, PACKS, CATS } from './i18n'
 import { STUDIO } from './studio-copy'
 import { UX } from './ux-copy'
@@ -7,7 +7,7 @@ import ProjectPreview from './ProjectPreview'
 import { useLang, useTheme } from './hooks'
 import { SEARCH_PAGES } from './search-pages'
 import Icon from './Icon'
-const CommandPalette = lazy(() => import('./CommandPalette'))
+import CommandPalette from './CommandPalette'
 const BASE = '/sudo-command/'
 const CONTACT = { line: 'https://line.me/ti/p/~nongpeetza', messenger: 'https://m.me/61590190966678', email: 'sudocoffee.home@gmail.com', phone: '+66611699332' }
 const NAV_IDS = ['work', 'services', 'process', 'faq', 'contact']
@@ -63,7 +63,7 @@ export default function Studio() {
   }, [L])
   useEffect(() => {
     const onKey = (e) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); setPalette(v => !v) }
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); if (!document.querySelector('.s-preview[open]')) { closeMenu(); setPalette(v => !v) } }
       if (e.key === 'Escape' && menu.current?.open) { menu.current.open = false; menuSummary.current?.focus() }
     }
     const onPointer = (e) => { if (menu.current?.open && !menu.current.contains(e.target)) menu.current.open = false }
@@ -71,7 +71,7 @@ export default function Studio() {
     document.addEventListener('pointerdown', onPointer)
     // Support existing shared section links after the React tree is mounted.
     const followHash = () => {
-      if (window.location.hash === '#gallery') setFilter('all')
+      if (['#gallery','#astro-trader','#truck-reels'].includes(window.location.hash)) setFilter('all')
       window.setTimeout(() => {
       let id
       try { id = decodeURIComponent(window.location.hash.slice(1)) } catch { return }
@@ -99,10 +99,11 @@ export default function Studio() {
   const textBrief = `${T.business}: ${business}\n${T.need}: ${serviceTitle}\n\n${brief}`
   const emailHref = `mailto:${CONTACT.email}?subject=${encodeURIComponent(T.formSubject)}&body=${encodeURIComponent(textBrief)}`
   const copyBrief = async () => {
-    try { await navigator.clipboard.writeText(textBrief); setCopyStatus(T.copied) }
+    try { await navigator.clipboard.writeText(textBrief); setCopyStatus(U.copyNext) }
     catch { setCopyStatus(T.copyError); setManualCopy(true); window.setTimeout(() => { briefPreview.current?.focus(); briefPreview.current?.select() }, 0) }
   }
-  const quote = (id) => { setService(id); setCopyStatus(''); go('contact') }
+  const quote = (id) => { setService(id); setCopyStatus(''); go('contact'); window.setTimeout(()=>document.getElementById('brief-business')?.focus({preventScroll:true}),0) }
+  const enquireProject = () => { const title = images[preview].title; setBrief(value => `${value}${value?'\n\n':''}${lang==='th'?'สนใจงานลักษณะเดียวกับ':'Interested in work similar to'}: ${title}`.slice(0,1800)); setPreview(null); setCopyStatus(U.projectAdded); window.setTimeout(()=>{go('contact');document.getElementById('brief-message')?.focus({preventScroll:true})},0) }
   const normalize = text => text.normalize('NFKD').replace(/[\u0E31\u0E34-\u0E3A\u0E47-\u0E4E]/g, '').toLocaleLowerCase().trim()
   const faqs = D.faqs.filter(f => normalize(`${f.q} ${f.a}`).includes(normalize(query)))
 
@@ -147,7 +148,7 @@ export default function Studio() {
       <div className="s-ribbon" aria-hidden="true">{T.ribbon.map(s=><span key={s}><Mark/>{s}</span>)}</div>
       <section className="s-section s-container" id="work" tabIndex={-1}>
         <div className="s-heading-row"><Heading eyebrow={T.workEyebrow} title={T.workTitle} note={T.workNote}/><a className="s-text-link" href={`${BASE}portfolio/`}>{T.workAll}<Arrow/></a></div>
-        <div className="s-filter-bar"><div className="s-filters" role="group" aria-label={T.nav[0]}>{['all','web','app','auto'].map((value,i)=><button aria-pressed={filter===value} onClick={()=>setFilter(value)} key={value}>{T.filters[i]}</button>)}</div><span className="s-counter" role="status">{visibleCases.length + (filter==='all'||filter==='auto'?1:0)} {T.resultCount}</span></div>
+        <div className="s-filter-bar"><div className="s-filters" role="group" aria-label={T.nav[0]}>{['all','web','app','auto'].map((value,i)=><button aria-pressed={filter===value} onClick={()=>setFilter(value)} key={value}>{T.filters[i]}</button>)}</div><span className="s-counter" role="status">{visibleCases.length + (filter==='all'||filter==='auto'?2:0)} {T.resultCount}</span></div>
         <div className="s-case-grid">{visibleCases.map(item=><article className="s-case" key={item.src}>
           <button type="button" className="s-case-image" onClick={() => setPreview(item.number - 1)} aria-label={`${U.preview}: ${item.title}`}><img src={item.src} alt={item.title} width="720" height="500" loading="lazy" decoding="async"/><span className="s-case-arrow"><Icon name="search"/></span></button>
           <div className="s-case-caption"><div><span className="s-kicker">{item.typeLabel}</span><h3>{item.title}</h3></div><span className="s-case-number">/{String(item.number).padStart(2,'0')}</span></div><p>{item.cap}</p><div className="s-case-actions"><button className="s-text-link" onClick={() => setPreview(item.number - 1)}>{U.preview}<Arrow/></button>{item.href && <a className="s-text-link" href={item.href} target="_blank" rel="noopener noreferrer">{U.visit}<span aria-hidden="true">↗</span><span className="sr-only">{U.newTab}</span></a>}</div>
@@ -177,13 +178,13 @@ export default function Studio() {
       <section className="s-faq-section" id="faq" tabIndex={-1}><div className="s-container s-faq-grid"><div><Heading eyebrow="GOOD QUESTIONS" title={T.faqTitle} note={T.faqNote}/><div className="s-faq-search" role="search"><Icon name="search"/><input id="faq-search" type="search" aria-label={T.faqSearch} placeholder={T.faqSearch} value={query} onChange={e=>setQuery(e.target.value)}/>{query && <button type="button" aria-label={U.clear} onClick={()=>{setQuery('');document.getElementById('faq-search')?.focus()}}><Icon name="close"/></button>}</div><p className="s-search-count" role="status">{faqs.length} {U.faqCount}</p></div><div>{faqs.map(f=><details className="s-faq" key={f.q}><summary>{f.q}<span aria-hidden="true">+</span></summary><p>{f.a}</p></details>)}{!faqs.length&&<p role="status">{T.noFaq}</p>}</div></div></section>
 
       <section className="s-section s-container" id="contact" tabIndex={-1}><div className="s-contact-grid"><div><Heading eyebrow={T.contactEyebrow} title={T.contactTitle} note={T.contactText}/><div className="s-contact-buttons"><External className="s-button s-button-green" href={CONTACT.line}>{T.direct}</External><External className="s-button s-button-outline" href={CONTACT.messenger}>{T.messenger}</External></div><div className="s-contact-address"><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}<Arrow/></a><a href={`tel:${CONTACT.phone}`}>061 169 9332<Arrow/></a><p>{T.location}</p></div></div>
-        <div className="s-brief"><h3>{T.orBrief}</h3><p className="s-brief-help">{U.briefHelp}</p>{service && <p className="s-selected-service">{U.selected}: {serviceTitle}</p>}<label>{T.business}<input autoComplete="organization" value={business} maxLength={120} placeholder={T.businessPh} onChange={e=>{setBusiness(e.target.value);setCopyStatus('')}}/></label><label>{T.need}<select value={service} onChange={e=>{setService(e.target.value);setCopyStatus('')}}><option value="">{T.remaining}</option>{D.services.map(s=><option key={s.id} value={s.id}>{s.title}</option>)}{PACKS[lang].map(p=><option key={p.id} value={p.id}>{p.title}</option>)}</select></label><label>{T.brief}<textarea value={brief} rows={4} maxLength={1800} placeholder={T.briefPh} onChange={e=>{setBrief(e.target.value);setCopyStatus('')}}/></label><div className="s-brief-actions"><a className="s-button s-button-dark" href={emailHref}>{T.email}<Arrow/></a><button className="s-text-link" onClick={copyBrief}>{T.copy}</button></div><small>{T.emailNote}</small><p className="s-copy-status" role="status">{copyStatus}</p><details className="s-brief-preview" open={manualCopy} onToggle={e=>setManualCopy(e.currentTarget.open)}><summary>{U.briefPreview}</summary><textarea ref={briefPreview} readOnly value={textBrief} aria-label={U.briefPreview} rows={6}/></details></div>
+        <div className="s-brief"><h3>{T.orBrief}</h3><p className="s-brief-help">{U.briefHelp}</p>{service && <p className="s-selected-service">{U.selected}: {serviceTitle}</p>}<label>{T.business}<input id="brief-business" autoComplete="organization" value={business} maxLength={120} placeholder={T.businessPh} onChange={e=>{setBusiness(e.target.value);setCopyStatus('')}}/></label><label>{T.need}<select value={service} onChange={e=>{setService(e.target.value);setCopyStatus('')}}><option value="">{T.remaining}</option>{D.services.map(s=><option key={s.id} value={s.id}>{s.title}</option>)}{PACKS[lang].map(p=><option key={p.id} value={p.id}>{p.title}</option>)}</select></label><label>{T.brief}<textarea id="brief-message" value={brief} rows={4} maxLength={1800} placeholder={T.briefPh} onChange={e=>{setBrief(e.target.value);setCopyStatus('')}}/></label><div className="s-brief-actions"><a className="s-button s-button-dark" href={emailHref}>{T.email}<Arrow/></a></div><small>{T.emailNote}</small><div className="s-copy-line"><button type="button" onClick={copyBrief}>{U.copyLine}</button><a href={CONTACT.line} target="_blank" rel="noopener noreferrer">2. {T.direct} ↗</a></div><p className="s-copy-status" role="status">{copyStatus}</p><details className="s-brief-preview" open={manualCopy} onToggle={e=>setManualCopy(e.currentTarget.open)}><summary>{U.briefPreview}</summary><textarea ref={briefPreview} readOnly value={textBrief} aria-label={U.briefPreview} rows={6}/></details></div>
       </div></section>
     </main>
 
     <footer className="s-footer"><div className="s-container"><div className="s-footer-top"><p>{T.footer}</p><a className="s-text-link" href="#top">{T.backTop}<span aria-hidden="true">↑</span></a></div><a className="s-footer-word" href="#top" aria-label="Sudo Command">sudo<Mark/></a><nav className="s-service-links" aria-label={T.more}>{SEARCH_PAGES.map(p=><a href={`${BASE}services/${p.slug}/`} key={p.slug}>{lang==='th'?p.label:`${p.en} (TH)`}</a>)}<a href={`${BASE}portfolio/`}>{T.portfolio}</a></nav><div className="s-footer-bottom"><span>© {new Date().getFullYear()} Sudo Command</span><span>BANGKOK, THAILAND</span><a href={`${BASE}privacy.html`}>{T.privacy}</a></div></div></footer>
     {!contactVisible && <div className="s-mobile-dock"><a href="#work">{T.seeWork}</a><a href={CONTACT.line} target="_blank" rel="noopener noreferrer">{T.direct}<Arrow/></a></div>}
-    {preview !== null && <ProjectPreview item={images[preview]} labels={U} onClose={()=>setPreview(null)}/>}
-    {palette&&<Suspense fallback={<p className="s-search-loading" role="status">{U.loading}</p>}><CommandPalette open={palette} onClose={closePalette} actions={actions} t={L}/></Suspense>}
+    {preview !== null && <ProjectPreview item={images[preview]} index={preview} total={images.length} onNavigate={setPreview} onEnquire={enquireProject} labels={U} onClose={()=>setPreview(null)}/>}
+    {palette&&<CommandPalette open={palette} onClose={closePalette} actions={actions} t={L}/>}
   </div>
 }

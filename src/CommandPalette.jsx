@@ -31,28 +31,17 @@ export default function CommandPalette({ open, onClose, actions, t }) {
     )
   }, [q, actions])
 
-  // เปิด/ปิด dialog ให้ตรงกับ state
   useEffect(() => {
     const el = dialogRef.current
-    if (!el) return
-    if (open && !el.open) {
-      const previous = document.activeElement
-      el.showModal()
-      setQ('')
-      setCursor(0)
-      // บางเบราว์เซอร์ไม่ยอมให้โฟกัส input ทันทีหลัง showModal (อยู่ระหว่าง animation)
-      // ถ้าโฟกัสไม่ได้ Escape จะไม่ส่ง cancel event ให้ dialog → กด Esc ไม่ปิด
-      // เลยลองใหม่เป็นช่วงจนกว่าจะติด หรือครบ 12 ครั้ง
-      let tries = 0
-      const focusTimer = window.setInterval(() => {
-        if (!inputRef.current) return
-        inputRef.current.focus()
-        if (document.activeElement === inputRef.current) window.clearInterval(focusTimer)
-        if (++tries > 12) window.clearInterval(focusTimer)
-      }, 80)
-      return () => { window.clearInterval(focusTimer); window.setTimeout(() => { if (!el.isConnected) previous?.focus({ preventScroll: true }) }, 0) }
-    } else if (!open && el.open) {
-      el.close()
+    if (!open || !el) return
+    const previous = document.activeElement
+    const overflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    if (!el.open) el.showModal()
+    inputRef.current?.focus()
+    return () => {
+      document.body.style.overflow = overflow
+      if (previous?.isConnected) previous.focus({ preventScroll: true })
     }
   }, [open])
 
@@ -116,7 +105,9 @@ export default function CommandPalette({ open, onClose, actions, t }) {
   // คลิกพื้นหลังนอกกล่องแล้วปิด — คลิกที่ backdrop จะยิงมาที่ตัว dialog เอง
   // จำเป็นมาก เพราะบนมือถือไม่มีปุ่ม Escape ให้กด
   const onDialogClick = (e) => {
-    if (e.target === dialogRef.current) onClose()
+    if (e.target !== dialogRef.current) return
+    const r=e.currentTarget.getBoundingClientRect()
+    if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom) onClose()
   }
 
   return (
@@ -126,7 +117,7 @@ export default function CommandPalette({ open, onClose, actions, t }) {
       aria-label={P.title}
       onClick={onDialogClick}
     >
-      <div className="cmdk-box">
+      <div className="cmdk-box"><div className="cmdk-title">{P.title}<span>⌘ / Ctrl + K</span></div>
         <div className="cmdk-search">
           <span className="cmdk-prompt" aria-hidden="true">
             $
@@ -152,6 +143,7 @@ export default function CommandPalette({ open, onClose, actions, t }) {
           </button>
         </div>
 
+        <p className="cmdk-count" role="status">{results.length} {t.meta.lang.startsWith('th') ? 'รายการ' : 'results'}</p>
         <ul
           className="cmdk-list"
           id="cmdk-results"
@@ -185,6 +177,7 @@ export default function CommandPalette({ open, onClose, actions, t }) {
           )}
         </ul>
 
+        {results.length===0&&<div className="cmdk-recovery"><button type="button" onClick={()=>{setQ('');inputRef.current?.focus()}}>{t.meta.lang.startsWith('th')?'ล้างคำค้น':'Clear search'}</button><button type="button" onClick={()=>run(actions.find(a=>a.id==='contact'))}>{t.meta.lang.startsWith('th')?'คุยโจทย์กับเรา':'Talk to us'}</button></div>}
         <footer className="cmdk-foot">
           <span>
             <kbd>↑</kbd>
