@@ -3,6 +3,7 @@ import { DATA, L10N, PACKS, CATS } from './i18n'
 import { STUDIO } from './studio-copy'
 import { UX } from './ux-copy'
 import ReelShowcase from './ReelShowcase'
+import ClientShowcase from './ClientShowcase'
 import SignalField from './SignalField'
 import ProjectPreview from './ProjectPreview'
 import { useLang, useTheme } from './hooks'
@@ -159,6 +160,7 @@ export default function Studio() {
       </section>
 
       <div className="s-ribbon" aria-hidden="true">{T.ribbon.map(s=><span key={s}><Mark/>{s}</span>)}</div>
+      <ClientShowcase lang={lang} onSelect={setPreview}/>
       <section className="s-section s-container" id="work" tabIndex={-1}>
         <div className="s-heading-row"><Heading eyebrow={T.workEyebrow} title={T.workTitle} note={T.workNote}/><a className="s-text-link" href={`${BASE}portfolio/`}>{T.workAll}<Arrow/></a></div>
         <div className="s-filter-bar"><div className="s-filters" role="group" aria-label={T.nav[0]}>{['all','web','app','auto'].map((value,i)=><button aria-pressed={filter===value} onClick={()=>setFilter(value)} key={value}>{T.filters[i]}</button>)}</div><span className="s-counter" role="status">{visibleCases.length + (filter==='all'||filter==='auto'?2:0)} {T.resultCount}</span></div>

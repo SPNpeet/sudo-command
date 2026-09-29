@@ -87,3 +87,30 @@
 .s-project-theatre .s-signal-field{mask-image:linear-gradient(#000 50%,transparent)}
 .s-project-theatre .s-showcase-controls button{justify-content:flex-start;text-align:left}
 .s-project-theatre :where(button):focus-visible{outline:2px solid #ffb68a;outline-offset:5px}
+
+/* Real client identities, shown in their original colours. */
+.s-clients{padding-block:72px 20px;scroll-margin-top:110px}
+.s-clients-heading{display:flex;align-items:end;justify-content:space-between;gap:40px;margin-bottom:30px}
+.s-clients-heading .s-kicker{font-size:10px;letter-spacing:.12em;color:var(--s-deep);margin-bottom:12px}
+.s-clients-heading h2{font-size:clamp(25px,3vw,40px);font-weight:500;letter-spacing:-.035em;line-height:1.4}
+.s-clients-heading>p{font-size:13px;line-height:1.9;max-width:42ch;color:var(--s-muted)}
+.s-clients-heading>p>span{display:block;margin-top:6px;color:var(--s-ink)}
+.s-client-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.s-client-grid>li{min-width:0}
+.s-client{display:flex;flex-direction:column;width:100%;height:100%;text-align:left;padding:0 0 18px;background:transparent;border:0;border-bottom:1px solid var(--s-line);color:var(--s-ink);cursor:pointer}
+.s-client-logo{display:flex;align-items:center;justify-content:center;min-height:156px;width:100%;background:#fff;border:1px solid #e9e6e1;border-radius:4px;transition:border-color .2s,box-shadow .2s}
+.s-client-logo img{width:150px;max-width:82%;height:110px;object-fit:contain;transition:transform .3s}
+.s-client-southside .s-client-logo{background:#181818;border-color:#181818}
+.s-client-southside .s-client-logo img{width:142px;height:112px}
+.s-client-phonchaorai .s-client-logo img{height:125px}
+.s-client-name{display:flex;justify-content:space-between;align-items:start;gap:8px;width:100%;margin-top:17px;font-size:13px;font-weight:600;line-height:1.6}
+.s-client-name>span{color:var(--s-deep);transition:transform .2s}
+.s-client-scope{font-size:11px;line-height:1.7;margin-top:5px;color:var(--s-muted)}
+.s-client:hover .s-client-logo{border-color:var(--s-deep);box-shadow:0 8px 20px #0000000a}.s-client:hover img{transform:translateY(-3px)}
+.s-client:hover .s-client-name>span{transform:translate(2px,-2px)}
+.s-client:focus-visible{outline:2px solid var(--s-deep);outline-offset:5px;border-radius:4px}
+@media(max-width:900px){.s-clients-heading{align-items:start}.s-client-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 16px}.s-client-logo{min-height:150px}}
+@media(max-width:600px){.s-clients{padding-block:48px 8px}.s-clients-heading{display:block;margin-bottom:24px}.s-clients-heading h2{font-size:27px}.s-clients-heading>p{margin-top:16px;font-size:12px}.s-client-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}.s-client-logo{min-height:138px}.s-client-logo img{height:96px;max-width:78%}.s-client-phonchaorai .s-client-logo img{height:115px}.s-client-name{font-size:12px;margin-top:12px}.s-client-scope{font-size:10px}.s-client-grid>li:last-child{grid-column:1/-1}.s-client-grid>li:last-child .s-client-logo{min-height:148px}.s-client-grid>li:last-child img{height:126px}}
+@media(prefers-reduced-motion:reduce){.s-client-logo,.s-client-logo img,.s-client-name>span{transition:none}}
+.s-client-southside .s-client-logo{background:#000;border-color:#000}
+.s-client-zingstar .s-client-logo img{height:140px;width:160px}
