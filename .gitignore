@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Never commit credentials or private keys
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12

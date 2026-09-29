@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/build-search.mjs",
+    "build": "vite build && node scripts/build-search.mjs && node scripts/security.mjs harden",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "security:check": "node scripts/security.mjs check",
+    "test:security": "node --test scripts/security.test.mjs"
   },
   "dependencies": {
     "react": "^19.2.8",
