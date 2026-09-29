@@ -1,0 +1,19 @@
+import { useState } from 'react'
+import { REELS, ASTRO_REELS } from './reels'
+import './reel-showcase.css'
+
+function Collection({ lang, astro = false }) {
+  const [active, setActive] = useState(0)
+  const clips = astro ? ASTRO_REELS : REELS
+  const clip = clips[active]
+  const th = lang === 'th'
+  const name = astro ? 'โหรา เทรดเดอร์ Astro Trader' : (th ? 'เฮียตั้มรถบรรทุก ถูกและดี' : 'Hia Tum Trucks')
+  return <section className={`reel-collection ${astro ? 'reel-collection-dark' : ''}`} id={astro ? 'astro-trader' : 'truck-reels'} aria-labelledby={astro ? 'astro-title' : 'truck-title'}>
+    <div className="reel-story"><p className="reel-overline">0{astro ? 2 : 1} / {astro ? 'DAILY NEWS' : 'AUTOMOTIVE'}</p><h3 id={astro ? 'astro-title' : 'truck-title'}>{name}</h3><p>{astro ? (th ? 'เปลี่ยนเรื่องใหม่ทุกวัน ให้เป็นคลิปที่พร้อมเล่า ทั้งเสียง ภาพ และตัวละครพูด' : 'Fresh stories become daily videos, with narration, visuals and a speaking presenter.') : (th ? 'จากหัวข้อใน LINE สู่คลิปของแบรนด์ที่เผยแพร่จริง ด้วยระบบ n8n ที่ทำงานต่อให้' : 'From a topic in LINE to published brand videos, connected through n8n automation.')}</p><div className="reel-tags"><span>{astro ? 'NEWS → VIDEO' : 'LINE → n8n'}</span><span>FACEBOOK REELS</span></div><a className="reel-all" href={astro ? 'https://www.facebook.com/AstroTD459/reels/' : 'https://www.facebook.com/kp468/reels/'} target="_blank" rel="noopener noreferrer">{th ? 'ดูคลิปทั้งหมดของแบรนด์' : 'All brand reels'} <span aria-hidden="true">↗</span></a><span className="reel-story-number" aria-hidden="true">0{astro ? 2 : 1}</span></div>
+    <div className="reel-stage"><div className="reel-feature-wrap"><span className="reel-stamp" aria-hidden="true">SUDO / IN MOTION</span><a className="reel-feature" href={clip.href} target="_blank" rel="noopener noreferrer" aria-label={`${th ? 'ดูคลิป' : 'Watch reel'} ${clip.number} — ${name} (${th ? 'เปิด Facebook ในแท็บใหม่' : 'opens Facebook in a new tab'})`}><img key={clip.id} src={clip.poster} alt={`${name} — ${th ? 'ภาพปกคลิป' : 'reel cover'} ${clip.number}`} width="720" height="1280" loading="lazy" decoding="async"/><span className="reel-feature-play" aria-hidden="true">↗</span><span className="reel-feature-caption">{th ? 'ดูคลิปบน Facebook' : 'Watch on Facebook'} <b>{clip.number} / 06</b></span></a></div><div className="reel-picker"><p>{th ? 'เลือกภาพที่อยากดู' : 'Pick a cover'} <span>↓</span></p><div className="reel-thumbnails">{clips.map((item,i)=><button type="button" key={item.id} aria-pressed={i===active} aria-label={`${th ? 'เลือกภาพคลิป' : 'Select cover'} ${item.number} — ${name}`} onClick={()=>setActive(i)}><img src={item.poster} alt="" width="180" height="320" loading="lazy" decoding="async"/><span>{item.number}</span></button>)}</div><span className="reel-selection" aria-live="polite">{th ? 'ภาพที่' : 'Cover'} {clip.number} / 06</span></div></div>
+  </section>
+}
+export default function ReelShowcase({ lang }) {
+  const th = lang === 'th'
+  return <div className="reel-showcase"><header className="reel-showcase-heading"><div><p className="reel-overline">SUDO / MOTION ARCHIVE</p><h3>{th ? <>งานที่เล่าเรื่อง<br/><em>ได้ทุกวัน.</em></> : <>Stories made<br/><em>to move.</em></>}</h3></div><div><span className="reel-total">12<span>REELS / 02 BRANDS</span></span><p>{th ? 'ภาพจากผลงานที่เผยแพร่จริง เลือกภาพแล้วเปิดดูคลิปที่ชอบได้เลย' : 'Original covers from published work. Choose a cover and open the reel.'}</p><nav aria-label={th ? 'เลือกแบรนด์วิดีโอ' : 'Video brands'}><a href="#truck-reels">01 / {th ? 'เฮียตั้ม' : 'Hia Tum'} ↘</a><a href="#astro-trader">02 / Astro Trader ↘</a></nav></div></header><Collection lang={lang}/><Collection lang={lang} astro/><p className="reel-archive-note">{th ? 'ภาพและข่าวในคลิปเป็นตัวอย่างผลงาน ณ วันที่เผยแพร่ · วิดีโอเปิดบน Facebook ในแท็บใหม่' : 'Covers and news are portfolio samples from their publication dates · Videos open on Facebook in a new tab'}</p></div>
+}
