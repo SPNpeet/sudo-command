@@ -56,7 +56,7 @@ export const L10N = {
       { num: '24', unit: 'ชม.', cap: 'เวลาตอบกลับเฉลี่ย (ในเวลาทำการ)' },
       { num: 'ITGC', unit: '', cap: 'ITGC · ISO 27001 · COBIT · PDPA — กรอบที่เราอิง' },
       { num: 'ฟรี', unit: '', cap: 'ค่าปรึกษา + ค่าประเมินขอบเขตงาน' },
-      { num: '4', unit: 'งานจริง', cap: 'ที่ส่งมอบและพิสูจน์ได้ — LINE OA, เว็บ, แคตตาล็อค, คอร์ส' },
+      { num: 'portfolio', unit: 'รายการผลงาน', cap: 'เว็บไซต์ เว็บแอป ระบบธุรกิจ และโครงการพัฒนา — ดูรายละเอียดด้านล่าง' },
     ],
     trustLabel: 'ตัวเลขที่พิสูจน์ได้',
     band: [
@@ -165,8 +165,8 @@ export const L10N = {
       label: 'แพ็กเกจ',
     },
     work: {
-      head: 'ตัวอย่างงานที่ส่งมอบจริง',
-      note: 'แต่ละโปรเจกต์ออกแบบตามธุรกิจของคุณ — ภาพเป็นสัญลักษณ์แทนรายละเอียดงานจริง',
+      head: 'ผลงานและโครงการที่พัฒนา',
+      note: 'เว็บไซต์ ระบบธุรกิจ และงานสาธิต พร้อมสถานะและลิงก์ให้ดูรายละเอียด — ภาพประกอบเป็นสัญลักษณ์แทนขอบเขตงาน',
       metricLabel: 'ผลลัพธ์',
       visitLabel: 'เปิดเว็บจริง',
       showAll: 'ดูผลงานทั้งหมด',
@@ -359,7 +359,7 @@ export const L10N = {
       { num: '24', unit: 'h', cap: 'Average response time (business hours)' },
       { num: 'ITGC', unit: '', cap: 'ITGC · ISO 27001 · COBIT · PDPA — our reference frameworks' },
       { num: 'Free', unit: '', cap: 'Consultation + scope assessment' },
-      { num: '4', unit: 'real', cap: 'projects delivered & verifiable — LINE OA, website, catalog, course' },
+      { num: 'portfolio', unit: 'portfolio entries', cap: 'Websites, business apps and development projects — explore the work below' },
     ],
     trustLabel: 'Numbers you can verify',
     band: [
@@ -468,8 +468,8 @@ export const L10N = {
       label: 'Packages',
     },
     work: {
-      head: 'Work we have delivered',
-      note: "Each project is tailored to the client's business — visuals are symbolic stand-ins for the actual work.",
+      head: 'Work and development projects',
+      note: 'Websites, business systems and demos with status labels and links to explore — illustrations represent the scope of each project.',
       metricLabel: 'Result',
       visitLabel: 'Visit live site',
       showAll: 'Show all work',
@@ -651,6 +651,231 @@ export const PACKS = {
 
 // ─────────── ข้อมูลหลัก (สองภาษา) ───────────
 
+const ADDITIONAL_WORKS = {
+  "th": [
+    {
+      "client": "SOUTHSIDE INK TATTOO PATTAYA",
+      "visual": "web",
+      "tags": [
+        "Website",
+        "TH / EN",
+        "Portfolio"
+      ],
+      "href": "https://southsideinkpattaya.com",
+      "title": "เว็บร้านสักสองภาษา พร้อมแกลเลอรีผลงาน",
+      "desc": "เว็บไซต์ร้านสักพัทยา แยกหน้าไทยและอังกฤษ รวมผลงานตามสไตล์รอยสักและช่องทางติดต่อ พร้อมเตรียมเนื้อหาหน้าเว็บสำหรับการค้นหา",
+      "status": "เว็บไซต์ออนไลน์"
+    },
+    {
+      "client": "SudoChatBot",
+      "visual": "audit",
+      "tags": [
+        "Web App",
+        "AI",
+        "Accounting"
+      ],
+      "href": "https://sudochatbot.online",
+      "title": "ระบบบัญชีออนไลน์ พร้อมผู้ช่วย AI",
+      "desc": "เว็บแอปสำหรับงานขาย ค่าใช้จ่าย ใบแจ้งหนี้ และรายงานบัญชี มีผู้ช่วย AI อ่านเอกสารและช่วยทำงานในระบบ รวมถึงหน้าจอกระทบยอดและจัดการสินค้า",
+      "status": "เว็บแอปออนไลน์"
+    },
+    {
+      "client": "Crew Change Tracker",
+      "visual": "full",
+      "tags": [
+        "Operations",
+        "Dashboard",
+        "Mobile"
+      ],
+      "href": "https://github.com/SPNpeet/crew-change-tracker",
+      "title": "ระบบติดตามงานเปลี่ยนลูกเรือ",
+      "desc": "พัฒนาระบบติดตามงาน 9 ขั้นตอน เชื่อมสำนักงานกับพนักงานภาคสนามผ่านมือถือ มีสถานะเวลา รูปประกอบ ลิงก์ติดตามสำหรับผู้เกี่ยวข้อง และส่งออกรายงาน Excel",
+      "status": "โครงการพัฒนาระบบ",
+      "linkLabel": "ดูรายละเอียดโครงการ"
+    },
+    {
+      "client": "ธารนที · Natee",
+      "visual": "web",
+      "tags": [
+        "Website",
+        "TH / EN",
+        "Admin"
+      ],
+      "href": "https://xn--22cki0cqma4cdedf2ixczace9c1mmc1fh6g.com",
+      "title": "เว็บบริการรถส่งน้ำ พร้อมระบบจัดการเนื้อหา",
+      "desc": "เว็บไซต์บริการรถส่งน้ำในเชียงใหม่และลำพูน รองรับไทยและอังกฤษ พร้อมระบบหลังบ้านจัดการข้อความ บริการ ราคา รูป คลิป และข้อความติดต่อ รวมถึงบทความความรู้เรื่องน้ำ",
+      "status": "เว็บไซต์ออนไลน์"
+    },
+    {
+      "client": "ทีเด็ดปลาน้ำจืด · T-Ded",
+      "visual": "full",
+      "tags": [
+        "Agritech",
+        "Calculator",
+        "PWA"
+      ],
+      "href": "https://spnpeet.github.io/T-Ded/",
+      "title": "เครื่องคำนวณและผู้ช่วยฟาร์มปลาน้ำจืด",
+      "desc": "พัฒนาเครื่องมือคำนวณอาหารปลา การเติบโต และต้นทุน พร้อมโครงสร้างแอปบันทึกข้อมูลบ่อและฟาร์ม ลิงก์นี้เปิดส่วนเครื่องคำนวณสาธารณะให้ลองใช้งาน",
+      "status": "เครื่องคำนวณสาธารณะ",
+      "linkLabel": "เปิดเครื่องคำนวณ"
+    },
+    {
+      "client": "Harbor Ocean · OceanPrice",
+      "visual": "full",
+      "tags": [
+        "Marketplace",
+        "Dashboard",
+        "B2B"
+      ],
+      "href": "https://harbor-ocean.spnpeet.workers.dev",
+      "title": "ตลาดกลางสัตว์น้ำและแดชบอร์ดราคา",
+      "desc": "เว็บแอปต้นแบบสำหรับประกาศซื้อขาย ดูราคา ประมูล และติดตามคำสั่งซื้อสัตว์น้ำ พร้อมหน้าผู้ซื้อ ผู้ขาย และผู้ดูแล การชำระเงินและข้อมูลขนส่งบางส่วนเป็นการจำลองสำหรับสาธิต",
+      "status": "เว็บแอปสาธิต",
+      "linkLabel": "ดูเว็บสาธิต"
+    },
+    {
+      "client": "SUDO HOME",
+      "visual": "web",
+      "tags": [
+        "E-commerce",
+        "TH / EN",
+        "Admin"
+      ],
+      "href": "https://github.com/SPNpeet/sudo-home",
+      "title": "ร้านค้าออนไลน์สำหรับสินค้าตกแต่งบ้าน",
+      "desc": "โปรเจกต์อีคอมเมิร์ซสองภาษา มีแคตตาล็อกสินค้า ตะกร้า ขั้นตอนสั่งซื้อ ประวัติคำสั่งซื้อ และหน้าผู้ดูแลสำหรับสินค้า สต็อก และสถานะออเดอร์",
+      "status": "โปรเจกต์อีคอมเมิร์ซ",
+      "linkLabel": "ดูรายละเอียดโครงการ"
+    },
+    {
+      "client": "Content Automation",
+      "visual": "marketing",
+      "tags": [
+        "Automation",
+        "n8n",
+        "Content"
+      ],
+      "href": "https://github.com/SPNpeet/3d-print-shop/blob/claude/tender-johnson-p76myc/n8n-video-content-workflow.json",
+      "title": "เวิร์กโฟลว์ผลิตและกระจายคอนเทนต์วิดีโอ",
+      "desc": "ออกแบบเวิร์กโฟลว์ n8n รับหัวข้อจาก Google Sheets เชื่อมขั้นตอนสร้างสคริปต์ เสียง วิดีโอ และแคปชัน พร้อมขั้นตอนส่งต่อหลายช่องทางและบันทึกสถานะ ต้องตั้งค่าบัญชีและบริการก่อนใช้งาน",
+      "status": "เวิร์กโฟลว์สำหรับติดตั้ง",
+      "linkLabel": "ดูรายละเอียดเวิร์กโฟลว์"
+    }
+  ],
+  "en": [
+    {
+      "client": "SOUTHSIDE INK TATTOO PATTAYA",
+      "visual": "web",
+      "tags": [
+        "Website",
+        "TH / EN",
+        "Portfolio"
+      ],
+      "href": "https://southsideinkpattaya.com",
+      "title": "Bilingual tattoo studio website and portfolio",
+      "desc": "A Pattaya tattoo studio website with separate Thai and English pages, a gallery organized by tattoo style, contact channels and pages prepared for search engines.",
+      "status": "Live website"
+    },
+    {
+      "client": "SudoChatBot",
+      "visual": "audit",
+      "tags": [
+        "Web App",
+        "AI",
+        "Accounting"
+      ],
+      "href": "https://sudochatbot.online",
+      "title": "Online accounting with an AI assistant",
+      "desc": "A business web app for sales, expenses, invoices and accounting reports, with AI document extraction, an in-app assistant, reconciliation tools and product management.",
+      "status": "Live web app"
+    },
+    {
+      "client": "Crew Change Tracker",
+      "visual": "full",
+      "tags": [
+        "Operations",
+        "Dashboard",
+        "Mobile"
+      ],
+      "href": "https://github.com/SPNpeet/crew-change-tracker",
+      "title": "Crew change operations tracker",
+      "desc": "A nine-step operations tracker connecting office and field teams, with mobile updates, timestamps, photos, stakeholder tracking links and Excel reports.",
+      "status": "System development project",
+      "linkLabel": "View project details"
+    },
+    {
+      "client": "ธารนที · Natee",
+      "visual": "web",
+      "tags": [
+        "Website",
+        "TH / EN",
+        "Admin"
+      ],
+      "href": "https://xn--22cki0cqma4cdedf2ixczace9c1mmc1fh6g.com",
+      "title": "Water delivery website with content management",
+      "desc": "A Thai and English website for water delivery in Chiang Mai and Lamphun, with an admin system for content, services, pricing, media, contact enquiries and water knowledge articles.",
+      "status": "Live website"
+    },
+    {
+      "client": "ทีเด็ดปลาน้ำจืด · T-Ded",
+      "visual": "full",
+      "tags": [
+        "Agritech",
+        "Calculator",
+        "PWA"
+      ],
+      "href": "https://spnpeet.github.io/T-Ded/",
+      "title": "Freshwater fish farm calculator and assistant",
+      "desc": "Tools for feed planning, growth and cost calculations, alongside an app structure for pond and farm records. The linked page provides the public calculator.",
+      "status": "Public calculator",
+      "linkLabel": "Open calculator"
+    },
+    {
+      "client": "Harbor Ocean · OceanPrice",
+      "visual": "full",
+      "tags": [
+        "Marketplace",
+        "Dashboard",
+        "B2B"
+      ],
+      "href": "https://harbor-ocean.spnpeet.workers.dev",
+      "title": "Aquaculture marketplace and price dashboard",
+      "desc": "A marketplace prototype with listings, price views, auctions and order tracking for buyers, sellers and administrators. Payments and parts of shipment tracking are simulated for demonstration.",
+      "status": "Demo web app",
+      "linkLabel": "View demo"
+    },
+    {
+      "client": "SUDO HOME",
+      "visual": "web",
+      "tags": [
+        "E-commerce",
+        "TH / EN",
+        "Admin"
+      ],
+      "href": "https://github.com/SPNpeet/sudo-home",
+      "title": "Home decor e-commerce platform",
+      "desc": "A bilingual e-commerce project with a product catalog, cart, checkout, order history and administration for products, stock and order status.",
+      "status": "E-commerce project",
+      "linkLabel": "View project details"
+    },
+    {
+      "client": "Content Automation",
+      "visual": "marketing",
+      "tags": [
+        "Automation",
+        "n8n",
+        "Content"
+      ],
+      "href": "https://github.com/SPNpeet/3d-print-shop/blob/claude/tender-johnson-p76myc/n8n-video-content-workflow.json",
+      "title": "Video content production and distribution workflow",
+      "desc": "An n8n workflow connecting Google Sheets topics to script, voice, video and caption generation, with distribution steps and status logging. Connected accounts and services must be configured before use.",
+      "status": "Workflow for setup",
+      "linkLabel": "View workflow details"
+    }
+  ]
+}
+
 export const DATA = {
   th: {
     services: [
@@ -770,6 +995,7 @@ export const DATA = {
       },
     ],
     works: [
+      ...ADDITIONAL_WORKS.th,
       {
         title: 'เว็บไซต์บริษัทตรวจบ้าน + ระบบจัดการราคา + SEO',
         client: 'ZING STAR ENGINEERING · zingstarengineering.com — เราทำเว็บใหม่ให้ (แทนเว็บเก่าของผู้ดูแลรายก่อน)',
@@ -1060,6 +1286,7 @@ export const DATA = {
       },
     ],
     works: [
+      ...ADDITIONAL_WORKS.en,
       {
         title: 'House inspection website + pricing admin + SEO',
         client: 'ZING STAR ENGINEERING · zingstarengineering.com — we rebuilt the site (replaced old admin)',

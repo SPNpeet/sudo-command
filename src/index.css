@@ -1049,6 +1049,13 @@ kbd {
   color: var(--ink-2);
 }
 
+.work-status {
+  color: var(--accent-2);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  margin-bottom: var(--s2);
+}
+
 .work-link {
   display: inline-flex;
   align-items: center;
