@@ -1324,6 +1324,9 @@ kbd {
   gap: var(--s4);
 }
 
+.service-directory { display: flex; flex-wrap: wrap; gap: var(--s3) var(--s6); padding-block: var(--s6); border-block: 1px solid var(--rule); margin-bottom: var(--s6); }
+.service-directory a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-underline-offset: 4px; }
+
 .video-sample {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);

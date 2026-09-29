@@ -8,6 +8,7 @@ const ServiceModal = lazy(() => import('./ServiceModal'))
 const RoiCalc = lazy(() => import('./RoiCalc'))
 import { useDismiss, useLang, useReveal, useScrollSpy, useTheme } from './hooks'
 import { CATS, DATA, L10N, PACKS } from './i18n'
+import { SEARCH_PAGES } from './search-pages'
 
 // ───────────── ช่องทางติดต่อ ─────────────
 // ช่องไหนเว้นว่าง = ปุ่มนั้นจะไม่ขึ้นบนเว็บ (กันปุ่มกดแล้วไม่ไปไหน)
@@ -1176,6 +1177,10 @@ function App() {
       <footer className="site-foot">
         <div className="wrap">
           <p className="foot-say">{L.footer.say}</p>
+          <nav className="service-directory" aria-label={lang === 'th' ? 'รายละเอียดบริการและผลงาน' : 'Service details and portfolio'}>
+            {SEARCH_PAGES.map(page => <a key={page.slug} href={`/sudo-command/services/${page.slug}/`}>{lang === 'th' ? page.label : `${page.en} (TH)`}</a>)}
+            <a href="/sudo-command/portfolio/">{lang === 'th' ? 'ผลงานพร้อมภาพทั้งหมด' : 'Full portfolio (TH)'}</a>
+          </nav>
           <div className="foot-grid">
             <div className="foot-brand">
               <p className="foot-name">
