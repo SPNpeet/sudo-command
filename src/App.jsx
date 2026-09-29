@@ -903,11 +903,15 @@ function App() {
                   <span className="mono">{L.gallery.video.label}</span>
                   <h3>{L.gallery.video.title}</h3>
                   <p>{L.gallery.video.desc}</p>
+                  <ol className="video-workflow">
+                    {L.gallery.video.steps.map(step => <li key={step}>{step}</li>)}
+                  </ol>
                 </div>
                 <div className="video-sample-action">
-                  <a className="btn btn-solid" href="https://www.facebook.com/reel/1064723289865271" target="_blank" rel="noopener noreferrer">
+                  <a className="btn btn-solid" href={L.gallery.video.href} target="_blank" rel="noopener noreferrer">
                     {L.gallery.video.cta}<Icon name="arrow" />
                   </a>
+                  <a className="gallery-visit" href={L.gallery.video.extraHref} target="_blank" rel="noopener noreferrer">{L.gallery.video.extraLabel}<Icon name="arrow" /></a>
                   <small>{L.gallery.video.note}</small>
                 </div>
               </article>
