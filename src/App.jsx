@@ -609,7 +609,7 @@ function App() {
             {L.trust.map((t, i) => (
               <div className="trust-item" key={i} data-reveal>
                 <strong className="trust-num">
-                  {t.num} {t.unit && <span className="trust-unit">{t.unit}</span>}
+                  {t.num === 'portfolio' ? WORKS.length : t.num} {t.unit && <span className="trust-unit">{t.unit}</span>}
                 </strong>
                 <span className="trust-cap">{t.cap}</span>
               </div>
@@ -824,7 +824,7 @@ function App() {
             <div className="wrap">
               <SectionHead num={numOf('work')} title={L.work.head} note={L.work.note} />
               <ul className="work-list">
-                {(showAllWork ? WORKS : WORKS.slice(0, 3)).map((w) => {
+                {(showAllWork ? WORKS : WORKS.slice(0, 6)).map((w) => {
                   const WVisual = VISUAL_BY_KEY[w.visual]
                   return (
                     <li className="work" key={w.title} data-reveal>
@@ -833,6 +833,7 @@ function App() {
                       </div>
                       <div className="work-body">
                         {w.client && <p className="work-client">{w.client}</p>}
+                        {w.status && <p className="work-status">{w.status}</p>}
                         <h3>{w.title}</h3>
                         <p>{w.desc}</p>
                         {w.metric && (
@@ -850,7 +851,7 @@ function App() {
                         )}
                         {w.href && (
                           <a className="work-link" href={w.href} target="_blank" rel="noopener noreferrer">
-                            {L.work.visitLabel} <Icon name="arrow" />
+                            {w.linkLabel || L.work.visitLabel} <Icon name="arrow" />
                           </a>
                         )}
                       </div>
@@ -858,7 +859,7 @@ function App() {
                   )
                 })}
               </ul>
-              {WORKS.length > 3 && (
+              {WORKS.length > 6 && (
                 <button
                   type="button"
                   className="btn btn-line"
