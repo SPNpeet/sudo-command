@@ -2,7 +2,7 @@ import { Suspense, lazy, useCallback, useEffect, useRef, useState } from 'react'
 import { DATA, L10N, PACKS, CATS } from './i18n'
 import { STUDIO } from './studio-copy'
 import { UX } from './ux-copy'
-import { REELS } from './reels'
+import { REELS, ASTRO_REEL } from './reels'
 import ProjectPreview from './ProjectPreview'
 import { useLang, useTheme } from './hooks'
 import { SEARCH_PAGES } from './search-pages'
@@ -158,6 +158,10 @@ export default function Studio() {
             <div className="s-reel-grid">{REELS.map(reel=><a className="s-reel-card" key={reel.id} href={reel.href} target="_blank" rel="noopener noreferrer" aria-label={`${lang==='th'?'ดูคลิปตัวอย่าง':'Watch sample'} ${reel.number} — Facebook (${U.newTab})`}><div className="s-reel-image"><img src={reel.poster} alt={lang==='th'?`ภาพปกคลิปเฮียตั้มรถบรรทุก ${reel.number}`:`Hia Tum Trucks reel cover ${reel.number}`} width="720" height="1280" loading="lazy" decoding="async"/><span className="s-reel-number">REEL / {reel.number}</span><span className="s-reel-play" aria-hidden="true">▶</span></div><span className="s-reel-caption">{lang==='th'?'ดูคลิปบน Facebook':'Watch on Facebook'} <span aria-hidden="true">↗</span></span></a>)}</div>
             <p className="s-reels-note">{lang==='th'?'ภาพปกจากคลิปที่เผยแพร่จริง · กดภาพเพื่อเปิดคลิปนั้นบน Facebook ในแท็บใหม่':'Original covers from published reels · Select a cover to open that reel on Facebook in a new tab'}</p>
           </div>
+          <section className="s-astro-project" id="astro-trader" aria-labelledby="astro-title">
+            <a className="s-reel-card s-astro-cover" href={ASTRO_REEL.href} target="_blank" rel="noopener noreferrer" aria-label={`${lang==='th'?'ดูคลิป':'Watch reel'} Astro Trader — Facebook (${U.newTab})`}><div className="s-reel-image"><img src={ASTRO_REEL.poster} alt={lang==='th'?'ภาพปกคลิปข่าวทอง โหรา เทรดเดอร์ Astro Trader':'Astro Trader gold news reel cover'} width="1080" height="1920" loading="lazy" decoding="async"/><span className="s-reel-play" aria-hidden="true">▶</span></div><span className="s-reel-caption">{lang==='th'?'ดูคลิปบน Facebook':'Watch on Facebook'} ↗</span></a>
+            <div className="s-astro-copy"><p className="s-kicker">PROJECT 02 / DAILY NEWS VIDEO</p><h3 id="astro-title">{ASTRO_REEL.client}</h3><p>{lang==='th'?'อีกตัวอย่างงานผลิตคลิปข่าวรายวันด้วยระบบอัตโนมัติ ตั้งแต่เรื่องที่จะเล่า เสียงบรรยาย ภาพประกอบ ไปจนถึงคลิปที่เผยแพร่จริง':'Another daily news video automation project, bringing the topic, narration and visuals together into a published clip.'}</p><ul><li>{lang==='th'?'ตัวอย่างคลิปข่าวทองและเศรษฐกิจ':'Gold and economic news video example'}</li><li>{lang==='th'?'เสียงบรรยายและตัวละครพูดประกอบเนื้อหา':'Narration and a speaking presenter'}</li><li>{lang==='th'?'ผลงานเผยแพร่บน Facebook Reels':'Published on Facebook Reels'}</li></ul><External className="s-button" href={ASTRO_REEL.href}>{lang==='th'?'เปิดดูผลงาน Astro Trader':'Watch Astro Trader'}</External><p className="s-reels-note">{lang==='th'?'ภาพจากคลิปวันที่ 29 กันยายน 2569 แสดงเป็นตัวอย่างผลงานผลิตวิดีโอ':'Frame from the 29 September 2026 clip, shown as a video production example.'}</p></div>
+          </section>
           <div className="s-auto-copy"><p className="s-kicker">n8n / LINE / AUTO PUBLISH</p><h3>{T.autoTitle}</h3><p>{T.autoNote}</p><External className="s-button s-button-green" href={L.gallery.video.href}>{T.watch}</External><a className="s-auto-extra" href={L.gallery.video.extraHref} target="_blank" rel="noopener noreferrer">{L.gallery.video.extraLabel}<Arrow/></a></div>
           <div className="s-auto-visual"><div className="s-auto-symbol" aria-hidden="true"><Mark/><span>→</span><Icon name="line"/></div><ol>{T.autoSteps.map((step,i)=><li key={step}><span>0{i+1}</span>{step}{i===1&&<b>2h</b>}</li>)}</ol><p>{T.autoFoot}</p></div>
         </article>}
