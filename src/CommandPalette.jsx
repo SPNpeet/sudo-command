@@ -40,6 +40,7 @@ export default function CommandPalette({ open, onClose, actions, t }) {
     if (!el.open) el.showModal()
     inputRef.current?.focus()
     return () => {
+      el.close()
       document.body.style.overflow = overflow
       if (previous?.isConnected) previous.focus({ preventScroll: true })
     }
@@ -58,12 +59,14 @@ export default function CommandPalette({ open, onClose, actions, t }) {
     const onKey = (e) => {
       if (e.key === 'Escape' && el.open) onClose()
     }
+    // Ignore the queued close event when StrictMode has already reopened the dialog.
+    const onNativeClose = () => { if (!el.open) onClose() }
     el.addEventListener('cancel', onCancel)
-    el.addEventListener('close', onClose)
+    el.addEventListener('close', onNativeClose)
     document.addEventListener('keydown', onKey)
     return () => {
       el.removeEventListener('cancel', onCancel)
-      el.removeEventListener('close', onClose)
+      el.removeEventListener('close', onNativeClose)
       document.removeEventListener('keydown', onKey)
     }
   }, [onClose])
