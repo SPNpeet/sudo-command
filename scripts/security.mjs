@@ -3,6 +3,7 @@ import { readdir, readFile, writeFile } from 'node:fs/promises'
 import { join, relative } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
+const APPROVED_SCREENS = {"work-sudochatbot.png":"1a6ce6bbfcd4b2d588be982fd88dfe1de7682d96954134feb9103c23ef11dec1","work-natee-admin.jpg":"bae06efe488748faa6cb6a5310dfb80a027b4f1ea294dc9785081127841589d6"}
 const hash = value => "'sha256-" + createHash('sha256').update(value.replace(/\r\n?/g, '\n')).digest('base64') + "'"
 const blocks = (html, tag) => [...html.matchAll(new RegExp(`<${tag}\\b([^>]*)>([\\s\\S]*?)<\\/${tag}>`, 'gi'))]
 export function policyFor(html) {
@@ -49,7 +50,9 @@ async function run(mode) {
   for (const page of REQUIRED_PAGES) if (!published.has(page)) throw new Error('Missing required page: '+page)
   for (const file of all) {
     if (/(?:^|[\\/])\.env|\.(?:pem|key|p12|map)$/i.test(file)) throw new Error('Forbidden deployment file: '+relative('dist',file))
-    if (/work-(?:sudochatbot|natee-admin|crew-app|real-3|curtain-[12])\.(?:png|jpg)$/.test(file)) throw new Error('Non-public portfolio material in deployment')
+    if (/work-(?:crew-app|real-3|curtain-[12])\.(?:png|jpg)$/.test(file)) throw new Error('Non-public portfolio material in deployment')
+    const approvedScreen = APPROVED_SCREENS[file.split(/[\\/]/).pop()]
+    if (approvedScreen && createHash('sha256').update(await readFile(file)).digest('hex') !== approvedScreen) throw new Error('Approved portfolio screen changed; review before publishing')
     if (/\.(?:html|js|css|json|txt|xml|svg)$/.test(file)) {
       const text = await readFile(file,'utf8')
       if (/docs\.google\.com\/spreadsheets\/d\//i.test(text)) throw new Error('Client spreadsheet destination in deployment')
