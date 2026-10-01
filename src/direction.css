@@ -232,3 +232,6 @@
 
 .s-project-theatre .s-motion-toggle{flex-shrink:0;white-space:nowrap;max-width:none}
 
+
+.s-project-theatre .s-showcase-heading .s-motion-toggle{width:auto;min-width:120px;max-width:none;height:auto;border-radius:24px;justify-content:center}
+
