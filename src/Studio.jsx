@@ -13,7 +13,7 @@ import CommandPalette from './CommandPalette'
 const BASE = '/sudo-command/'
 const CONTACT = { line: 'https://line.me/ti/p/~nongpeetza', messenger: 'https://m.me/61590190966678', email: 'sudocoffee.home@gmail.com', phone: '+66611699332' }
 const NAV_IDS = ['work', 'services', 'process', 'faq', 'contact']
-const TYPE = ['web', 'app', 'app', 'web', 'web', 'app', 'web']
+const TYPE = ['web', 'app', 'app', 'web', 'web', 'app', 'web', 'app']
 const HERO_IMAGES = [0, 1, 2]
 
 function Mark({ className = '' }) {
