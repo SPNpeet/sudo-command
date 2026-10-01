@@ -1156,7 +1156,7 @@ export const DATA = {
       },
       {
         title: 'สอนยิงแอด Google Ads — ปั้นทีมเองได้',
-        client: 'ลูกค้าคอร์ส (P-Jib)',
+        client: 'CURTAIN STORY HOME',
         tags: ['Google Ads', 'สอนสด', 'คอร์ส'],
         desc: 'คอร์สสอนยิงแอดแบบลงมือจริง 4-5 ชม. พร้อมคู่มือเครื่องมือ 15 อย่าง และสไลด์สอน — สอนจนตั้งแคมเปญเองได้',
         visual: 'marketing',
@@ -1446,7 +1446,7 @@ export const DATA = {
       },
       {
         title: 'Google Ads coaching — build your own team',
-        client: 'Course client (P-Jib)',
+        client: 'CURTAIN STORY HOME',
         tags: ['Google Ads', 'Live coaching', 'Course'],
         desc: 'Hands-on Google Ads course, 4-5 hrs, with a 15-tool manual and slides — coached until you can launch your own campaign.',
         visual: 'marketing',
