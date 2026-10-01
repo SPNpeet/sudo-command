@@ -236,6 +236,19 @@
 .s-project-theatre .s-showcase-heading .s-motion-toggle{width:auto;min-width:120px;max-width:none;height:auto;border-radius:24px;justify-content:center}
 
 /* Sculptural service illustrations and layered project presentation. */
+.s-contact-invitation{align-items:center;gap:28px}
+.s-contact-invitation>span:first-child{min-width:0}
+.s-contact-invitation .s-conversation-art{position:relative;display:block;width:150px;height:124px;flex:0 0 150px;isolation:isolate}
+.s-conversation-orbit{position:absolute;inset:4px 0;border:1px solid var(--s-line);border-radius:50%;transform:rotate(-25deg);background:radial-gradient(ellipse,#c93f0012,transparent 70%)}
+.s-conversation-bubble{position:absolute;left:8px;top:10px;width:88px;height:65px;border-radius:23px 23px 23px 5px;background:linear-gradient(145deg,#ef610d,#bb3700);box-shadow:0 10px 24px #c93f0025,inset 0 1px 0 #ffffff55;transform:rotate(-12deg);display:flex;align-items:center;justify-content:center;gap:7px;transition:transform .3s}
+.s-conversation-bubble i{width:8px;height:8px;border-radius:50%;background:#fff}
+.s-conversation-brand{position:absolute;right:8px;bottom:10px;width:77px;height:68px;border:1px solid #e5dfd6;border-radius:22px 22px 5px 22px;background:#fff;box-shadow:0 12px 28px #17171922;transform:rotate(9deg);display:grid;place-items:center;transition:transform .3s}
+.s-conversation-brand .s-mark{width:43px;height:43px}
+.s-conversation-spark{position:absolute;right:5px;top:4px;width:25px;height:25px;color:var(--s-deep)}
+.s-contact-invitation:hover .s-conversation-bubble{transform:rotate(-6deg) translateY(-3px)}
+.s-contact-invitation:hover .s-conversation-brand{transform:rotate(3deg) translateY(-2px)}
+@media(max-width:700px){.s-contact-invitation{gap:12px;font-size:clamp(26px,6vw,40px)}.s-contact-invitation .s-conversation-art{width:100px;height:94px;flex-basis:100px}.s-conversation-bubble{width:66px;height:48px;left:0;top:5px;border-radius:17px 17px 17px 4px;gap:5px}.s-conversation-bubble i{width:6px;height:6px}.s-conversation-brand{width:57px;height:51px;right:0;bottom:5px;border-radius:16px 16px 4px 16px}.s-conversation-brand .s-mark{width:33px;height:33px}.s-conversation-spark{width:18px;height:18px;right:0;top:0}}
+@media(prefers-reduced-motion:reduce){.s-conversation-bubble,.s-conversation-brand{transition:none}.s-contact-invitation:hover .s-conversation-bubble{transform:rotate(-12deg)}.s-contact-invitation:hover .s-conversation-brand{transform:rotate(9deg)}}
 .s-hero-heading{position:relative;isolation:isolate}
 .s-hero h1{letter-spacing:-.055em;line-height:1.18;font-size:clamp(42px,4.7vw,70px)}
 .s-hero h1>span{display:inline-block;position:relative;padding-bottom:12px}
