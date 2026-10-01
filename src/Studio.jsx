@@ -23,6 +23,11 @@ function Arrow() { return <Icon name="arrow" /> }
 function External({ href, children, className = '' }) { return <a className={className} href={href} target="_blank" rel="noopener noreferrer">{children}<Arrow /></a> }
 function Heading({ eyebrow, title, note }) { return <header className="s-section-head"><p className="s-kicker">{eyebrow}</p><h2>{title}</h2>{note && <p className="s-section-note">{note}</p>}</header> }
 
+function ServiceArtwork({ index, lang, className = '' }) {
+  const labels = lang === 'th' ? ['เว็บไซต์ที่จัดเนื้อหาเป็นระบบ', 'ขั้นตอนงานที่เชื่อมต่ออัตโนมัติ', 'ข้อมูลที่เชื่อมกับ AI อย่างเป็นระบบ'] : ['Structured website design', 'Connected automated workflows', 'Connected data and AI'];
+  return <figure className={'s-artwork ' + className}><div className={'s-artwork-frame s-artwork-' + index}><img src={BASE + 'illustrations/service-sculptures.jpg'} width="2172" height="724" loading="lazy" decoding="async" alt={labels[index]}/></div><figcaption>{lang === 'th' ? 'ภาพประกอบแนวคิดบริการ' : 'Service concept illustration'}<span aria-hidden="true"> ↗</span></figcaption></figure>
+}
+
 export default function Studio() {
   const [lang, setLang] = useLang()
   const [theme, setTheme] = useTheme()
@@ -186,14 +191,14 @@ export default function Studio() {
         {(filter==='all'||filter==='auto') && <article className="s-automation" id="gallery" tabIndex={-1}>
           <ReelShowcase lang={lang}/>
           <div className="s-auto-copy"><p className="s-kicker">n8n / LINE / AUTO PUBLISH</p><h3>{T.autoTitle}</h3><p>{T.autoNote}</p><External className="s-button s-button-green" href={L.gallery.video.href}>{T.watch}</External><a className="s-auto-extra" href={L.gallery.video.extraHref} target="_blank" rel="noopener noreferrer">{L.gallery.video.extraLabel}<Arrow/></a></div>
-          <div className="s-auto-visual"><div className="s-auto-symbol" aria-hidden="true"><Mark/><span>→</span><Icon name="line"/></div><ol>{T.autoSteps.map((step,i)=><li key={step}><span>0{i+1}</span>{step}{i===1&&<b>2h</b>}</li>)}</ol><p>{T.autoFoot}</p></div>
+          <div className="s-auto-visual"><ServiceArtwork index={1} lang={lang} className="s-artwork-auto"/><div className="s-auto-symbol" aria-hidden="true"><Mark/><span>→</span><Icon name="line"/></div><ol>{T.autoSteps.map((step,i)=><li key={step}><span>0{i+1}</span>{step}{i===1&&<b>2h</b>}</li>)}</ol><p>{T.autoFoot}</p></div>
         </article>}
         {filter!=='all' && filter!=='auto' && <a className="s-text-link s-auto-reveal" href="#gallery" onClick={e=>{e.preventDefault();setFilter('all');window.setTimeout(()=>go('gallery'),0)}}>{L.gallery.video.label}<Arrow/></a>}
       </section>
 
       <section className="s-fit-section" id="paths" tabIndex={-1}><div className="s-container s-fit-grid">
         <div><Heading eyebrow={T.fitEyebrow} title={T.fitTitle} note={T.fitNote}/><div className="s-needs" role="group" aria-label={T.fitTitle}>{T.needs.map((label,i)=><button key={label} aria-pressed={need===i} onClick={()=>setNeed(i)}><span>0{i+1}</span>{label}<Arrow/></button>)}</div></div>
-        <div className="s-recommendation" aria-live="polite"><p className="s-rec-label">{lang==='th'?'แนวทางที่เหมาะกับโจทย์นี้':'A direction for your next move'}</p><span className="s-rec-index" aria-hidden="true">0{need+1}</span><Mark/><h3>{suggestion.title}</h3><p>{suggestion.text}</p><ul className="s-tags">{suggestion.tags.map(tag=><li key={tag}>{tag}</li>)}</ul><a className="s-text-link" href={suggestion.href.startsWith('#')?suggestion.href:BASE+suggestion.href}>{suggestion.label}<Arrow/></a></div>
+        <div className="s-recommendation" aria-live="polite"><ServiceArtwork index={need} lang={lang}/><p className="s-rec-label">{lang==='th'?'แนวทางที่เหมาะกับโจทย์นี้':'A direction for your next move'}</p><span className="s-rec-index" aria-hidden="true">0{need+1}</span><Mark/><h3>{suggestion.title}</h3><p>{suggestion.text}</p><ul className="s-tags">{suggestion.tags.map(tag=><li key={tag}>{tag}</li>)}</ul><a className="s-text-link" href={suggestion.href.startsWith('#')?suggestion.href:BASE+suggestion.href}>{suggestion.label}<Arrow/></a></div>
       </div></section>
 
       <section className="s-section s-container" id="services" tabIndex={-1}>
@@ -204,7 +209,7 @@ export default function Studio() {
         <details className="s-packages" id="packs" tabIndex={-1}><summary>{T.budget}<span aria-hidden="true">+</span></summary><div className="s-package-grid">{PACKS[lang].map(p=><article key={p.id}><span className="s-kicker">PACK / {p.id}</span><h3>{p.title}</h3><strong>{p.price}</strong><p>{p.sub}</p><ul>{p.items.map(item=><li key={item}>{item}</li>)}</ul><button className="s-text-link" onClick={()=>quote(p.id)}>{T.quote}<Arrow/></button></article>)}</div></details>
       </section>
 
-      <section className="s-about" id="about" tabIndex={-1}><div className="s-container s-about-grid"><div><p className="s-kicker">{T.aboutEyebrow}</p><h2>{T.aboutTitle}</h2><p>{T.aboutText}</p><div className="s-about-signature"><Mark/><span>sudo.<small>COMMAND</small></span></div></div><ul>{T.values.map(([title,text],i)=><li key={title}><span>0{i+1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ul></div></section>
+      <section className="s-about" id="about" tabIndex={-1}><div className="s-container s-about-grid"><div><p className="s-kicker">{T.aboutEyebrow}</p><h2>{T.aboutTitle}</h2><p>{T.aboutText}</p><ServiceArtwork index={2} lang={lang} className="s-artwork-about"/><div className="s-about-signature"><Mark/><span>sudo.<small>COMMAND</small></span></div></div><ul>{T.values.map(([title,text],i)=><li key={title}><span>0{i+1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ul></div></section>
       <section className="s-section s-container" id="process" tabIndex={-1}><Heading eyebrow={T.processEyebrow} title={T.processTitle}/><ol className="s-process">{T.process.map(([title,text],i)=><li key={title}><span>0{i+1}</span><h3>{title}</h3><p>{text}</p></li>)}</ol></section>
       <section className="s-faq-section" id="faq" tabIndex={-1}><div className="s-container s-faq-grid"><div><Heading eyebrow="GOOD QUESTIONS" title={T.faqTitle} note={T.faqNote}/><div className="s-faq-search" role="search"><Icon name="search"/><input id="faq-search" type="search" aria-label={T.faqSearch} placeholder={T.faqSearch} value={query} onChange={e=>setQuery(e.target.value)}/>{query && <button type="button" aria-label={U.clear} onClick={()=>{setQuery('');document.getElementById('faq-search')?.focus()}}><Icon name="close"/></button>}</div><p className="s-search-count" role="status">{faqs.length} {U.faqCount}</p></div><div>{faqs.map(f=><details className="s-faq" key={f.q}><summary>{f.q}<span aria-hidden="true">+</span></summary><p>{f.a}</p></details>)}{!faqs.length&&<p role="status">{T.noFaq}</p>}</div></div></section>
 
