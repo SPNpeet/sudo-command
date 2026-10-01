@@ -186,3 +186,19 @@
 @media(max-width:1000px){.s-hero{gap:24px}.s-hero-heading{padding-right:0}.s-hero h1{font-size:46px}.s-hero .s-project-theatre{padding:20px}.s-project-theatre .s-stage{height:220px}.s-hero-buttons .s-button{padding:12px 17px;font-size:12px}.s-hero-intro{font-size:14px}}
 @media(max-width:760px){.s-hero{grid-template-columns:minmax(0,1fr);padding-block:24px 30px;gap:24px}.s-hero-heading{padding:12px 0 0}.s-hero h1{font-size:clamp(40px,9.5vw,62px)}.s-hero-heading>.s-kicker{margin-bottom:16px;font-size:9px}.s-hero-intro{font-size:15px;max-width:48ch;margin-top:18px!important}.s-hero-capabilities{max-width:none;margin-top:20px}.s-hero .s-project-theatre{border-radius:16px 38px 16px 16px}.s-project-theatre .s-stage{height:clamp(210px,52vw,330px)}.s-project-theatre .s-showcase-controls button img{width:40px;height:34px}.s-project-story h3{font-size:22px}}
 @media(max-width:400px){.s-project-story{grid-template-columns:minmax(0,1fr)}.s-project-paging{justify-content:flex-start}.s-project-theatre .s-showcase-heading{align-items:flex-start}.s-motion-toggle{max-width:106px}.s-project-theatre .s-showcase-controls button img{display:none}}
+
+/* Professional engagement: stable surfaces and clear scope information. */
+.s-hero h1{font-size:clamp(40px,4.3vw,62px);line-height:1.3}
+.s-hero .s-project-theatre{border-radius:16px;padding:24px;background:#191919}
+.s-project-theatre .s-stage-window,.s-project-theatre .s-stage-window:hover{transform:none!important;inset:0;box-shadow:0 8px 24px #0003}
+.s-stage-peek{display:none}.s-project-theatre .s-stage{width:100%;margin:0;height:270px}
+.s-theatre-body{padding-top:20px}.s-project-theatre .s-showcase-controls{gap:10px}
+.s-section{padding-block:64px}.s-section-head h2{font-size:clamp(30px,3.5vw,48px);line-height:1.4;max-width:26ch}
+.s-case-scope{margin:16px 0 0;padding-block:12px;border-block:1px solid var(--s-line);display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;font-size:12px;line-height:1.7}
+.s-case-scope dt{color:var(--s-muted)}.s-case-scope dd{margin:0;color:var(--s-ink)}
+.s-engagement{padding:28px;margin-top:28px;border:1px solid var(--s-line);border-radius:12px;background:var(--s-surface)}
+.s-engagement h3{font-size:22px;margin-bottom:20px}.s-engagement dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 36px;margin:0}
+.s-engagement dt{font-size:14px;font-weight:600;color:var(--s-ink)}.s-engagement dd{margin:6px 0 0;font-size:13px;line-height:1.8;color:var(--s-muted)}
+.s-contact-invitation{font-size:clamp(25px,4.5vw,64px);letter-spacing:-.04em;margin-bottom:32px;padding-bottom:24px}
+.s-footer-word{font-size:clamp(70px,12vw,160px);margin-block:24px}.s-ribbon{padding-block:18px}.s-ribbon>span{font-size:clamp(10px,1.2vw,16px)}
+@media(max-width:760px){.s-hero h1{font-size:clamp(36px,8.8vw,56px)}.s-project-theatre .s-stage{height:clamp(210px,54vw,330px)}.s-section{padding-block:44px}.s-engagement{padding:20px}.s-engagement dl{grid-template-columns:1fr;gap:18px}.s-case-scope{grid-template-columns:90px minmax(0,1fr);gap:12px}.s-engagement h3{font-size:20px}}
