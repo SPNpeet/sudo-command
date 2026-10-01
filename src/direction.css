@@ -202,3 +202,33 @@
 .s-contact-invitation{font-size:clamp(25px,4.5vw,64px);letter-spacing:-.04em;margin-bottom:32px;padding-bottom:24px}
 .s-footer-word{font-size:clamp(70px,12vw,160px);margin-block:24px}.s-ribbon{padding-block:18px}.s-ribbon>span{font-size:clamp(10px,1.2vw,16px)}
 @media(max-width:760px){.s-hero h1{font-size:clamp(36px,8.8vw,56px)}.s-project-theatre .s-stage{height:clamp(210px,54vw,330px)}.s-section{padding-block:44px}.s-engagement{padding:20px}.s-engagement dl{grid-template-columns:1fr;gap:18px}.s-case-scope{grid-template-columns:90px minmax(0,1fr);gap:12px}.s-engagement h3{font-size:20px}}
+
+/* Bring real work into the first mobile screen, before supporting copy. */
+@media(max-width:760px){
+.s-hero{display:flex;flex-direction:column;align-items:stretch;gap:16px;padding-top:22px}
+.s-hero-heading{display:contents}.s-hero-heading::before{display:none}
+.s-hero-heading>.s-kicker{order:0;margin:0;font-size:9px}
+.s-hero h1{order:1;margin:0;font-size:clamp(34px,7.8vw,48px);line-height:1.25}
+.s-hero .s-project-theatre{order:2;padding:16px;border-radius:14px;margin-top:4px}
+.s-hero-intro{order:3;margin:0!important;font-size:14px;line-height:1.75}
+.s-hero-buttons{order:4;margin:0!important;gap:16px}
+.s-hero-capabilities{order:5;margin:4px 0 0}
+.s-hero-note{order:6;margin:0!important}
+.s-project-theatre .s-showcase-heading{padding-bottom:10px;align-items:center}
+.s-project-theatre .s-showcase-heading h2{font-size:15px;margin-top:2px}
+.s-project-theatre .s-showcase-heading .s-kicker{font-size:8px}
+.s-motion-toggle{min-height:44px;max-width:none;font-size:10px!important}
+.s-project-theatre .s-stage{height:clamp(170px,43vw,260px)}
+.s-theatre-body{padding:12px 0 8px;gap:10px}
+.s-project-story{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
+.s-project-coordinate{display:none}.s-project-story h3{width:100%;font-size:17px}
+.s-project-open{font-size:11px;min-height:44px}.s-project-paging{margin:0;gap:10px;justify-content:flex-end}
+.s-project-theatre .s-showcase-controls{gap:8px;padding-top:4px}
+.s-project-theatre .s-showcase-controls button{min-height:44px;padding:4px 0}
+.s-project-theatre .s-showcase-controls button img{display:none}
+.s-project-theatre .s-project-tab small{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){.s-project-theatre .s-motion-toggle{display:none}}
+
+.s-project-theatre .s-motion-toggle{flex-shrink:0;white-space:nowrap;max-width:none}
+

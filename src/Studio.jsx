@@ -28,6 +28,8 @@ export default function Studio() {
   const [theme, setTheme] = useTheme()
   const [hero, setHero] = useState(0)
   const [motionPaused, setMotionPaused] = useState(false)
+  const [showcaseHovered, setShowcaseHovered] = useState(false)
+  const [showcaseFocused, setShowcaseFocused] = useState(false)
   const [filter, setFilter] = useState('all')
   const [need, setNeed] = useState(0)
   const [query, setQuery] = useState('')
@@ -43,6 +45,19 @@ export default function Studio() {
   const menu = useRef(null)
   const menuSummary = useRef(null)
   const T = STUDIO[lang], L = L10N[lang], D = DATA[lang], U = UX[lang]
+  useEffect(() => {
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)')
+    let timer
+    const sync = () => {
+      window.clearInterval(timer)
+      if (motionPaused || showcaseHovered || showcaseFocused || preview !== null || document.hidden || preference.matches) return
+      timer = window.setInterval(() => setHero(value => (value + 1) % HERO_IMAGES.length), 6000)
+    }
+    sync()
+    document.addEventListener('visibilitychange', sync)
+    preference.addEventListener('change', sync)
+    return () => { window.clearInterval(timer); document.removeEventListener('visibilitychange', sync); preference.removeEventListener('change', sync) }
+  }, [motionPaused, showcaseHovered, showcaseFocused, preview])
   const images = L.gallery.items
   const selected = images[HERO_IMAGES[hero]]
   const cases = images.map((item, index) => ({ ...item, number: index + 1, type: TYPE[index] || 'web', typeLabel: T.caseTypes[index] || T.filters[1] }))
@@ -134,13 +149,13 @@ export default function Studio() {
     <main id="main" tabIndex={-1}>
       <section className="s-hero s-container" id="top" tabIndex={-1}>
         <div className="s-hero-heading"><p className="s-kicker"><span className="s-status-dot"/>{T.tagline}</p><h1>{T.hero1}<br/><span>{T.hero2}</span></h1><p className="s-hero-intro">{T.intro}</p><div className="s-hero-buttons"><a className="s-button s-button-green" href="#contact">{T.start}<Arrow/></a><a className="s-button s-button-quiet" href="#work">{T.seeWork}<span aria-hidden="true">↘</span></a></div><nav className="s-hero-capabilities" aria-label={lang==='th'?'เลือกบริการ':'Explore services'}>{[['svc-web','Website'],['svc-sheets','Sheets / Excel'],['svc-auto','Automation'],['svc-line','LINE OA']].map(([id,label])=><a href={`#${id}`} key={id} onClick={e=>{e.preventDefault();go(id)}}>{label}<span aria-hidden="true">↗</span></a>)}</nav><p className="s-hero-note">{T.note}</p></div>
-        <div className="s-showcase s-project-theatre">
+        <div className="s-showcase s-project-theatre" role="region" aria-label={lang==='th'?'ผลงานเลื่อนอัตโนมัติ':'Automatic project slideshow'} onMouseEnter={()=>setShowcaseHovered(true)} onMouseLeave={()=>setShowcaseHovered(false)} onFocusCapture={()=>setShowcaseFocused(true)} onBlurCapture={e=>{if(!e.currentTarget.contains(e.relatedTarget)) setShowcaseFocused(false)}}>
           <SignalField paused={motionPaused}/>
-          <div className="s-showcase-heading"><div><p className="s-kicker">SUDO / SELECTED SYSTEMS</p><h2>{lang==='th'?'ตัวอย่างผลงาน':'Selected project'}</h2></div><button type="button" className="s-motion-toggle" aria-pressed={motionPaused} onClick={()=>setMotionPaused(v=>!v)}>{motionPaused?(lang==='th'?'เปิดการเคลื่อนไหว':'Resume motion'):(lang==='th'?'พักการเคลื่อนไหว':'Pause motion')} <span aria-hidden="true">{motionPaused?'▶':'Ⅱ'}</span></button></div>
+          <div className="s-showcase-heading"><div><p className="s-kicker">SUDO / SELECTED SYSTEMS</p><h2>{lang==='th'?'ตัวอย่างผลงาน':'Selected project'}</h2></div><button type="button" className="s-motion-toggle" aria-pressed={motionPaused} onClick={()=>setMotionPaused(v=>!v)}>{motionPaused?(lang==='th'?'เปิดภาพเลื่อน':'Play slideshow'):(lang==='th'?'พักภาพเลื่อน':'Pause slideshow')} <span aria-hidden="true">{motionPaused?'▶':'Ⅱ'}</span></button></div>
           <div className="s-theatre-body">
           <div className="s-project-story">
             <p className="s-project-coordinate">SELECTED / 0{hero+1}</p>
-            <h3 aria-live="polite" aria-atomic="true">{selected.title}</h3>
+            <h3>{selected.title}</h3>
             <p>{selected.cap}</p>
             <button className="s-project-open" onClick={()=>setPreview(HERO_IMAGES[hero])}>{U.preview}<Arrow/></button>
             <div className="s-project-paging"><button aria-label={U.previous} onClick={()=>setHero(v=>(v+2)%3)}>←</button><span>0{hero+1} / 03</span><button aria-label={U.next} onClick={()=>setHero(v=>(v+1)%3)}>→</button></div>
