@@ -26,7 +26,7 @@ export function allowedScriptSource(attributes) {
     return url.origin === 'https://spnpeet.github.io' && /^\/sudo-command\/(?:theme\.js|assets\/[A-Za-z0-9_.-]+\.js)$/.test(url.pathname) && !url.search && !url.hash
   } catch { return false }
 }
-export const REQUIRED_PAGES = ['index.html','privacy.html','404.html','portfolio/index.html',...['website','seo','ads','web-app-automation','line-oa'].map(s => `services/${s}/index.html`)]
+export const REQUIRED_PAGES = ['index.html','privacy.html','404.html','portfolio/index.html',...['website','seo','ads','web-app-automation','line-oa','google-sheets-excel','n8n-automation'].map(s => `services/${s}/index.html`)]
 export function inspect(html) {
   const errors = []
   const csp = html.match(/<meta\s+http-equiv="Content-Security-Policy"\s+content="([^"]+)"/i)
