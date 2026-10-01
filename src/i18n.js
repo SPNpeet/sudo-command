@@ -233,7 +233,8 @@ export const L10N = {
           "src": "/sudo-command/gallery/work-zingstar.jpg",
           "title": "Zing Star Inspector",
           "cap": "เว็บไซต์ธุรกิจตรวจสอบอาคาร พร้อมระบบจัดการราคา"
-        }
+        },
+        {"src": "/sudo-command/gallery/flow-spreadsheets.svg", "title": "ระบบติดตามการชำระเงิน · Google Sheets", "cap": "ภาพแนวคิด: บันทึกรายการ → ติดตามยอดและสถานะ → สรุปตามช่วงเวลา ไม่มีข้อมูลลูกค้าจริง", "flowOnly": true}
       ]
     },
     testimonials: {
@@ -592,7 +593,8 @@ export const L10N = {
           "src": "/sudo-command/gallery/work-zingstar.jpg",
           "title": "Zing Star Inspector",
           "cap": "Building inspection business website with pricing administration"
-        }
+        },
+        {"src": "/sudo-command/gallery/flow-spreadsheets.svg", "title": "Payment tracking · Google Sheets", "cap": "Conceptual flow: record entries → track balances and status → summarize by period. No real customer data.", "flowOnly": true}
       ]
     },
     testimonials: {
@@ -1077,6 +1079,7 @@ export const DATA = {
         sample: 'ระบบกระทบยอดร้านอาหาร — ยอดขาย ต้นทุน กำไรสุทธิ ตรวจสลิปกับยอดโอนอัตโนมัติ',
         includes: ['CRM / เก็บลูกค้า', 'Dashboard ยอดขาย', 'กระทบยอดอัตโนมัติ', 'ซิงค์สต็อกข้ามช่องทาง'],
       },
+      {"title": "Google Sheets / Excel & Dashboard", "short": "จัดระบบข้อมูล · สูตรคำนวณ · รายงานติดตามงาน", "price": "ประเมินตามขอบเขตงาน", "desc": "รับออกแบบ Google Sheets และ Excel ให้เป็นเครื่องมือทำงานของทีม ตั้งแต่แบบบันทึกข้อมูล สูตรคำนวณ ตัวกรอง ไปจนถึงแดชบอร์ดสรุปตามวัน เดือน และปี", "includes": ["แบบบันทึกข้อมูลและตรวจความครบถ้วน", "สูตรคำนวณและสรุปยอดตามเงื่อนไขที่ตกลง", "ตัวกรองช่วงเวลาและแดชบอร์ด", "คู่มือใช้งานและแนวทางจัดสิทธิ์"], "id": "svc-sheets", "group": "sme", "visual": "full", "icon": "ledger"},
       {
         id: 'svc-readiness',
         group: 'gov',
@@ -1118,6 +1121,7 @@ export const DATA = {
     ],
     works: [
       ...ADDITIONAL_WORKS.th,
+      {"client": "งานลูกค้า · ตัวอย่างไม่ระบุชื่อ", "title": "ระบบติดตามการผ่อนชำระและรายงานรายวันบน Google Sheets", "desc": "จัดบันทึกการรับชำระ ติดตามยอดคงเหลือและสถานะ พร้อมเลือกดูสรุปตามวัน เดือน ปี และประวัติย้อนหลัง ตัวอย่างที่เผยแพร่เป็นภาพแนวคิด ไม่มีข้อมูล สัญญา สูตร หรือลิงก์เข้าถึงไฟล์ของลูกค้า", "tags": ["Google Sheets", "Dashboard", "Reporting"], "visual": "full", "status": "ภาพรวมแนวคิดเท่านั้น"},
       {
         title: 'เว็บไซต์บริษัทตรวจบ้าน + ระบบจัดการราคา + SEO',
         client: 'ZING STAR ENGINEERING · zingstarengineering.com — เราทำเว็บใหม่ให้ (แทนเว็บเก่าของผู้ดูแลรายก่อน)',
@@ -1365,6 +1369,7 @@ export const DATA = {
         sample: 'Restaurant reconciliation — sales, costs and net profit matched against transfer slips automatically.',
         includes: ['CRM / customer records', 'Sales dashboard', 'Automatic reconciliation', 'Cross-channel stock sync'],
       },
+      {"title": "Google Sheets / Excel & Dashboard", "short": "Data workflows · Formulas · Operational reports", "price": "Quoted after scoping", "desc": "Turn Google Sheets and Excel into practical team tools: structured entry forms, formulas, filters and dashboards with daily, monthly and yearly summaries.", "includes": ["Structured data entry and completeness checks", "Calculations and summaries based on agreed rules", "Date filters and dashboards", "User guidance and access planning"], "id": "svc-sheets", "group": "sme", "visual": "full", "icon": "ledger"},
       {
         id: 'svc-readiness',
         group: 'gov',
@@ -1406,6 +1411,7 @@ export const DATA = {
     ],
     works: [
       ...ADDITIONAL_WORKS.en,
+      {"client": "Client project · Anonymized overview", "title": "Installment tracking and daily reporting in Google Sheets", "desc": "Organize payment entries, balances and statuses with date-based summaries and historical views. Only a conceptual overview is published; customer records, contracts, formulas and file access remain private.", "tags": ["Google Sheets", "Dashboard", "Reporting"], "visual": "full", "status": "Conceptual overview only"},
       {
         title: 'House inspection website + pricing admin + SEO',
         client: 'ZING STAR ENGINEERING · zingstarengineering.com — we rebuilt the site (replaced old admin)',
