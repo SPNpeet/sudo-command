@@ -141,3 +141,14 @@
 @media(min-width:1001px){.s-contact-grid>div:first-child{position:sticky;top:125px}}
 @media(max-width:700px){.s-rec-label{margin-bottom:42px}.s-recommendation{padding:28px;min-height:0;border-radius:0 0 26px 0}.s-recommendation .s-rec-index{font-size:56px;right:22px}.s-automation:has(.reel-showcase){padding-top:40px}.s-about{border-radius:0 32px 0 0}.s-contact-invitation{margin-bottom:32px;padding-bottom:24px}.s-brief{padding:26px 20px}.s-contact-grid{gap:44px}}
 @media(prefers-reduced-motion:reduce){.s-case-image img{transition:none}.s-button:active,.s-icon-button:active,.s-project-paging button:active{transform:none}}
+
+/* Keep portfolio rows aligned; staggered offsets compound with tall captions. */
+.s-case-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 28px;align-items:start}
+.s-case,.s-case:first-child,.s-case:nth-child(n){grid-column:auto;margin-top:0;min-height:0}
+.s-case:first-child .s-case-image,.s-case:nth-child(n) .s-case-image{aspect-ratio:4/3}
+.s-case:first-child h3,.s-case-caption h3{font-size:clamp(22px,2.1vw,30px);line-height:1.45}
+.s-case-caption,.s-case:first-child .s-case-caption{margin-top:16px;padding-top:0}
+.s-case>p{margin-top:8px;line-height:1.75}
+@media(max-width:1000px){.s-case-grid{gap:32px 24px}}
+@media(max-width:700px){.s-case-grid{grid-template-columns:minmax(0,1fr);gap:32px}.s-case:first-child h3,.s-case-caption h3{font-size:23px}}
+
