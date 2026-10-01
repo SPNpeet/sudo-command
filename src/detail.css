@@ -15,3 +15,20 @@ header{border:1px solid var(--line);border-radius:16px;padding:22px 28px;box-sha
 @media(prefers-reduced-motion:reduce){.detail-reels>a{transition:none}}
 /* Shared touch targets on generated pages and privacy. */
 .detail-brand{min-height:44px}p>a{display:inline-flex;align-items:center;min-height:44px;max-width:100%;overflow-wrap:anywhere}figure>a{display:block;min-height:44px}.skip{min-height:44px;align-items:center}.skip:focus{display:inline-flex}nav a{min-width:44px}a,summary{touch-action:manipulation}main,section,article{min-width:0}#contact a{overflow-wrap:anywhere}
+
+/* Compact shared header on generated service and portfolio pages. */
+.detail-header{display:flex;align-items:center;gap:20px;padding:14px 24px;min-height:76px;margin-top:12px;position:relative;z-index:10}
+.detail-header .detail-brand{margin:0;gap:10px;font-size:30px;letter-spacing:-1.5px}
+.detail-brand>span{display:block}.detail-header .detail-brand small{display:block;font-size:7px;letter-spacing:.35em;margin-top:7px;line-height:1;color:var(--ink)}
+.detail-contact{margin-left:auto;display:flex;align-items:center;gap:18px;padding:10px 18px;min-height:44px;background:var(--ink);color:var(--bg);font-size:12px;font-weight:600;text-decoration:none;border-radius:28px}
+.detail-header .detail-menu{position:relative;margin:0;padding:0;border:0;border-radius:0;background:transparent}
+.detail-header .detail-menu[open]{border:0}
+.detail-menu summary{display:flex;align-items:center;justify-content:center;gap:10px;min-width:44px;min-height:44px;font-size:12px;list-style:none;padding:0 12px;border:1px solid var(--line);border-radius:25px;color:var(--ink)}
+.detail-menu summary::-webkit-details-marker{display:none}.detail-menu-icon{font-size:19px;font-weight:400}
+.detail-menu[open] summary{background:var(--ink);color:var(--bg)}
+.detail-menu-panel{position:absolute;right:0;top:calc(100% + 12px);width:min(360px,calc(100vw - 48px));padding:18px 22px;border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:0 20px 50px #0002;max-height:75dvh;overflow:auto}
+.detail-menu-panel>a,.detail-menu-panel nav a{display:flex;align-items:center;min-height:44px;text-decoration:none;color:var(--ink);font-size:14px;padding:8px 0}
+.detail-header .detail-menu-panel nav{display:grid;gap:0;border-block:1px solid var(--line);padding:8px 0;margin:8px 0}
+.detail-menu-panel a:hover{color:var(--accent)}
+.detail-header+main{padding-top:28px}
+@media(max-width:600px){.detail-header{width:calc(100% - 24px);padding:12px 14px;gap:12px;min-height:68px}.detail-header .detail-brand{font-size:27px}.detail-header .detail-brand img{width:32px;height:32px}.detail-contact{display:none}.detail-header .detail-menu{margin-left:auto}.detail-menu summary{width:44px;padding:0}.detail-menu summary>span:first-child{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.detail-header+main{padding-top:22px}.detail-menu-panel{right:-2px}}
