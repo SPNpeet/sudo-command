@@ -17,6 +17,11 @@ header{border:1px solid var(--line);border-radius:16px;padding:22px 28px;box-sha
 .detail-brand{min-height:44px}p>a{display:inline-flex;align-items:center;min-height:44px;max-width:100%;overflow-wrap:anywhere}figure>a{display:block;min-height:44px}.skip{min-height:44px;align-items:center}.skip:focus{display:inline-flex}nav a{min-width:44px}a,summary{touch-action:manipulation}main,section,article{min-width:0}#contact a{overflow-wrap:anywhere}
 
 /* Compact shared header on generated service and portfolio pages. */
+.detail-enquiry{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:24px;background:var(--surface);margin:24px 0}
+.detail-enquiry strong{font-size:20px}.detail-enquiry p{font-size:14px;margin:8px 0 0;color:var(--muted)}
+.detail-enquiry>a{display:flex;align-items:center;justify-content:center;min-height:48px;padding:12px 20px;border-radius:30px;background:#c93f00;color:#fff;font-size:14px;text-decoration:none}
+.detail-case-enquiry{margin:12px 0 0;font-size:14px}.detail-case-enquiry>a{min-height:44px}
+@media(max-width:700px){.detail-enquiry{grid-template-columns:1fr;padding:20px;gap:18px}.detail-enquiry>a{width:100%}}
 .detail-header{display:flex;align-items:center;gap:20px;padding:14px 24px;min-height:76px;margin-top:12px;position:relative;z-index:10}
 .detail-header .detail-brand{margin:0;gap:10px;font-size:30px;letter-spacing:-1.5px}
 .detail-brand>span{display:block}.detail-header .detail-brand small{display:block;font-size:7px;letter-spacing:.35em;margin-top:7px;line-height:1;color:var(--ink)}
