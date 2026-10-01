@@ -9,9 +9,9 @@ const esc = (s = '') => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;
 const json = (v) => JSON.stringify(v).replaceAll('<', '\\u003c')
 const link = (url, title) => `<a href="${esc(url)}">${esc(title)}</a>`
 const menu = () => `<nav aria-label="บริการและผลงาน">${SEARCH_PAGES.map(p => link(`${base}services/${p.slug}/`, p.label)).join('')} ${link(`${base}portfolio/`, 'ผลงานทั้งหมด')}</nav>`
-const contact = `<section id="contact"><h2>คุยเรื่องงานกับ Sudo Command</h2><p>บางมด กรุงเทพฯ · รับงานออนไลน์ทั่วประเทศไทย · ปรึกษาขอบเขตงานก่อนเริ่ม</p><nav aria-label="ช่องทางติดต่อ">${link('https://line.me/ti/p/~nongpeetza', 'แอด LINE')}${link('https://m.me/61590190966678', 'Messenger')}${link('tel:+66611699332', 'โทร 061 169 9332')}${link('mailto:sudocoffee.home@gmail.com', 'sudocoffee.home@gmail.com')}</nav></section>`
+const contact = `<section id="contact"><h2>คุยเรื่องงานกับ Sudo Command</h2><p>บางมด กรุงเทพฯ · รับงานออนไลน์ทั่วประเทศไทย · ปรึกษาขอบเขตงานก่อนเริ่ม</p><nav aria-label="ช่องทางติดต่อ">${link('https://line.me/ti/p/~nongpeetza', 'แอด LINE')}${link('https://m.me/61590190966678', 'Messenger')}${link('tel:+66611699332', 'โทร 061 169 9332')}${link('mailto:supanut6420@gmail.com', 'supanut6420@gmail.com')}</nav></section>`
 const enquiry = (title) => `<aside class="detail-enquiry" aria-label="ปรึกษางาน"><div><strong>มีโจทย์เรื่องนี้อยู่ใช่ไหม?</strong><p>ทัก LINE บอกประเภทธุรกิจ งานที่อยากแก้ และช่วงเวลาที่ต้องการเริ่ม — คุยกับผู้พัฒนาโดยตรง</p></div><a href="https://line.me/ti/p/~nongpeetza" aria-label="คุยผ่าน LINE เรื่อง ${esc(title)}">คุยเรื่องงานนี้ใน LINE ↗</a></aside>`
-const organization = { '@type': 'Organization', '@id': `${base}#organization`, name: 'Sudo Command', url: base, telephone: '+66611699332', email: 'sudocoffee.home@gmail.com' }
+const organization = { '@type': 'Organization', '@id': `${base}#organization`, name: 'Sudo Command', url: base, telephone: '+66611699332', email: 'supanut6420@gmail.com' }
 const css = readFileSync('src/detail.css', 'utf8')
 const cssVersion = createHash('sha256').update(css).digest('hex').slice(0, 12)
 function document(title, description, path, body, entities = []) {

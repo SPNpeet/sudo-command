@@ -15,7 +15,7 @@ import { SEARCH_PAGES } from './search-pages'
 const CONTACT = {
   messenger: 'https://m.me/61590190966678',
   facebook: 'https://www.facebook.com/profile.php?id=61590190966678',
-  email: 'sudocoffee.home@gmail.com',
+  email: 'supanut6420@gmail.com',
   // ใส่ลิงก์ LINE OA เช่น 'https://lin.ee/xxxxxxx'
   line: 'https://line.me/ti/p/~nongpeetza',
   // ใส่เบอร์จริงแบบสากล เช่น '+66811234567'
