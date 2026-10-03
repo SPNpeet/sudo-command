@@ -1,4 +1,5 @@
 /* Final component layer: editorial clarity, layered craft, warm systems. */
+:root{--command-blue:var(--s-deep);--command-coral:var(--brand-warm);--sd-orange:var(--s-deep);--sd-radius:var(--radius-card);--sd-ease:var(--brand-ease)}
 .studio{font-size:17px;line-height:1.8}
 .s-container{width:min(1280px,calc(100% - 96px))}
 .s-section{padding-block:var(--space-16)}
@@ -45,6 +46,7 @@
 .s-button{border-radius:999px;min-height:52px;font-size:14px;padding:14px 24px;gap:14px;transition:background var(--motion-hover),box-shadow var(--motion-hover)}
 .s-button-green{background:var(--brand-orange);color:#fff!important}
 .s-button-green:hover{background:#a03100;color:#fff!important;box-shadow:0 8px 24px #c93f0024}
+.s-service[open] .s-service-plus,.s-case-arrow,.s-mobile-dock a:last-child{background:var(--brand-orange);color:#fff;border-color:var(--brand-orange)}
 .s-button .icon{transition:transform var(--motion-hover)}
 .s-button:hover .icon{transform:none}
 .s-button:disabled{cursor:default;opacity:.5}
