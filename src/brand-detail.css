@@ -1,0 +1,47 @@
+/* Shared brand applied to all generated service and portfolio pages. */
+body{font-family:var(--sans);font-size:17px;line-height:1.85}
+.detail-header{border-radius:var(--radius-card);border:1px solid var(--line);box-shadow:var(--brand-shadow)}
+.detail-header .detail-brand{font-family:Arial,Helvetica,sans-serif}
+.detail-brand>span{color:var(--ink)}.detail-brand .detail-brand-dot{color:var(--accent)}
+.detail-header .detail-menu-panel{border-radius:var(--radius-card);box-shadow:var(--brand-shadow)}
+.detail-menu-panel a{font-size:15px}
+main{max-width:1080px}h1{font-size:clamp(36px,4.7vw,64px);line-height:1.4;letter-spacing:-.025em}h1::after{width:64px;height:4px;border-radius:4px;background:var(--accent);margin-top:24px}
+h2{font-size:clamp(24px,3vw,30px);line-height:1.5;letter-spacing:-.02em}
+.crumb{font:12px/1.8 var(--mono)}.intro{font-size:19px;line-height:1.85;margin-block:24px 32px}
+section,article{border-radius:var(--radius-card);padding:32px;background:var(--surface);margin-bottom:16px}
+article>p:first-child{font:12px/1.8 var(--mono)}
+article>a{border-radius:999px;min-height:44px;font-size:14px;background:var(--brand-orange);color:#fff}
+article>a::after{content:none}
+.detail-case-enquiry a,.detail-jump a{min-height:44px}
+.detail-jump a{border-radius:999px;font-size:13px}
+.detail-reels>a{border-radius:var(--radius-input);overflow:hidden}
+figure img{border-radius:var(--radius-card)}figcaption{font-size:14px;padding:16px 20px;border-radius:0 0 var(--radius-card) var(--radius-card);border-color:var(--accent)}
+details{border-radius:var(--radius-input);padding:16px 20px}summary{font-size:17px;line-height:1.75}
+.portfolio-index{background:var(--s-soft)}.portfolio-index nav{gap:8px;padding-top:16px}
+.portfolio-index nav a{padding:8px 12px;border:1px solid var(--line);border-radius:var(--radius-input);background:var(--surface)}
+.detail-enquiry{border-radius:var(--radius-card);background:var(--s-soft);border:1px solid var(--line);padding:24px;gap:24px}
+.detail-enquiry>a{background:var(--brand-orange);color:#fff;border-radius:999px;min-height:48px}
+.detail-enquiry p{font-size:15px;color:var(--muted)}
+#contact{border-radius:var(--radius-showcase);border:1px solid #414149;background:#171719;color:#fafafa;padding:32px}
+#contact nav a{min-height:48px;color:#fafafa;font-size:14px;gap:10px}
+#contact nav a:first-child{border-radius:999px;background:var(--brand-orange);color:#fff}
+footer{border-top:1px solid var(--line)}footer nav a{font-size:14px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+#contact a:focus-visible{outline-color:var(--brand-warm)}
+.detail-action-icon{width:20px;height:20px;flex-shrink:0}
+.detail-intro-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:32px;align-items:start;margin-bottom:32px}
+.detail-service-art{margin:24px 0 0;min-width:0}
+.detail-service-art>div{aspect-ratio:1;overflow:hidden;border-radius:var(--radius-showcase);background:#f3eee7}
+.detail-service-art img{width:300%;max-width:none;height:100%;object-fit:fill;border:0;border-radius:0}
+.detail-service-art-1 img{transform:translateX(-33.333333%)}
+.detail-service-art-2 img{transform:translateX(-66.666667%)}
+.detail-service-art figcaption{font-size:12px;background:transparent;border:0;padding:12px 0}
+.detail-intro-grid .intro{margin-top:0}
+.detail-intro-grid .detail-enquiry{display:block;margin:0}
+.detail-intro-grid .detail-enquiry>a{display:inline-flex;margin-top:12px}
+.detail-project-preview{margin:0 0 24px;background:var(--s-soft);border:1px solid var(--line);border-radius:var(--radius-card);overflow:hidden}
+.detail-project-preview img{display:block;width:100%;height:280px;object-fit:contain;border:0;border-radius:0}
+.detail-project-preview figcaption{background:transparent;font-size:13px;border:0;padding:12px 16px}
+.detail-contact{gap:12px}.detail-contact .detail-action-icon{width:18px;height:18px}
+@media(max-width:800px){.detail-intro-grid{grid-template-columns:minmax(0,1fr);gap:16px}.detail-service-art{width:min(320px,100%);margin:0 auto}.detail-project-preview img{height:220px}}
+@media(max-width:600px){body{font-size:16px}header,main,footer{width:calc(100% - 32px)}h1{font-size:36px;line-height:1.4}.intro{font-size:17px}section,article{padding:24px 20px}h2{font-size:24px}.detail-enquiry{padding:20px}#contact{padding:24px 20px;border-radius:var(--radius-card)}.detail-enquiry>a{width:100%;justify-content:center}figure{margin-inline:0}}
