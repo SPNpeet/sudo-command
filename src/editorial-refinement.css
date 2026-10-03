@@ -1,0 +1,81 @@
+/* A quieter frame lets the original brands and actual work lead. */
+.s-topbar{box-shadow:0 8px 32px #0e0e1106;border-color:var(--s-line)}
+.s-hero{padding-block:48px 56px}
+.s-hero h1{font-size:clamp(44px,4.8vw,68px);font-weight:700;line-height:1.25}
+.s-hero-intro{max-width:44ch}
+.s-hero-capabilities a{border:0;border-bottom:1px solid var(--s-line);background:transparent;border-radius:0;padding-inline:0}
+.s-hero .s-project-theatre{background:radial-gradient(ellipse at 100% 100%,#40281d,transparent 65%),#171719;padding:28px;border-radius:24px}
+.s-stage-stamp{display:none}
+.s-project-theatre .s-stage-window{transform:none!important;border-radius:10px}
+.s-project-theatre .s-stage-peek{opacity:.16;filter:saturate(.65)}
+.s-project-theatre .s-showcase-controls button{background:transparent;border-radius:0;border:0;border-top:1px solid #ffffff20}
+.s-project-theatre .s-showcase-controls button[aria-pressed=true]{background:#ffffff08;border-top-color:var(--brand-warm)}
+.s-clients{padding-block:56px 20px}
+.s-clients-heading{align-items:center;margin-bottom:28px;gap:24px}
+.s-clients-heading h2{font-size:clamp(28px,3vw,38px);font-weight:600;letter-spacing:-.035em}
+.s-clients-heading .s-kicker{font-size:10px;margin-bottom:8px}
+.s-clients-intro{max-width:40ch;display:flex;align-items:center;gap:20px}
+.s-clients-intro p{font-size:14px;line-height:1.8;color:var(--s-muted);margin:0}
+.s-client-motion-toggle{display:flex;align-items:center;justify-content:center;gap:8px;flex:none;min-height:44px;min-width:44px;padding:8px 12px;font:12px var(--sans);background:transparent;color:var(--s-muted);border:1px solid var(--s-line);border-radius:999px}
+.s-client-motion{--client-width:280px;--client-gap:0px;background:var(--s-surface);border:1px solid var(--s-line);border-radius:20px}
+.s-client-marquee{padding-block:28px;mask-image:linear-gradient(90deg,transparent,#000 2.5%,#000 97.5%,transparent)}
+.s-client-track{animation-duration:58s}
+.s-client-loop .s-client{border:0;border-right:1px solid var(--s-line);border-radius:0;background:transparent;min-height:232px;padding:8px 24px 10px;justify-content:center}
+.s-client-loop .s-client-logo{height:130px;width:100%;border-radius:0;background:transparent}
+.s-client-loop .s-client-logo img{width:176px;height:122px;max-width:90%;object-fit:contain}
+.s-client-loop .s-client-phonchaorai .s-client-logo img{height:130px}
+.s-client-loop .s-client-southside .s-client-logo img{width:126px;height:118px}
+.s-client-loop .s-client-name{font-size:14px;line-height:1.5;margin-top:16px}
+.s-client-loop .s-client-scope{font-size:12px;line-height:1.6;margin-top:6px}
+.s-client-wordmark{font-size:34px;color:var(--s-ink)}
+.s-client-loop .s-client-logo:has(img){background:#fff;border-radius:10px}
+.s-client-truck .s-client-wordmark{font-size:44px}
+.s-client-astro .s-client-wordmark{font-family:var(--sans);font-size:30px}
+.s-client-scope-marquee{background:#c93f00;border:0;padding-block:14px}
+.s-client-scope-loop>span{color:#fff;font:11px var(--sans);letter-spacing:.01em}
+.s-client-scope-loop i{background:#ffb48c;width:4px;height:4px}
+.s-case-image{border-radius:16px!important;box-shadow:0 12px 30px #0e0e1105}
+.s-case-caption{align-items:start}
+.s-case-caption h3,.s-case:first-child h3{font-size:clamp(22px,2.2vw,30px);font-weight:600;line-height:1.35;margin-top:8px}
+.s-case>p{font-size:16px}
+.s-case-scope{padding-block:14px}
+.s-rec-top{width:100%;grid-template-columns:minmax(0,1fr)}
+.s-rec-top>.s-artwork{grid-column:1;grid-row:1;margin:0}
+.s-rec-top .s-artwork-frame{aspect-ratio:16/9;border-radius:12px}
+.s-rec-story{grid-column:1;grid-row:2}
+.s-rec-story .s-rec-label{font-size:12px;margin:4px 0 12px;color:var(--s-muted)}
+.s-recommendation h3{font-size:32px;line-height:1.35;margin:12px 0;max-width:100%}
+.s-rec-story>p:last-child{font-size:16px;line-height:1.8;margin-bottom:0}
+.s-recommendation .s-tags{margin-top:20px;padding-bottom:20px;gap:8px;justify-content:start}
+.s-recommendation .s-tags li{padding:5px 10px;border-radius:999px;border:1px solid var(--s-line);font-size:11px}
+.s-recommendation>.s-text-link{margin-top:0}
+.s-photo-art .s-artwork-frame{border:1px solid var(--s-line)}
+.s-about{border-radius:24px 24px 0 0}
+.s-about-grid{align-items:start}
+.s-about-grid>ul{display:block;margin:0}
+.s-about-grid>ul>li{padding-block:28px}
+.s-about-grid>ul>li:last-child{border-bottom:1px solid #414149}
+.s-about h2{font-size:clamp(30px,3.3vw,44px);font-weight:600}
+.s-artwork-about{margin-bottom:0}
+.s-artwork-about .s-artwork-frame{aspect-ratio:16/10;border-color:#ffffff20}
+.s-about-signature{margin-top:24px}
+.s-process li{min-height:0}
+.s-process-intro{gap:40px}
+.s-artwork-process .s-artwork-frame{aspect-ratio:16/9}
+.s-contact-grid{gap:56px}
+.s-preview{border-radius:20px}
+.s-preview-scroll{background:var(--s-soft)}
+@media(max-width:1000px){.s-clients-intro{max-width:34ch}.s-clients-heading{align-items:start}.s-hero{gap:28px}.s-contact-grid{gap:32px}}
+@media(max-width:760px){
+  .s-hero{padding-block:24px 32px;gap:20px}.s-hero h1{font-size:clamp(36px,8.8vw,48px);line-height:1.3}
+  .s-hero .s-project-theatre{padding:18px;border-radius:18px}
+  .s-clients{padding-block:32px 12px}.s-clients-heading{display:block;margin-bottom:20px}
+  .s-clients-intro{max-width:none;margin-top:16px;gap:16px;justify-content:space-between}.s-clients-intro p{font-size:13px}
+  .s-client-motion{--client-width:228px}.s-client-marquee{padding-block:20px}
+  .s-client-loop .s-client{min-height:224px;padding-inline:20px}.s-client-loop .s-client-logo{height:120px}
+  .s-client-loop .s-client-logo img{height:110px;width:158px}.s-client-loop .s-client-phonchaorai .s-client-logo img{height:118px}
+  .s-client-loop .s-client-name{font-size:13px}.s-client-loop .s-client-scope{font-size:11px}
+  .s-recommendation{padding:20px}.s-recommendation h3{font-size:28px}.s-rec-top{gap:16px}
+  .s-process-intro{gap:20px}.s-about{border-radius:20px 20px 0 0}.s-about-grid>ul>li{padding-block:22px}
+}
+@media(prefers-reduced-motion:reduce){.s-client-motion-toggle{display:none}.s-client-loop .s-client{border:1px solid var(--s-line);border-radius:12px}.s-client-loop{gap:12px}.s-project-theatre .s-stage-peek{filter:none}}
