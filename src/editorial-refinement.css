@@ -1,6 +1,6 @@
 /* A quieter frame lets the original brands and actual work lead. */
 .s-topbar{box-shadow:0 8px 32px #0e0e1106;border-color:var(--s-line)}
-.s-hero{padding-block:48px 56px}
+.s-hero{padding-block:40px 48px;min-height:0}
 .s-hero h1{font-size:clamp(44px,4.8vw,68px);font-weight:700;line-height:1.25}
 .s-hero-intro{max-width:44ch}
 .s-hero-capabilities a{border:0;border-bottom:1px solid var(--s-line);background:transparent;border-radius:0;padding-inline:0}
@@ -64,7 +64,62 @@
 .s-contact-grid{gap:56px}
 .s-preview{border-radius:20px}
 .s-preview-scroll{background:var(--s-soft)}
-@media(max-width:1000px){.s-clients-intro{max-width:34ch}.s-clients-heading{align-items:start}.s-hero{gap:28px}.s-contact-grid{gap:32px}}
+.s-showcase-count{font:11px var(--mono);letter-spacing:.08em;color:#ffb48c;padding:8px 0;white-space:nowrap}
+.s-hero .s-showcase-heading{align-items:center}
+.s-project-theatre .s-stage{width:100%;margin:0;height:clamp(235px,24vw,330px)}
+.s-project-theatre .s-stage-window{inset:0;box-shadow:0 12px 32px #0003}
+.s-project-theatre .s-stage-peek{right:0;max-width:100%;pointer-events:none}
+.s-theatre-body{padding-top:20px;gap:16px}
+.s-project-story{grid-template-columns:minmax(0,1fr) auto}
+.s-project-story h3{min-height:2.8em;display:flex;align-items:center;margin:0}
+.s-case-grid{gap:40px 28px}
+.s-case-image{width:100%;padding:12px!important;background:var(--s-soft)!important}
+.s-case-image img{border-radius:8px;box-shadow:none;object-fit:cover}
+.s-case-actions{display:flex;align-items:center;gap:20px}
+.s-case-actions .s-text-link{font-size:14px;min-height:48px}
+.s-case-number{border:1px solid var(--s-line);border-radius:999px;min-width:44px;min-height:32px;padding:4px 10px;text-align:center}
+.s-fit-section{padding-block:64px}
+.s-needs button{transition:background var(--motion-hover),color var(--motion-hover);min-height:72px}
+.s-needs button[aria-pressed=true]{color:var(--s-ink);box-shadow:inset 3px 0 var(--s-deep)}
+.s-service summary{min-height:100px}
+.s-service summary:hover{background:var(--s-soft)}
+.s-service-body{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);padding:0 28px 28px;gap:32px}
+.s-service-body .s-artwork{width:100%;max-width:none;margin:0 0 20px}
+.s-artwork-service .s-artwork-frame{aspect-ratio:16/10}
+.s-service-body>div:nth-child(2){padding:24px;border:1px solid var(--s-line);border-radius:12px;background:var(--s-surface);align-self:start}
+.s-service[open] summary{border-bottom:1px solid var(--s-line);margin-bottom:24px}
+.s-service[open] .s-service-plus{font-size:24px}
+.s-engagement{margin-top:28px}
+.s-about-grid{gap:64px}
+.s-about-grid>ul>li:first-child{padding-top:22px}
+.s-process-intro{align-items:center;margin-bottom:28px}
+.s-process li{position:relative}
+.s-process h3{margin-top:20px}
+.s-faq-search{background:var(--s-surface);border:1px solid var(--s-line);padding:0 14px;max-width:100%}
+.s-faq-search button{background:transparent;border:0;min-width:44px;min-height:44px}
+.s-faq summary:hover{color:var(--s-deep)}
+.s-faq[open] summary{color:var(--s-deep)}
+.s-contact-invitation{font-weight:600;border-bottom:1px solid var(--s-line);padding-bottom:28px}
+.s-contact-grid .s-section-head{margin-bottom:24px}
+.s-brief{background:var(--s-surface);box-shadow:var(--brand-shadow)}
+.s-brief :is(input,textarea,select):focus-visible{outline:2px solid var(--s-deep);outline-offset:3px}
+.s-copy-line button:hover,.s-copy-line a:hover{border-color:var(--s-deep);background:var(--s-soft)}
+.s-contact-address a:hover{color:var(--s-deep)}
+.s-menu-panel{padding:20px;top:calc(100% + 14px);border-radius:16px}
+.s-menu-panel nav a:hover{background:var(--s-soft);border-radius:8px}
+.s-menu-panel nav a{padding-inline:10px;transition:background var(--motion-hover)}
+.s-preview::backdrop,.cmdk::backdrop{background:#0e0e11b3;backdrop-filter:blur(6px)}
+.s-preview-head h2{font-weight:600}
+.s-preview-scroll:not(.is-zoomed) img{max-height:none;max-width:100%;width:100%;height:auto}
+.s-preview-scroll{overscroll-behavior:contain;scrollbar-gutter:stable;min-height:240px}
+.s-preview-tools button:hover,.s-preview-head>button:hover{background:var(--s-soft)}
+.s-preview footer .s-preview-enquire{background:var(--brand-orange);color:white}
+.s-preview footer .s-preview-enquire:hover{background:#a03100}
+.s-footer-top{gap:24px}
+.s-service-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 24px}
+.s-service-links a{border-bottom:1px solid #ffffff24;min-height:52px;display:flex;align-items:center}
+.s-service-links a:hover{color:#ffb48c}
+@media(max-width:1000px){.s-clients-intro{max-width:34ch}.s-clients-heading{align-items:start}.s-hero{gap:28px;grid-template-columns:minmax(0,1fr)}.s-hero-heading{max-width:680px;padding-block:20px 0}.s-hero .s-project-theatre{max-width:760px;margin-inline:auto}.s-project-theatre .s-stage{height:clamp(235px,44vw,330px)}.s-project-tab small{overflow-wrap:normal;word-break:normal}.s-contact-grid{gap:32px}}
 @media(max-width:760px){
   .s-hero{padding-block:24px 32px;gap:20px}.s-hero h1{font-size:clamp(36px,8.8vw,48px);line-height:1.3}
   .s-hero .s-project-theatre{padding:18px;border-radius:18px}
@@ -76,5 +131,19 @@
   .s-client-loop .s-client-name{font-size:13px}.s-client-loop .s-client-scope{font-size:11px}
   .s-recommendation{padding:20px}.s-recommendation h3{font-size:28px}.s-rec-top{gap:16px}
   .s-process-intro{gap:20px}.s-about{border-radius:20px 20px 0 0}.s-about-grid>ul>li{padding-block:22px}
+  .s-hero-buttons{order:2;margin:0!important;flex-wrap:nowrap;gap:8px}.s-hero-buttons .s-button{flex:1;min-width:0;padding:12px 8px;font-size:12px;gap:8px;white-space:nowrap}.s-hero .s-project-theatre{order:3}.s-hero-intro{order:4}
+  .s-hero .s-theatre-body{padding-top:12px}.s-hero .s-stage{height:clamp(190px,56vw,300px)}
+  .s-project-story h3{min-height:2.7em;font-size:20px!important}
+  .s-project-paging{justify-content:flex-end!important}.s-project-paging button{min-width:44px}
+  .s-case-grid{gap:32px}.s-case-scope{grid-template-columns:1fr;gap:4px}
+  .s-fit-section{padding-block:44px}.s-service summary{padding:20px 16px;gap:12px;min-height:88px}
+  .s-service-body{grid-template-columns:minmax(0,1fr);padding:0 16px 20px;gap:20px}.s-service-body>div:nth-child(2){padding:20px}
+  .s-about-grid{gap:28px}.s-contact-grid{gap:28px}.s-contact-invitation{font-size:clamp(24px,6vw,38px)}
+  .s-preview[open]{max-height:calc(100dvh - 24px);width:calc(100vw - 24px);border-radius:16px}
+  .s-preview-scroll{padding:12px;min-height:0;max-height:52dvh}
+  .s-preview-head h2{font-size:19px}.s-preview-head>div{min-width:0}
+  .s-preview-tools .s-preview-context{display:none}.s-preview-tools{gap:8px}
+  .s-preview footer{flex-direction:row;flex-wrap:wrap;gap:12px}.s-preview footer .s-preview-enquire{flex:1}
+  .s-service-links{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}.s-footer-top p{max-width:65%}
 }
 @media(prefers-reduced-motion:reduce){.s-client-loop .s-client{border:1px solid var(--s-line);border-radius:12px}.s-client-loop{gap:12px}.s-project-theatre .s-stage-peek{filter:none}}
