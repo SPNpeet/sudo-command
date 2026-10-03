@@ -193,7 +193,6 @@
 .s-client-scope-loop{display:flex;flex:none;gap:28px;padding-right:28px}
 .s-client-scope-loop>span{display:flex;align-items:center;gap:28px;font:11px var(--mono);color:var(--s-muted);white-space:nowrap}
 .s-client-scope-loop i{width:6px;height:6px;border-radius:2px;transform:rotate(45deg);background:var(--brand-orange)}
-.s-client-motion[data-paused=true] :is(.s-client-track,.s-client-scope-track){animation-play-state:paused}
 @keyframes sudo-client-drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(max-width:760px){.s-client-motion{--client-width:220px;--client-gap:12px}.s-client-motion-head{padding-inline:14px}.s-client-motion-head>span{font-size:8px;letter-spacing:0}.s-client-marquee{padding-block:16px}.s-client-loop .s-client{min-height:278px}}
 @media(prefers-reduced-motion:reduce){.s-client-track,.s-client-scope-track{animation:none;will-change:auto}.s-client-loop[aria-hidden=true],.s-client-scope-marquee,.s-client-motion-head{display:none}.s-client-track,.s-client-loop{width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));padding:0}.s-client-marquee{padding:16px;mask-image:none}.s-client-loop>li{width:auto;min-width:0}.s-client-track{display:block}}

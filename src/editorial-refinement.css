@@ -16,7 +16,6 @@
 .s-clients-heading .s-kicker{font-size:10px;margin-bottom:8px}
 .s-clients-intro{max-width:40ch;display:flex;align-items:center;gap:20px}
 .s-clients-intro p{font-size:14px;line-height:1.8;color:var(--s-muted);margin:0}
-.s-client-motion-toggle{display:flex;align-items:center;justify-content:center;gap:8px;flex:none;min-height:44px;min-width:44px;padding:8px 12px;font:12px var(--sans);background:transparent;color:var(--s-muted);border:1px solid var(--s-line);border-radius:999px}
 .s-client-motion{--client-width:280px;--client-gap:0px;background:var(--s-surface);border:1px solid var(--s-line);border-radius:20px}
 .s-client-marquee{padding-block:28px;mask-image:linear-gradient(90deg,transparent,#000 2.5%,#000 97.5%,transparent)}
 .s-client-track{animation-duration:58s}
@@ -78,4 +77,4 @@
   .s-recommendation{padding:20px}.s-recommendation h3{font-size:28px}.s-rec-top{gap:16px}
   .s-process-intro{gap:20px}.s-about{border-radius:20px 20px 0 0}.s-about-grid>ul>li{padding-block:22px}
 }
-@media(prefers-reduced-motion:reduce){.s-client-motion-toggle{display:none}.s-client-loop .s-client{border:1px solid var(--s-line);border-radius:12px}.s-client-loop{gap:12px}.s-project-theatre .s-stage-peek{filter:none}}
+@media(prefers-reduced-motion:reduce){.s-client-loop .s-client{border:1px solid var(--s-line);border-radius:12px}.s-client-loop{gap:12px}.s-project-theatre .s-stage-peek{filter:none}}
