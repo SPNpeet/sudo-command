@@ -143,3 +143,17 @@
 }
 @media(max-width:400px){.s-process{grid-template-columns:minmax(0,1fr)}.s-service-name strong{font-size:20px}.s-service-emblem{display:none}.s-preview-tools>div{gap:8px}.s-hero-capabilities a{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.s-project-theatre .s-stage-window,.s-project-theatre .s-stage-window:hover{transform:none!important}.s-case-image img{transition:none}}
+
+/* Photographic service scenes: each image has its own responsive source. */
+.s-photo-art .s-artwork-frame{aspect-ratio:4/3;background:var(--s-soft)}
+.s-photo-art .s-artwork-frame img{position:static;display:block;width:100%;max-width:100%;height:100%;margin:0;object-fit:cover;transform:none}
+.s-rec-top{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:start}
+.s-rec-top>.s-artwork{grid-column:2;grid-row:1;float:none;width:100%;max-width:none;margin:0}
+.s-rec-story{grid-column:1;grid-row:1;min-width:0}
+.s-rec-story .s-rec-label{margin-top:0}
+.s-recommendation .s-tags{clear:both;margin-top:28px}
+.s-artwork-service{width:100%;max-width:480px;margin:0 0 20px}
+.s-artwork-auto .s-artwork-frame{aspect-ratio:16/9}
+.s-artwork-about .s-artwork-frame{aspect-ratio:16/9}
+@media(max-width:1100px){.s-rec-top{grid-template-columns:minmax(0,1fr)}.s-rec-top>.s-artwork{grid-column:1;grid-row:2;margin-top:8px}.s-rec-story{grid-row:1}.s-rec-top .s-artwork-frame{aspect-ratio:16/10}}
+@media(max-width:760px){.s-rec-top{gap:16px}.s-recommendation .s-tags{margin-top:20px}.s-artwork-service{max-width:none}.s-artwork-about{max-width:100%}}

@@ -11,7 +11,7 @@ The original green mark is retained. White, command orange, charcoal and warm pe
 | Brand book area | Production application |
 | --- | --- |
 | Strategy | Services, actual work, scope agreement and direct enquiries |
-| Creative direction | Editorial type, layered work previews and warm service sculptures |
+| Creative direction | Editorial type, layered work previews and photographic service scenes |
 | Logo | Original favicon/mark, sudo wordmark, orange dot; no redrawn mark |
 | Color | Orange #C93F00, white #FFFFFF, ink #0E0E11; dark accent #FFB48C |
 | Typography | IBM Plex Sans Thai for readable Thai/English; IBM Plex Mono for labels |
@@ -32,7 +32,7 @@ The original green mark is retained. White, command orange, charcoal and warm pe
 - Static menus retain native details behavior without JavaScript. When JavaScript is available they also dismiss on Escape, outside pointer input, focus leaving the menu and navigation.
 - Enquiry details stay in the current page until the visitor deliberately copies them or opens their email application. The page explains that the visitor sends the email from their application.
 - Original green is an identity accent rather than small text on white. Orange primary buttons use white labels. Dark surfaces use light text and peach accents.
-- Service sculptures are concept imagery; client screenshots are reviewed public examples. Client system destinations and spreadsheet source files remain excluded.
+- Photorealistic service illustrations are AI-generated concept imagery; client screenshots are reviewed public examples. Client system destinations and spreadsheet source files remain excluded.
 
 ## Responsive and release verification
 

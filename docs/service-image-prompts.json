@@ -1,0 +1,47 @@
+{
+  "mode": "Built-in imagegen",
+  "date": "2026-10-03",
+  "purpose": "AI-generated photorealistic service illustrations, not client evidence",
+  "images": [
+    {
+      "id": "website",
+      "prompt": "Use case: photorealistic-natural. Asset: one premium photographic service illustration for Sudo Command business website. A believable real photograph, square crop, natural window light, shot on a full-frame camera with a 50mm lens, realistic subtle depth of field, accurate perspective, tactile wood/paper/aluminum/plastic, soft shadows and true photographic detail. Contemporary professional workspace in Bangkok, warm off-white and charcoal palette with one tasteful burnt-orange #C93F00 physical accessory. Main subject occupies 75% of the frame, calm coherent composition, rich editorial photography rather than stock corporate cliches. No humans, no faces, no artificial floating objects, no 3D illustration style, no clay sculpture, no neon, no robot. Any screen content is a fictional generic illustrative interface, crisp layout but without legible words or numbers; no client names, no personal records, no platform logos, no branding or watermark. Subject: an elegant actual laptop on a light wood desk and a real smartphone standing beside it, both displaying the same tasteful responsive shop website with warm product photography and restrained orange action buttons. Include realistic keyboard, black mouse and a small ceramic cup off to the edge. Three-quarter camera view at desk height. It should feel like a website developer's editorial workspace photo, not a mockup sculpture.",
+      "source": "website.png"
+    },
+    {
+      "id": "seo",
+      "prompt": "Use case: photorealistic-natural. Asset: one premium photographic service illustration for Sudo Command business website. A believable real photograph, square crop, natural window light, shot on a full-frame camera with a 50mm lens, realistic subtle depth of field, accurate perspective, tactile wood/paper/aluminum/plastic, soft shadows and true photographic detail. Contemporary professional workspace in Bangkok, warm off-white and charcoal palette with one tasteful burnt-orange #C93F00 physical accessory. Main subject occupies 75% of the frame, calm coherent composition, rich editorial photography rather than stock corporate cliches. No humans, no faces, no artificial floating objects, no 3D illustration style, no clay sculpture, no neon, no robot. Any screen content is a fictional generic illustrative interface, crisp layout but without legible words or numbers; no client names, no personal records, no platform logos, no branding or watermark. Subject: close editorial photograph of a real laptop showing a generic search results interface with small result thumbnail cards, next to a neat paper content plan with abstract lines, an orange pen and a metal magnifying glass resting on a paper page. Top-three-quarter viewpoint. Natural plausible scale, focus on search and website content planning. No charts claiming performance, no readable search words.",
+      "source": "seo.png"
+    },
+    {
+      "id": "ads",
+      "prompt": "Use case: photorealistic-natural. Asset: one premium photographic service illustration for Sudo Command business website. A believable real photograph, square crop, natural window light, shot on a full-frame camera with a 50mm lens, realistic subtle depth of field, accurate perspective, tactile wood/paper/aluminum/plastic, soft shadows and true photographic detail. Contemporary professional workspace in Bangkok, warm off-white and charcoal palette with one tasteful burnt-orange #C93F00 physical accessory. Main subject occupies 75% of the frame, calm coherent composition, rich editorial photography rather than stock corporate cliches. No humans, no faces, no artificial floating objects, no 3D illustration style, no clay sculpture, no neon, no robot. Any screen content is a fictional generic illustrative interface, crisp layout but without legible words or numbers; no client names, no personal records, no platform logos, no branding or watermark. Subject: photograph of a real professional monitor showing an understated generic advertising campaign workspace with creative preview thumbnails and neutral chart blocks, beside a notebook holding several small printed product-ad creative cards and an orange highlighter. Close three-quarter framing, carefully organized campaign planning workspace, meaningful practical advertising scene. No fabricated performance numbers.",
+      "source": "ads.png"
+    },
+    {
+      "id": "line",
+      "prompt": "Use case: photorealistic-natural. Asset: one premium photographic service illustration for Sudo Command business website. A believable real photograph, square crop, natural window light, shot on a full-frame camera with a 50mm lens, realistic subtle depth of field, accurate perspective, tactile wood/paper/aluminum/plastic, soft shadows and true photographic detail. Contemporary professional workspace in Bangkok, warm off-white and charcoal palette with one tasteful burnt-orange #C93F00 physical accessory. Main subject occupies 75% of the frame, calm coherent composition, rich editorial photography rather than stock corporate cliches. No humans, no faces, no artificial floating objects, no 3D illustration style, no clay sculpture, no neon, no robot. Any screen content is a fictional generic illustrative interface, crisp layout but without legible words or numbers; no client names, no personal records, no platform logos, no branding or watermark. Subject: photo of an actual smartphone propped on a simple desk stand displaying a clean generic customer chat conversation with a product image and reply bubbles, beside a laptop showing a small business order workspace. Cream desk, orange notebook, realistic soft daylight and restrained green chat details. Emphasize practical chat and customer communication, no chat platform logo, no readable messages, no personal details.",
+      "source": "line.png"
+    },
+    {
+      "id": "automation",
+      "prompt": "undefinedSubject: a realistic photograph of a dual-screen workflow developer desk. Main monitor shows a generic visual node-based workflow with four connected task cards and a small video thumbnail, second slim screen shows a neutral schedule calendar with no readable dates. A real smartphone, orange notebook and compact dark desk lamp are naturally placed on a cream desk. View at three-quarter angle. Real monitors and real materials, not sculptural nodes floating in space.",
+      "source": "automation.png"
+    },
+    {
+      "id": "sheets",
+      "prompt": "undefinedSubject: close realistic photograph of an actual laptop displaying an orderly spreadsheet with columns, muted orange highlighted row and a small neutral dashboard chart. A paper report with abstract tabular lines, metal calculator, black pen and orange binder clip sit beside it on a warm light wood desk. Natural daylight, crisp believable spreadsheet-work atmosphere. No currency amounts, no readable customer names, no financial claims.",
+      "source": "sheets.png"
+    },
+    {
+      "id": "ai",
+      "prompt": "undefinedSubject: sophisticated real photograph of a laptop displaying a generic AI assistant workspace with an abstract document preview beside the conversation area, next to an orderly stack of plain documents, a compact portable SSD and an orange notebook. Calm professional environment, soft natural light, three-quarter close view, physically realistic and useful-looking. Communicate preparing organized data for AI. No robot, brain hologram, glowing network or sci-fi effects.",
+      "source": "ai.png"
+    },
+    {
+      "id": "governance",
+      "prompt": "undefinedSubject: real editorial photo of a carefully organized governance review workspace. A closed charcoal laptop, ivory ring binder opened to a plain policy checklist with abstract lines, several neatly aligned plain document folders, a small real physical security key and an orange pen. High-end but believable professional desk photography, top-three-quarter view. Communicate careful access and information management without badge graphics, certification logos or readable confidential text.",
+      "source": "governance.png"
+    }
+  ]
+}
