@@ -27,7 +27,7 @@ function Heading({ eyebrow, title, note }) { return <header className="s-section
 function ServiceArtwork({ index, kind, lang, className = '' }) {
   const key = kind || ['website','automation','ai'][index]
   const image = SERVICE_ART[key]
-  return <figure className={'s-artwork s-photo-art ' + className}><div className="s-artwork-frame"><img src={artworkSrc(key)} srcSet={`${artworkSrc(key,400)} 400w, ${artworkSrc(key)} 800w`} sizes={className ? "(max-width: 760px) calc(100vw - 32px), (max-width: 1400px) 550px, 640px" : "(max-width: 760px) calc(100vw - 80px), 400px"} width="800" height="800" loading="lazy" decoding="async" alt={image[lang]}/></div><figcaption>{lang === 'th' ? 'ภาพประกอบบริการ · AI' : 'AI-generated service illustration'}</figcaption></figure>
+  return <figure className={'s-artwork s-photo-art ' + className}><div className="s-artwork-frame"><img src={artworkSrc(key)} srcSet={`${artworkSrc(key,400)} 400w, ${artworkSrc(key)} 800w`} sizes={className ? "(max-width: 760px) calc(100vw - 32px), (max-width: 1400px) 550px, 640px" : "(max-width: 760px) calc(100vw - 80px), 400px"} width="800" height="800" loading="lazy" decoding="async" alt={image[lang]}/></div></figure>
 }
 
 export default function Studio() {
