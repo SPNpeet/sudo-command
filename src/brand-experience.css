@@ -1,4 +1,5 @@
 /* Final component layer: editorial clarity, layered craft, warm systems. */
+:root{--command-blue:var(--s-deep);--command-coral:var(--brand-warm);--sd-orange:var(--s-deep);--sd-radius:var(--radius-card);--sd-ease:var(--brand-ease)}
 .studio{font-size:17px;line-height:1.8}
 .s-container{width:min(1280px,calc(100% - 96px))}
 .s-section{padding-block:var(--space-16)}

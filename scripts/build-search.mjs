@@ -32,6 +32,8 @@ function document(title, description, path, body, entities = []) {
 }
 function save(path, html) { mkdirSync(`dist/${path}`, {recursive:true}); writeFileSync(`dist/${path}index.html`, html) }
 writeFileSync('dist/search.css', css)
+// Privacy shares the same cache key so returning visitors receive the new brand styles.
+writeFileSync('dist/privacy.html', readFileSync('dist/privacy.html','utf8').replace('href="search.css"', `href="search.css?v=${cssVersion}"`))
 for (const page of SEARCH_PAGES) {
   const path = `services/${page.slug}/`
   const body = `<div class="detail-intro-grid"><div><p class="intro">${esc(page.intro)}</p>${enquiry(page.label)}</div>${serviceArt(page.slug)}</div><nav class="detail-jump" aria-label="หัวข้อในหน้านี้">${page.sections.map(([h],i)=>link(`#detail-${i}`,h)).join('')}${link('#prepare','เตรียมข้อมูล')}${link('#questions','คำถาม')}${link('#contact','คุยเรื่องงาน')}</nav>${page.sections.map(([h,p],i)=>`<section id="detail-${i}"><h2>${esc(h)}</h2><p>${esc(p)}</p></section>`).join('')}<section id="prepare"><h2>ข้อมูลที่ช่วยให้ประเมินงานได้เร็ว</h2><ul>${page.prepare.map(p=>`<li>${esc(p)}</li>`).join('')}</ul></section><section id="questions"><h2>คำถามก่อนเริ่มงาน</h2>${page.faq.map(([q,a])=>`<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</section><p>${link(base+'portfolio/','ดูตัวอย่างเว็บไซต์ เว็บแอป และระบบหลังบ้าน')}</p>`
