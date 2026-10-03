@@ -15,7 +15,7 @@ const enquiry = (title) => `<aside class="detail-enquiry" aria-label="ปรึ�
 const organization = { '@type': 'Organization', '@id': `${base}#organization`, name: 'Sudo Command', url: base, telephone: '+66611699332', email: 'supanut6420@gmail.com' }
 const serviceArt = slug => {
   const key = SERVICE_ART_KEYS[slug], image = SERVICE_ART[key]
-  return '<figure class="detail-service-art detail-photo-art"><div><img src="'+artworkSrc(key)+'" srcset="'+artworkSrc(key,400)+' 400w, '+artworkSrc(key)+' 800w" sizes="(max-width:800px) 320px, 420px" alt="'+esc(image.th)+'" width="800" height="800" loading="lazy" decoding="async"></div><figcaption>ภาพประกอบบริการ · AI</figcaption></figure>'
+  return '<figure class="detail-service-art detail-photo-art"><div><img src="'+artworkSrc(key)+'" srcset="'+artworkSrc(key,400)+' 400w, '+artworkSrc(key)+' 800w" sizes="(max-width:800px) 320px, 420px" alt="'+esc(image.th)+'" width="800" height="800" loading="lazy" decoding="async"></div></figure>'
 }
 const projectImages = [0,3,1,5,2,null,null,null,null,7,6,4]
 const projectPreview = i => {
