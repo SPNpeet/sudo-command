@@ -42,6 +42,16 @@
       "id": "governance",
       "prompt": "undefinedSubject: real editorial photo of a carefully organized governance review workspace. A closed charcoal laptop, ivory ring binder opened to a plain policy checklist with abstract lines, several neatly aligned plain document folders, a small real physical security key and an orange pen. High-end but believable professional desk photography, top-three-quarter view. Communicate careful access and information management without badge graphics, certification logos or readable confidential text.",
       "source": "governance.png"
+    },
+    {
+      "id": "planning",
+      "prompt": "Generate one high-end photorealistic editorial photograph for Sudo Command professional digital studio website. Believable real camera photography, landscape 3:2 composition, natural side window daylight, full-frame 50mm lens, tactile real oak desk, aluminum devices and cream paper, charcoal and warm cream with a restrained burnt-orange accessory. No people, faces, floating objects, sculpture, illustration style or neon. Screens contain only generic abstract unlabeled UI shapes, no readable text, platform logos or real private data. Calm practical professional scene, main subject fills frame, authentic materials and subtle depth of field. Project planning and design review: a real tablet displaying a generic wireframe beside a laptop with a generic code editor, printed unlabeled wireframe sketches, pencil and orange notebook laid in an orderly working arrangement. Clear visual story of requirements becoming interface and implementation.",
+      "source": "planning.png"
+    },
+    {
+      "id": "brief",
+      "prompt": "Generate one high-end photorealistic editorial photograph for Sudo Command professional digital studio website. Believable real camera photography, landscape 3:2 composition, natural side window daylight, full-frame 50mm lens, tactile real oak desk, aluminum devices and cream paper, charcoal and warm cream with a restrained burnt-orange accessory. No people, faces, floating objects, sculpture, illustration style or neon. Screens contain only generic abstract unlabeled UI shapes, no readable text, platform logos or real private data. Calm practical professional scene, main subject fills frame, authentic materials and subtle depth of field. Starting a client project: an open cream notebook with blank ruled pages, a tidy laptop displaying a generic neutral project brief interface, an orange pen, smartphone face down, cup of tea. Composition focuses on notebook and laptop, inviting careful discussion and clear scope. No logos or fake achievements.",
+      "source": "brief.png"
     }
   ]
 }

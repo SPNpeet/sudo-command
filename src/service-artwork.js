@@ -1,5 +1,7 @@
 // Generated photographic illustrations, never customer screenshots or result evidence.
 export const SERVICE_ART = {
+  planning: { th: 'ภาพประกอบการวางแผน ทบทวนแบบ และพัฒนาโครงการ', en: 'Project planning, design review and implementation' },
+  brief: { th: 'ภาพประกอบการเตรียมโจทย์และขอบเขตโครงการ', en: 'Preparing a project brief and scope' },
   website: { th:'ภาพประกอบการออกแบบเว็บไซต์บนคอมพิวเตอร์และมือถือ', en:'Website design on a laptop and mobile phone' },
   seo: { th:'ภาพประกอบการวางแผนเนื้อหาและการค้นหาเว็บไซต์', en:'Website content planning and organic search' },
   ads: { th:'ภาพประกอบการวางแผนแคมเปญและชิ้นงานโฆษณา', en:'Advertising campaign and creative planning' },
