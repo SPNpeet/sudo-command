@@ -13,9 +13,8 @@ const CLIENTS = [
 export default function ClientShowcase({ lang }) {
   const l = lang === 'th' ? 0 : 1
   const [paused, setPaused] = useState(false)
-  const card = (client, index) => <li key={client.id}>
+  const card = client => <li key={client.id}>
     <div className={`s-client s-client-${client.id}`}>
-      <span className="s-client-coordinate" aria-hidden="true">SUDO / {String(index + 1).padStart(2, '0')}</span>
       <span className="s-client-logo">{client.image
         ? <img src={`/sudo-command/clients/${client.image}`} alt="" width="160" height="120" loading="lazy" decoding="async"/>
         : <span className="s-client-wordmark" aria-hidden="true">{client.wordmark[l]}</span>}</span>
@@ -26,10 +25,9 @@ export default function ClientShowcase({ lang }) {
   return <section className="s-clients s-container" id="clients" tabIndex={-1} aria-labelledby="clients-title">
     <header className="s-clients-heading">
       <div><p className="s-kicker">THE PEOPLE WE BUILD FOR</p><h2 id="clients-title">{l === 0 ? 'ลูกค้าที่ร่วมงานกับเรา' : 'The brands we build with.'}</h2></div>
-      <p>{l === 0 ? 'ต่างธุรกิจ ต่างโจทย์ — งานที่ออกแบบให้เหมาะกับแต่ละแบรนด์' : 'Different businesses. Different challenges. Work shaped around each brand.'}</p>
+      <div className="s-clients-intro"><p>{l === 0 ? 'ต่างธุรกิจ ต่างโจทย์ — ลงมือทำให้เหมาะกับแต่ละแบรนด์' : 'Different businesses. Different challenges. Work shaped around each brand.'}</p><button className="s-client-motion-toggle" type="button" aria-pressed={paused} onClick={()=>setPaused(value=>!value)} aria-label={l===0?'พักการเคลื่อนไหวโลโก้ลูกค้า':'Pause client logo motion'}><span aria-hidden="true">{paused?'▶':'Ⅱ'}</span>{l===0?(paused?'เลื่อนต่อ':'พักภาพ'):(paused?'Resume':'Pause')}</button></div>
     </header>
     <div className="s-client-motion" data-paused={paused}>
-      <div className="s-client-motion-head"><span><i aria-hidden="true"/>CONNECTED THROUGH THE WORK</span><button type="button" aria-pressed={paused} onClick={()=>setPaused(value=>!value)} aria-label={l===0?'พักการเคลื่อนไหวโลโก้ลูกค้า':'Pause client logo motion'}><span aria-hidden="true">{paused?'▶':'Ⅱ'}</span>{l===0?(paused?'เลื่อนต่อ':'พักภาพ'):(paused?'Resume':'Pause')}</button></div>
       <div className="s-client-marquee">
         <div className="s-client-track">
           <ul className="s-client-loop">{CLIENTS.map(card)}</ul>
