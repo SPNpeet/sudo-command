@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto'
 import { SEARCH_PAGES } from '../src/search-pages.js'
 import { DATA, L10N } from '../src/i18n.js'
 import { REELS, ASTRO_REEL, ASTRO_REELS } from '../src/reels.js'
+import { SERVICE_ART, SERVICE_ART_KEYS, artworkSrc } from '../src/service-artwork.js'
 
 const base = 'https://spnpeet.github.io/sudo-command/'
 const esc = (s = '') => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;')
@@ -13,9 +14,8 @@ const contact = `<section id="contact"><h2>คุยเรื่องงาน�
 const enquiry = (title) => `<aside class="detail-enquiry" aria-label="ปรึกษางาน"><div><strong>มีโจทย์เรื่องนี้อยู่ใช่ไหม?</strong><p>ทัก LINE บอกประเภทธุรกิจ งานที่อยากแก้ และช่วงเวลาที่ต้องการเริ่ม — คุยกับผู้พัฒนาโดยตรง</p></div><a href="https://line.me/ti/p/~nongpeetza" aria-label="คุยผ่าน LINE เรื่อง ${esc(title)}">คุยเรื่องงานนี้ใน LINE ↗</a></aside>`
 const organization = { '@type': 'Organization', '@id': `${base}#organization`, name: 'Sudo Command', url: base, telephone: '+66611699332', email: 'supanut6420@gmail.com' }
 const serviceArt = slug => {
-  const index = ['google-sheets-excel'].includes(slug) ? 2 : ['n8n-automation','web-app-automation','line-oa'].includes(slug) ? 1 : 0
-  const alt = ['ภาพประกอบการออกแบบเว็บไซต์','ภาพประกอบขั้นตอนงานอัตโนมัติ','ภาพประกอบการจัดระบบข้อมูล'][index]
-  return '<figure class="detail-service-art detail-service-art-' + index + '"><div><img src="/sudo-command/illustrations/service-sculptures.jpg" alt="' + alt + '" width="2172" height="724" loading="lazy" decoding="async"></div><figcaption>ภาพประกอบแนวคิดบริการ</figcaption></figure>'
+  const key = SERVICE_ART_KEYS[slug], image = SERVICE_ART[key]
+  return '<figure class="detail-service-art detail-photo-art"><div><img src="'+artworkSrc(key)+'" srcset="'+artworkSrc(key,400)+' 400w, '+artworkSrc(key)+' 800w" sizes="(max-width:800px) 320px, 420px" alt="'+esc(image.th)+'" width="800" height="800" loading="lazy" decoding="async"></div><figcaption>ภาพประกอบบริการ · AI</figcaption></figure>'
 }
 const projectImages = [0,3,1,5,2,null,null,null,null,7,6,4]
 const projectPreview = i => {
