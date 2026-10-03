@@ -11,6 +11,6 @@ Original files retained without recolouring, cropping, or generating replacement
 | Than Natee | https://xn--22cki0cqma4cdedf2ixczace9c1mmc1fh6g.com/images/logo.webp | 2 |
 | Zing Star Inspector | https://zingstarengineering.com/img/logo.webp | 6 |
 
-Each logo opens the existing Sudo portfolio preview for that client. No testimonials,
+Client cards are non-interactive and move continuously in a seamless CSS rail. Hia Tum Trucks and Astro Trader use typographic names because no original logo asset has been supplied. Only the canonical seven-brand list is exposed to assistive technology; duplicate rails are hidden. Motion can be paused and respects reduced-motion preferences. No testimonials,
 performance statistics, or claims of endorsement beyond the authorized client relationship added.
 SudoChatBot is a product in the portfolio, not presented as an independent client.
