@@ -34,7 +34,6 @@ export default function Studio() {
   const [lang, setLang] = useLang()
   const [theme, setTheme] = useTheme()
   const [hero, setHero] = useState(0)
-  const [motionPaused, setMotionPaused] = useState(false)
   const [showcaseHovered, setShowcaseHovered] = useState(false)
   const [showcaseFocused, setShowcaseFocused] = useState(false)
   const [filter, setFilter] = useState('all')
@@ -57,14 +56,14 @@ export default function Studio() {
     let timer
     const sync = () => {
       window.clearInterval(timer)
-      if (motionPaused || showcaseHovered || showcaseFocused || preview !== null || document.hidden || preference.matches) return
+      if (showcaseHovered || showcaseFocused || preview !== null || document.hidden || preference.matches) return
       timer = window.setInterval(() => setHero(value => (value + 1) % HERO_IMAGES.length), 6000)
     }
     sync()
     document.addEventListener('visibilitychange', sync)
     preference.addEventListener('change', sync)
     return () => { window.clearInterval(timer); document.removeEventListener('visibilitychange', sync); preference.removeEventListener('change', sync) }
-  }, [motionPaused, showcaseHovered, showcaseFocused, preview])
+  }, [showcaseHovered, showcaseFocused, preview])
   const images = L.gallery.items
   const selected = images[HERO_IMAGES[hero]]
   const cases = images.map((item, index) => ({ ...item, number: index + 1, type: TYPE[index] || 'web', typeLabel: T.caseTypes[index] || T.filters[1] }))
@@ -157,8 +156,8 @@ export default function Studio() {
       <section className="s-hero s-container" id="top" tabIndex={-1}>
         <div className="s-hero-heading"><p className="s-kicker"><span className="s-status-dot"/>{T.tagline}</p><h1>{T.hero1}<br/><span>{T.hero2}</span></h1><p className="s-hero-intro">{T.intro}</p><div className="s-hero-buttons"><a className="s-button s-button-green" href="#contact">{T.start}<Icon name="chat"/></a><a className="s-button s-button-quiet" href="#work">{T.seeWork}<Icon name="layers"/></a></div><nav className="s-hero-capabilities" aria-label={lang==='th'?'เลือกบริการ':'Explore services'}>{[['svc-web','Website','web'],['svc-sheets','Sheets / Excel','ledger'],['svc-auto','Automation','grid'],['svc-line','LINE OA','line']].map(([id,label,icon])=><a href={`#${id}`} key={id} onClick={e=>{e.preventDefault();go(id)}}>{label}<Icon name={icon}/></a>)}</nav><p className="s-hero-note">{T.note}</p></div>
         <div className="s-showcase s-project-theatre" role="region" aria-label={lang==='th'?'ผลงานเลื่อนอัตโนมัติ':'Automatic project slideshow'} onMouseEnter={()=>setShowcaseHovered(true)} onMouseLeave={()=>setShowcaseHovered(false)} onFocusCapture={()=>setShowcaseFocused(true)} onBlurCapture={e=>{if(!e.currentTarget.contains(e.relatedTarget)) setShowcaseFocused(false)}}>
-          <SignalField paused={motionPaused}/>
-          <div className="s-showcase-heading"><div><p className="s-kicker">SUDO / SELECTED SYSTEMS</p><h2>{lang==='th'?'ตัวอย่างผลงาน':'Selected project'}</h2></div><button type="button" className="s-motion-toggle" aria-pressed={motionPaused} onClick={()=>setMotionPaused(v=>!v)}>{motionPaused?(lang==='th'?'เปิดภาพเลื่อน':'Play slideshow'):(lang==='th'?'พักภาพเลื่อน':'Pause slideshow')} <span aria-hidden="true">{motionPaused?'▶':'Ⅱ'}</span></button></div>
+          <SignalField/>
+          <div className="s-showcase-heading"><div><p className="s-kicker">SUDO / SELECTED SYSTEMS</p><h2>{lang==='th'?'ตัวอย่างผลงาน':'Selected project'}</h2></div><span className="s-showcase-count" aria-hidden="true">0{hero+1} / 03</span></div>
           <div className="s-theatre-body">
           <div className="s-project-story">
             <p className="s-project-coordinate">SELECTED / 0{hero+1}</p>
@@ -168,13 +167,12 @@ export default function Studio() {
             <div className="s-project-paging"><button aria-label={U.previous} onClick={()=>setHero(v=>(v+2)%3)}>←</button><span>0{hero+1} / 03</span><button aria-label={U.next} onClick={()=>setHero(v=>(v+1)%3)}>→</button></div>
           </div>
           <div className="s-stage">
-            {[1,2].map((offset)=>{const i=(hero+offset)%3;return <button className={`s-stage-peek s-stage-peek-${offset}`} key={offset} onClick={()=>setHero(i)} aria-label={`${T.featured}: ${images[HERO_IMAGES[i]].title}`}><img src={images[HERO_IMAGES[i]].src} alt="" width="720" height="500" loading="lazy"/><span>0{i+1} / {T.categories[i]} ↗</span></button>})}
+            {[1,2].map((offset)=>{const i=(hero+offset)%3;return <div className={`s-stage-peek s-stage-peek-${offset}`} key={offset} aria-hidden="true"><img src={images[HERO_IMAGES[i]].src} alt="" width="720" height="500" loading="lazy"/></div>})}
             <div className="s-stage-back" aria-hidden="true"><Mark/></div>
             <button type="button" className="s-stage-window" onClick={() => setPreview(HERO_IMAGES[hero])} aria-label={`${U.preview}: ${selected.title}`}>
               <div className="s-window-bar"><span className="s-window-dots" aria-hidden="true">● ● ●</span><span>{selected.title}</span><Icon name="search"/></div>
               <img key={selected.src} src={selected.src} alt={selected.title} width="720" height="500" fetchPriority="high"/>
             </button>
-            <div className="s-stage-stamp"><span>{lang==='th'?'เปิดดูผลงาน':'Explore project'}</span><Icon name="layers"/></div>
           </div>
           </div>
           <div className="s-showcase-controls" role="group" aria-label={T.featured}>{T.categories.map((label,i)=><button key={label} aria-pressed={hero===i} onClick={()=>setHero(i)}><img src={images[HERO_IMAGES[i]].src} alt="" width="96" height="64" loading="lazy"/><span className="s-project-tab"><small>0{i+1} / {label}</small><strong>{images[HERO_IMAGES[i]].title}</strong></span><span className="s-control-dot" aria-hidden="true"/></button>)}</div>
@@ -200,7 +198,7 @@ export default function Studio() {
 
       <section className="s-fit-section" id="paths" tabIndex={-1}><div className="s-container s-fit-grid">
         <div><Heading eyebrow={T.fitEyebrow} title={T.fitTitle} note={T.fitNote}/><div className="s-needs" role="group" aria-label={T.fitTitle}>{T.needs.map((label,i)=><button key={label} aria-pressed={need===i} onClick={()=>setNeed(i)}><span>0{i+1}</span>{label}<Icon name={['web','grid','ai'][i]}/></button>)}</div></div>
-        <div className="s-recommendation" aria-live="polite"><div className="s-rec-top"><ServiceArtwork index={need} lang={lang}/><div className="s-rec-story"><p className="s-rec-label">{lang==='th'?'แนวทางที่เหมาะกับโจทย์นี้':'A direction for your next move'}</p><h3>{suggestion.title}</h3><p>{suggestion.text}</p></div></div><ul className="s-tags">{suggestion.tags.map(tag=><li key={tag}>{tag}</li>)}</ul><a className="s-text-link" href={suggestion.href.startsWith('#')?suggestion.href:BASE+suggestion.href}>{suggestion.label}<Arrow/></a></div>
+        <div className="s-recommendation" aria-live="polite"><div className="s-rec-top"><ServiceArtwork index={need} lang={lang}/><div className="s-rec-story"><p className="s-rec-label">{lang==='th'?'แนวทางที่เหมาะกับโจทย์นี้':'A direction for your next move'}</p><h3>{suggestion.title}</h3><p>{suggestion.text}</p></div></div><ul className="s-tags">{suggestion.tags.map(tag=><li key={tag}>{tag}</li>)}</ul><a className="s-text-link" href={suggestion.href.startsWith('#')?suggestion.href:BASE+suggestion.href} onClick={suggestion.href.startsWith('#')?e=>{e.preventDefault();go(suggestion.href.slice(1))}:undefined}>{suggestion.label}<Icon name={['web','grid','ai'][need]}/></a></div>
       </div></section>
 
       <section className="s-section s-container" id="services" tabIndex={-1}>
