@@ -1131,12 +1131,12 @@ export const DATA = {
         metric: 'เว็บใหม่ + SEO + GA4/Search Console · เจ้าของแก้ราคาเองได้',
       },
       {
-        title: 'เว็บแอป + SEO + ดูแล Google Ads รายเดือน — ต่อเนื่อง 1 ปี',
+        title: 'เว็บไซต์ SEO และดูแล Google Ads รายเดือน',
         client: 'CURTAIN STORY HOME · curtainstoryhome.com — เราทำเว็บ/ระบบให้ร้านม่าน (ไม่ได้เป็นร้านม่าน)',
         tags: ['Web App', 'SEO', 'Google Ads · รายเดือน'],
-        desc: 'รับทำเว็บแอปร้านม่านบน curtainstoryhome.com พร้อมทำ SEO ให้ติดค้นหา และดูแล Google Ads รายเดือนให้ทั้งหมด — ปรับระบบลดต้นทุนคลิกจาก ~7 บาท เหลือ 4.66 บาท/คลิก ลูกค้าพึงพอใจต่อสัญญายาวต่อเนื่องถึง 1 ปี',
+        desc: 'งานเว็บไซต์ SEO และดูแล Google Ads ของ Curtain Story Home พร้อมภาพผลลัพธ์ช่วง 8–14 ต.ค. 2026: แสดงผล 5,146 ครั้ง คลิก 242 ครั้ง ค่าโฆษณา 2,827.76 บาท และ Conversion ที่ระบบบันทึก 3 ครั้ง',
         visual: 'web',
-        metric: 'CPC 4.66 บาท จาก ~7 บาท · ดูแลรายเดือนต่อเนื่อง 1 ปี',
+        metric: '8–14 ต.ค. 2026 · CPC เฉลี่ย 11.68 บาท · Conversion 3 ครั้ง',
       },
       {
         title: 'เว็บไซต์ร้านค้า — โชว์ผลงานของลูกค้าบนเว็บที่เราทำ',
@@ -1421,12 +1421,12 @@ export const DATA = {
         metric: 'New site + SEO + GA4/Search Console · owner edits prices',
       },
       {
-        title: 'Web app + SEO + monthly Google Ads — retained for 1 year',
+        title: 'Website, SEO and monthly Google Ads management',
         client: 'CURTAIN STORY HOME · curtainstoryhome.com — we built the site for the curtain store',
         tags: ['Web App', 'SEO', 'Google Ads · Monthly'],
-        desc: 'Built the web app at curtainstoryhome.com, did SEO, and ran monthly Google Ads — cut CPC from ~7 THB to 4.66 THB, retained for a full year (we do not do curtain installation).',
+        desc: 'Website, SEO and Google Ads work for Curtain Story Home, with results for 8–14 Oct 2026: 5,146 impressions, 242 clicks, THB 2,827.76 ad spend and 3 recorded conversions.',
         visual: 'web',
-        metric: 'CPC 4.66 THB from ~7 THB · 1-year retainer',
+        metric: '8–14 Oct 2026 · Average CPC THB 11.68 · 3 recorded conversions',
       },
       {
         title: 'Store website — client portfolio on the site we built',
