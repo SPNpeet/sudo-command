@@ -4,6 +4,8 @@ import { STUDIO } from './studio-copy'
 import { UX } from './ux-copy'
 import ReelShowcase from './ReelShowcase'
 import ClientShowcase from './ClientShowcase'
+import AdsProof from './AdsProof'
+import { curtainAdsPreview } from './curtain-ads'
 import SignalField from './SignalField'
 import ProjectPreview from './ProjectPreview'
 import { useLang, useTheme } from './hooks'
@@ -66,6 +68,7 @@ export default function Studio() {
   }, [showcaseHovered, showcaseFocused, preview])
   const images = L.gallery.items
   const selected = images[HERO_IMAGES[hero]]
+  const previewItem = typeof preview === 'number' ? images[preview] : curtainAdsPreview(lang)
   const cases = images.map((item, index) => ({ ...item, number: index + 1, type: TYPE[index] || 'web', typeLabel: T.caseTypes[index] || T.filters[1] }))
   const visibleCases = cases.filter(item => filter === 'all' || item.type === filter)
   const suggestion = T.suggestions[need]
@@ -127,7 +130,7 @@ export default function Studio() {
     catch { setCopyStatus(T.copyError); setManualCopy(true); window.setTimeout(() => { briefPreview.current?.focus(); briefPreview.current?.select() }, 0) }
   }
   const quote = (id) => { setService(id); setCopyStatus(''); go('contact'); window.setTimeout(()=>document.getElementById('brief-business')?.focus({preventScroll:true}),0) }
-  const enquireProject = () => { const title = images[preview].title; setBrief(value => `${value}${value?'\n\n':''}${lang==='th'?'สนใจงานลักษณะเดียวกับ':'Interested in work similar to'}: ${title}`.slice(0,1800)); setPreview(null); setCopyStatus(U.projectAdded); window.setTimeout(()=>{go('contact');document.getElementById('brief-message')?.focus({preventScroll:true})},0) }
+  const enquireProject = () => { const title = previewItem.title; setBrief(value => `${value}${value?'\n\n':''}${lang==='th'?'สนใจงานลักษณะเดียวกับ':'Interested in work similar to'}: ${title}`.slice(0,1800)); setPreview(null); setCopyStatus(U.projectAdded); window.setTimeout(()=>{go('contact');document.getElementById('brief-message')?.focus({preventScroll:true})},0) }
   const normalize = text => text.normalize('NFKD').replace(/[\u0E31\u0E34-\u0E3A\u0E47-\u0E4E]/g, '').toLocaleLowerCase().trim()
   const faqs = D.faqs.filter(f => normalize(`${f.q} ${f.a}`).includes(normalize(query)))
 
@@ -187,7 +190,7 @@ export default function Studio() {
         <div className="s-case-grid">{visibleCases.map(item=><article className="s-case" key={item.src}>
           <button type="button" className="s-case-image" onClick={() => setPreview(item.number - 1)} aria-label={`${U.preview}: ${item.title}`}><img src={item.src} alt={item.title} width="720" height="500" loading="lazy" decoding="async"/><span className="s-case-arrow"><Icon name="search"/></span></button>
           <div className="s-case-caption"><div><span className="s-kicker">{item.typeLabel}</span><h3>{item.title}</h3></div><span className="s-case-number">/{String(item.number).padStart(2,'0')}</span></div><p>{item.cap}</p><dl className="s-case-scope"><dt>{T.deliverableLabel}</dt><dd>{T.caseScope[item.number-1]}</dd></dl><div className="s-case-actions"><button className="s-text-link" onClick={() => setPreview(item.number - 1)}>{U.preview}<Icon name="search"/></button>{item.href && <a className="s-text-link" href={item.href} target="_blank" rel="noopener noreferrer">{U.visit}<span aria-hidden="true">↗</span><span className="sr-only">{U.newTab}</span></a>}</div>
-        </article>)}</div>
+        {item.number===5 && <AdsProof lang={lang} onPreview={()=>setPreview('curtain-ads')}/>}</article>)}</div>
         {(filter==='all'||filter==='auto') && <article className="s-automation" id="gallery" tabIndex={-1}>
           <ReelShowcase lang={lang}/>
           <div className="s-auto-copy"><p className="s-kicker">n8n / LINE / AUTO PUBLISH</p><h3>{T.autoTitle}</h3><p>{T.autoNote}</p><External className="s-button s-button-green" icon="play" href={L.gallery.video.href}>{T.watch}</External><a className="s-auto-extra" href={L.gallery.video.extraHref} target="_blank" rel="noopener noreferrer">{L.gallery.video.extraLabel}<Arrow/></a></div>
@@ -220,7 +223,7 @@ export default function Studio() {
 
     <footer className="s-footer"><div className="s-container"><div className="s-footer-top"><p>{T.footer}</p><a className="s-text-link" href="#top">{T.backTop}<span aria-hidden="true">↑</span></a></div><a className="s-footer-word" href="#top" aria-label="Sudo Command">sudo<Mark/></a><nav className="s-service-links" aria-label={T.more}>{SEARCH_PAGES.map(p=><a href={`${BASE}services/${p.slug}/`} key={p.slug}>{lang==='th'?p.label:`${p.en} (TH)`}</a>)}<a href={`${BASE}portfolio/`}>{T.portfolio}</a></nav><div className="s-footer-bottom"><span>© {new Date().getFullYear()} Sudo Command</span><span>BANGKOK, THAILAND</span><a href={`${BASE}privacy.html`}>{T.privacy}</a></div></div></footer>
     {!contactVisible && <div className="s-mobile-dock"><a href="#work">{T.seeWork}</a><a href={CONTACT.line} target="_blank" rel="noopener noreferrer">{T.direct}<Icon name="line"/></a></div>}
-    {preview !== null && <ProjectPreview item={images[preview]} index={preview} total={images.length} onNavigate={setPreview} onEnquire={enquireProject} labels={U} onClose={()=>setPreview(null)}/>}
+    {preview !== null && <ProjectPreview item={previewItem} index={typeof preview==='number'?preview:0} total={typeof preview==='number'?images.length:1} onNavigate={setPreview} onEnquire={enquireProject} labels={U} onClose={()=>setPreview(null)}/>}
     {palette&&<CommandPalette open={palette} onClose={closePalette} actions={actions} t={L}/>}
   </div>
 }

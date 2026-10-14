@@ -1,4 +1,17 @@
 /* Shared brand applied to all generated service and portfolio pages. */
+.detail-ads-proof{margin:24px 0;padding:24px;border:1px solid var(--line);border-radius:16px;background:var(--s-soft)}
+.detail-ads-proof>header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;width:100%;padding:0 0 16px;margin:0;max-width:none;background:transparent;border:0;border-radius:0;box-shadow:none}
+.detail-ads-proof>header strong{font:12px var(--mono);color:var(--accent)}
+.detail-ads-proof>header span{font:12px var(--mono);color:var(--muted)}
+.detail-ads-proof>a{display:block;overflow:hidden;border:1px solid var(--line);border-radius:12px;background:var(--surface);text-decoration:none}
+.detail-ads-proof>a img{display:block;width:100%;height:auto;border:0;border-radius:0}
+.detail-ads-proof>a>span{display:flex;align-items:center;justify-content:center;min-height:44px;font-size:14px;color:var(--accent)}
+.detail-ads-proof dl{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin:24px 0 16px}
+.detail-ads-proof dt{font-size:13px;color:var(--muted)}
+.detail-ads-proof dd{font-weight:600;font-size:clamp(17px,2vw,24px);margin:4px 0 0;color:var(--ink);white-space:nowrap}
+.detail-ads-proof>p{font-size:13px;color:var(--muted);margin-bottom:0}
+@media(max-width:800px){.detail-ads-proof dl{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.detail-ads-proof{padding:16px}.detail-ads-proof dl{grid-template-columns:repeat(2,minmax(0,1fr))}.detail-ads-proof dd{font-size:20px}}
 body{font-family:var(--sans);font-size:17px;line-height:1.85}
 .detail-header{border-radius:var(--radius-card);border:1px solid var(--line);box-shadow:var(--brand-shadow)}
 .detail-header .detail-brand{font-family:Arial,Helvetica,sans-serif}

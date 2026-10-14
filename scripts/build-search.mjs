@@ -4,6 +4,7 @@ import { SEARCH_PAGES } from '../src/search-pages.js'
 import { DATA, L10N } from '../src/i18n.js'
 import { REELS, ASTRO_REEL, ASTRO_REELS } from '../src/reels.js'
 import { SERVICE_ART, SERVICE_ART_KEYS, artworkSrc } from '../src/service-artwork.js'
+import { CURTAIN_ADS } from '../src/curtain-ads.js'
 
 const base = 'https://spnpeet.github.io/sudo-command/'
 const esc = (s = '') => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;')
@@ -18,7 +19,9 @@ const serviceArt = slug => {
   return '<figure class="detail-service-art detail-photo-art"><div><img src="'+artworkSrc(key)+'" srcset="'+artworkSrc(key,400)+' 400w, '+artworkSrc(key)+' 800w" sizes="(max-width:800px) calc(100vw - 32px), 480px" alt="'+esc(image.th)+'" width="800" height="800" loading="eager" decoding="async"></div></figure>'
 }
 const projectImages = [0,3,1,5,2,null,null,null,null,7,6,4]
+const curtainAdsProject = DATA.th.works.findIndex(work => work.client.includes('CURTAIN STORY HOME') && work.tags.some(tag => tag.includes('รายเดือน')))
 const projectPreview = i => {
+  if (i === curtainAdsProject) return '<aside class="detail-ads-proof"><header><strong>CURTAIN STORY HOME · GOOGLE ADS / SEARCH</strong><span>'+CURTAIN_ADS.period.th+'</span></header><a href="'+CURTAIN_ADS.src+'" aria-label="ขยายภาพผล Google Ads ของ Curtain Story Home"><img src="'+CURTAIN_ADS.src+'" alt="'+CURTAIN_ADS.title.th+'" width="'+CURTAIN_ADS.width+'" height="'+CURTAIN_ADS.height+'" loading="lazy" decoding="async"><span>ขยายภาพผลลัพธ์</span></a><dl>'+CURTAIN_ADS.metrics.map(m=>'<div><dt>'+m.th+'</dt><dd>'+m.value+'</dd></div>').join('')+'</dl><p>'+CURTAIN_ADS.caption.th+'</p></aside>'
   const image = L10N.th.gallery.items[projectImages[i]]
   if (!image) return ''
   return '<figure class="detail-project-preview"><img src="'+esc(image.src)+'" alt="'+esc(image.title)+'" width="720" height="500" loading="lazy" decoding="async"><figcaption>'+esc(image.cap)+'</figcaption></figure>'
