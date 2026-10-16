@@ -6,7 +6,7 @@ import ReelShowcase from './ReelShowcase'
 import ClientShowcase from './ClientShowcase'
 import AdsProof from './AdsProof'
 import { curtainAdsPreview } from './curtain-ads'
-import SignalField from './SignalField'
+import ManagedDelivery from './ManagedDelivery'
 import ProjectPreview from './ProjectPreview'
 import { useLang, useTheme } from './hooks'
 import { SEARCH_PAGES } from './search-pages'
@@ -17,7 +17,6 @@ const BASE = '/sudo-command/'
 const CONTACT = { line: 'https://line.me/ti/p/~nongpeetza', messenger: 'https://m.me/61590190966678', email: 'supanut6420@gmail.com', phone: '+66611699332' }
 const NAV_IDS = ['work', 'services', 'process', 'faq', 'contact']
 const TYPE = ['web', 'app', 'app', 'web', 'web', 'app', 'web', 'app']
-const HERO_IMAGES = [0, 1, 2]
 
 function Mark({ className = '' }) {
   return <img className={`s-mark ${className}`} src={`${BASE}favicon.svg?v=original`} width="100" height="100" alt="" aria-hidden="true"/>
@@ -35,9 +34,6 @@ function ServiceArtwork({ index, kind, lang, className = '' }) {
 export default function Studio() {
   const [lang, setLang] = useLang()
   const [theme, setTheme] = useTheme()
-  const [hero, setHero] = useState(0)
-  const [showcaseHovered, setShowcaseHovered] = useState(false)
-  const [showcaseFocused, setShowcaseFocused] = useState(false)
   const [filter, setFilter] = useState('all')
   const [need, setNeed] = useState(0)
   const [query, setQuery] = useState('')
@@ -53,21 +49,7 @@ export default function Studio() {
   const menu = useRef(null)
   const menuSummary = useRef(null)
   const T = STUDIO[lang], L = L10N[lang], D = DATA[lang], U = UX[lang]
-  useEffect(() => {
-    const preference = window.matchMedia('(prefers-reduced-motion: reduce)')
-    let timer
-    const sync = () => {
-      window.clearInterval(timer)
-      if (showcaseHovered || showcaseFocused || preview !== null || document.hidden || preference.matches) return
-      timer = window.setInterval(() => setHero(value => (value + 1) % HERO_IMAGES.length), 6000)
-    }
-    sync()
-    document.addEventListener('visibilitychange', sync)
-    preference.addEventListener('change', sync)
-    return () => { window.clearInterval(timer); document.removeEventListener('visibilitychange', sync); preference.removeEventListener('change', sync) }
-  }, [showcaseHovered, showcaseFocused, preview])
   const images = L.gallery.items
-  const selected = images[HERO_IMAGES[hero]]
   const previewItem = typeof preview === 'number' ? images[preview] : curtainAdsPreview(lang)
   const cases = images.map((item, index) => ({ ...item, number: index + 1, type: TYPE[index] || 'web', typeLabel: T.caseTypes[index] || T.filters[1] }))
   const visibleCases = cases.filter(item => filter === 'all' || item.type === filter)
@@ -157,29 +139,8 @@ export default function Studio() {
 
     <main id="main" tabIndex={-1}>
       <section className="s-hero s-container" id="top" tabIndex={-1}>
-        <div className="s-hero-heading"><p className="s-kicker"><span className="s-status-dot"/>{T.tagline}</p><h1>{T.hero1}<br/><span>{T.hero2}</span></h1><p className="s-hero-intro">{T.intro}</p><div className="s-hero-buttons"><a className="s-button s-button-green" href="#contact">{T.start}<Icon name="chat"/></a><a className="s-button s-button-quiet" href="#work">{T.seeWork}<Icon name="layers"/></a></div><nav className="s-hero-capabilities" aria-label={lang==='th'?'เลือกบริการ':'Explore services'}>{[['svc-web','Website','web'],['svc-sheets','Sheets / Excel','ledger'],['svc-auto','Automation','grid'],['svc-line','LINE OA','line']].map(([id,label,icon])=><a href={`#${id}`} key={id} onClick={e=>{e.preventDefault();go(id)}}>{label}<Icon name={icon}/></a>)}</nav><p className="s-hero-note">{T.note}</p></div>
-        <div className="s-showcase s-project-theatre" role="region" aria-label={lang==='th'?'ผลงานเลื่อนอัตโนมัติ':'Automatic project slideshow'} onMouseEnter={()=>setShowcaseHovered(true)} onMouseLeave={()=>setShowcaseHovered(false)} onFocusCapture={()=>setShowcaseFocused(true)} onBlurCapture={e=>{if(!e.currentTarget.contains(e.relatedTarget)) setShowcaseFocused(false)}}>
-          <SignalField/>
-          <div className="s-showcase-heading"><div><p className="s-kicker">SUDO / SELECTED SYSTEMS</p><h2>{lang==='th'?'ตัวอย่างผลงาน':'Selected project'}</h2></div><span className="s-showcase-count" aria-hidden="true">0{hero+1} / 03</span></div>
-          <div className="s-theatre-body">
-          <div className="s-project-story">
-            <p className="s-project-coordinate">SELECTED / 0{hero+1}</p>
-            <h3>{selected.title}</h3>
-            <p>{selected.cap}</p>
-            <button className="s-project-open" onClick={()=>setPreview(HERO_IMAGES[hero])}>{U.preview}<Icon name="search"/></button>
-            <div className="s-project-paging"><button aria-label={U.previous} onClick={()=>setHero(v=>(v+2)%3)}>←</button><span>0{hero+1} / 03</span><button aria-label={U.next} onClick={()=>setHero(v=>(v+1)%3)}>→</button></div>
-          </div>
-          <div className="s-stage">
-            {[1,2].map((offset)=>{const i=(hero+offset)%3;return <div className={`s-stage-peek s-stage-peek-${offset}`} key={offset} aria-hidden="true"><img src={images[HERO_IMAGES[i]].src} alt="" width="720" height="500" loading="lazy"/></div>})}
-            <div className="s-stage-back" aria-hidden="true"><Mark/></div>
-            <button type="button" className="s-stage-window" onClick={() => setPreview(HERO_IMAGES[hero])} aria-label={`${U.preview}: ${selected.title}`}>
-              <div className="s-window-bar"><span className="s-window-dots" aria-hidden="true">● ● ●</span><span>{selected.title}</span><Icon name="search"/></div>
-              <img key={selected.src} src={selected.src} alt={selected.title} width="720" height="500" fetchPriority="high"/>
-            </button>
-          </div>
-          </div>
-          <div className="s-showcase-controls" role="group" aria-label={T.featured}>{T.categories.map((label,i)=><button key={label} aria-pressed={hero===i} onClick={()=>setHero(i)}><img src={images[HERO_IMAGES[i]].src} alt="" width="96" height="64" loading="lazy"/><span className="s-project-tab"><small>0{i+1} / {label}</small><strong>{images[HERO_IMAGES[i]].title}</strong></span><span className="s-control-dot" aria-hidden="true"/></button>)}</div>
-        </div>
+        <div className="s-hero-heading"><p className="s-kicker"><span className="s-status-dot"/>{T.tagline}</p><h1>{T.hero1}<br/><span>{T.hero2}</span></h1><p className="s-hero-intro">{T.intro}</p><div className="s-hero-buttons"><a className="s-button s-button-green" href="#contact">{T.start}<Icon name="chat"/></a><a className="s-button s-button-quiet" href="#work">{T.seeWork}<Icon name="layers"/></a></div><nav className="s-hero-capabilities" aria-label={lang==='th'?'เลือกบริการ':'Explore services'}>{[['svc-ads','Google Ads','ledger'],['svc-web','Website','web'],['svc-sheets','Sheets / Excel','ledger'],['svc-auto','Automation','grid'],['svc-line','LINE OA','line']].map(([id,label,icon])=><a href={`#${id}`} key={id} onClick={e=>{e.preventDefault();go(id)}}>{label}<Icon name={icon}/></a>)}</nav><p className="s-hero-note">{T.note}</p></div>
+        <AdsProof lang={lang} featured onPreview={()=>setPreview('curtain-ads')}/>
       </section>
 
       <div className="s-ribbon" aria-hidden="true">{T.ribbon.map(s=><span key={s}><Mark/>{s}</span>)}</div>
@@ -213,7 +174,7 @@ export default function Studio() {
       </section>
 
       <section className="s-about" id="about" tabIndex={-1}><div className="s-container s-about-grid"><div><p className="s-kicker">{T.aboutEyebrow}</p><h2>{T.aboutTitle}</h2><p>{T.aboutText}</p><ServiceArtwork kind="governance" lang={lang} className="s-artwork-about"/><div className="s-about-signature"><Mark/><span>sudo.<small>COMMAND</small></span></div></div><ul>{T.values.map(([title,text],i)=><li key={title}><span>0{i+1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ul></div></section>
-      <section className="s-section s-container" id="process" tabIndex={-1}><div className="s-process-intro"><Heading eyebrow={T.processEyebrow} title={T.processTitle}/><ServiceArtwork kind="planning" lang={lang} className="s-artwork-process"/></div><ol className="s-process">{T.process.map(([title,text],i)=><li key={title}><div className="s-process-emblem" aria-hidden="true"><span>0{i+1}</span><Icon name={['chat','layers','grid','check'][i]}/></div><h3>{title}</h3><p>{text}</p></li>)}</ol></section>
+      <section className="s-section s-container" id="process" tabIndex={-1}><div className="s-process-intro"><Heading eyebrow={T.processEyebrow} title={T.processTitle}/><ServiceArtwork kind="planning" lang={lang} className="s-artwork-process"/></div><ol className="s-process">{T.process.map(([title,text],i)=><li key={title}><div className="s-process-emblem" aria-hidden="true"><span>0{i+1}</span><Icon name={['chat','layers','grid','check'][i]}/></div><h3>{title}</h3><p>{text}</p></li>)}</ol><ManagedDelivery lang={lang}/></section>
       <section className="s-faq-section" id="faq" tabIndex={-1}><div className="s-container s-faq-grid"><div><Heading eyebrow="GOOD QUESTIONS" title={T.faqTitle} note={T.faqNote}/><div className="s-faq-search" role="search"><Icon name="search"/><input id="faq-search" type="search" aria-label={T.faqSearch} placeholder={T.faqSearch} value={query} onChange={e=>setQuery(e.target.value)}/>{query && <button type="button" aria-label={U.clear} onClick={()=>{setQuery('');document.getElementById('faq-search')?.focus()}}><Icon name="close"/></button>}</div><p className="s-search-count" role="status">{faqs.length} {U.faqCount}</p></div><div>{faqs.map(f=><details className="s-faq" key={f.q}><summary>{f.q}<span aria-hidden="true">+</span></summary><p>{f.a}</p></details>)}{!faqs.length&&<p role="status">{T.noFaq}</p>}</div></div></section>
 
       <section className="s-section s-container" id="contact" tabIndex={-1}><div className="s-contact-invitation" aria-hidden="true"><span>LET’S WORK TOGETHER.</span><span className="s-conversation-art"><span className="s-conversation-orbit"/><span className="s-conversation-bubble"><i/><i/><i/></span><span className="s-conversation-brand"><Mark/></span><svg className="s-conversation-spark" viewBox="0 0 24 24"><path d="M12 1c0 8-3 11-11 11 8 0 11 3 11 11 0-8 3-11 11-11C15 12 12 9 12 1Z" fill="currentColor"/></svg></span></div><div className="s-contact-grid"><div><Heading eyebrow={T.contactEyebrow} title={T.contactTitle} note={T.contactText}/><div className="s-contact-buttons"><External className="s-button s-button-green" href={CONTACT.line}>{T.direct}</External><External className="s-button s-button-outline" href={CONTACT.messenger}>{T.messenger}</External></div><div className="s-contact-address"><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}<Icon name="mail"/></a><a href={`tel:${CONTACT.phone}`}>061 169 9332<Icon name="phone"/></a><p>{T.location}</p></div><ServiceArtwork kind="brief" lang={lang} className="s-artwork-contact"/></div>
