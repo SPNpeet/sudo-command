@@ -1,4 +1,19 @@
 /* A quieter frame lets the original brands and actual work lead. */
+.s-hero>.s-ads-featured{margin:0;width:100%;min-width:0;padding:24px;border-radius:24px;background:radial-gradient(ellipse at 100% 0,#422a20,transparent 65%),#171719;border:1px solid #ffffff24;color:#fafafa;box-shadow:0 20px 50px #17171914}
+.s-ads-featured>header{margin-bottom:18px}.s-hero .s-ads-featured>header>span{color:#d5c8c0}.s-hero .s-ads-featured>header .s-kicker{color:#ffb48c}
+.s-ads-feature-title{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.s-ads-feature-title>img{width:52px;height:52px;object-fit:contain;background:#fff;border-radius:50%;flex-shrink:0}
+.s-ads-feature-title p{font-size:12px;line-height:1.6;color:#d5c8c0;margin:0 0 4px}
+.s-ads-feature-title h2{font-size:clamp(18px,1.8vw,24px);line-height:1.4;font-weight:600;letter-spacing:-.015em;margin:0;color:#fff}
+.s-hero .s-ads-featured dl{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 12px;margin:0 0 20px;padding:20px 0;border-block:1px solid #ffffff24}
+.s-hero .s-ads-featured dt{font-size:12px;color:#d5c8c0}
+.s-hero .s-ads-featured dd{font-size:clamp(21px,2.1vw,29px);line-height:1.4;color:#fff;font-variant-numeric:tabular-nums;letter-spacing:-.025em}
+.s-ads-featured .s-ads-image{color:#0e0e11;background:#fff;border-color:#ffffff30}
+.s-ads-featured .s-ads-image>span{background:#fff;color:#0e0e11}
+.s-ads-featured .s-ads-note{font-size:11px;line-height:1.8;color:#d5c8c0;margin-top:16px}
+.s-ads-featured>.s-ads-image:hover>span{color:#a03100}
+@media(max-width:760px){.s-hero>.s-ads-featured{order:3;padding:18px;border-radius:18px}.s-hero .s-ads-featured dl{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:16px;padding-block:16px}.s-hero .s-ads-featured dd{font-size:24px}.s-ads-feature-title{gap:12px;margin-bottom:16px}.s-ads-feature-title h2{font-size:18px}.s-ads-feature-title>img{width:44px;height:44px}.s-ads-featured>header{margin-bottom:14px;gap:6px}.s-ads-featured .s-kicker{font-size:10px}}
+@media(min-width:761px) and (max-width:1000px){.s-hero-heading{display:contents}.s-hero-heading::before{display:none}.s-hero-heading>.s-kicker{order:0;margin:0}.s-hero h1{order:1}.s-hero-buttons{order:2;margin:0!important}.s-hero>.s-ads-featured{order:3}.s-hero-intro{order:4;margin:0!important}.s-hero-capabilities{order:5;margin:0}.s-hero-note{order:6;margin:0!important}}
 .s-ads-proof{margin-top:24px;padding:20px;border:1px solid var(--s-line);border-radius:16px;background:var(--s-soft)}
 .s-ads-proof>header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:14px}
 .s-ads-proof>header>span{font:11px var(--mono);color:var(--s-muted)}

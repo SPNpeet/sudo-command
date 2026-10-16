@@ -5,6 +5,7 @@ import { DATA, L10N } from '../src/i18n.js'
 import { REELS, ASTRO_REEL, ASTRO_REELS } from '../src/reels.js'
 import { SERVICE_ART, SERVICE_ART_KEYS, artworkSrc } from '../src/service-artwork.js'
 import { CURTAIN_ADS } from '../src/curtain-ads.js'
+import { managedDeliveryHTML } from '../src/managed-delivery.js'
 
 const base = 'https://spnpeet.github.io/sudo-command/'
 const esc = (s = '') => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;')
@@ -26,7 +27,7 @@ const projectPreview = i => {
   if (!image) return ''
   return '<figure class="detail-project-preview"><img src="'+esc(image.src)+'" alt="'+esc(image.title)+'" width="720" height="500" loading="lazy" decoding="async"><figcaption>'+esc(image.cap)+'</figcaption></figure>'
 }
-const css = ['src/brand-tokens.css','src/detail.css','src/brand-detail.css'].map(file=>readFileSync(file,'utf8')).join('\n')
+const css = ['src/brand-tokens.css','src/detail.css','src/brand-detail.css','src/managed-delivery.css'].map(file=>readFileSync(file,'utf8')).join('\n')
 const cssVersion = createHash('sha256').update(css).digest('hex').slice(0, 12)
 function document(title, description, path, body, entities = []) {
   const url = base + path
@@ -44,7 +45,7 @@ for (const page of SEARCH_PAGES) {
 }
 const reelCards = `<div class="detail-reels">${REELS.map(r=>`<a href="${esc(r.href)}" target="_blank" rel="noopener noreferrer"><img src="${esc(r.poster)}" alt="ภาพปกคลิปเฮียตั้มรถบรรทุก ${r.number}" width="720" height="1280" loading="lazy" decoding="async"><span>คลิป ${r.number} · ดูบน Facebook ↗</span></a>`).join('')}</div><p>ภาพปกจากคลิปที่เผยแพร่จริง · กดภาพเพื่อเปิดคลิปนั้นบน Facebook ในแท็บใหม่</p>`
 const astroCard = `<section id="astro-trader"><h2>${esc(ASTRO_REEL.client)}</h2><p>ตัวอย่างงานผลิตคลิปข่าวรายวันด้วยระบบอัตโนมัติ พร้อมเสียงบรรยาย ภาพประกอบ และตัวละครพูด</p><div class="detail-reels">${ASTRO_REELS.map(r=>`<a href="${esc(r.href)}" target="_blank" rel="noopener noreferrer"><img src="${esc(r.poster)}" alt="ภาพปกคลิป Astro Trader ${r.number}" width="720" height="1280" loading="lazy" decoding="async"><span>คลิป ${r.number} · ดูบน Facebook ↗</span></a>`).join('')}</div><p>ภาพและข่าวเป็นตัวอย่างผลงาน ณ วันที่เผยแพร่</p><p>${link('https://www.facebook.com/AstroTD459/reels/','ดูคลิปทั้งหมดของ Astro Trader')}</p></section>`
-const works = DATA.th.works.map((w,i)=>`<article id="project-${i+1}"><p>${esc(w.client)}${w.status?' · '+esc(w.status):''}</p><h2>${esc(w.title)}</h2>${projectPreview(i)}<p>${esc(w.desc)}</p><p class="detail-case-enquiry">${link('#contact','สนใจงานลักษณะนี้ · คุยขอบเขตงาน')}</p>${w.href?link(w.href,w.linkLabel||'เปิดเว็บไซต์ผลงาน'):''}</article>`).join('')
+const works = DATA.th.works.map((w,i)=>`<article id="project-${i+1}"><p>${esc(w.client)}${w.status?' · '+esc(w.status):''}</p><h2>${esc(w.title)}</h2>${projectPreview(i)}<p>${esc(w.desc)}</p>${w.client.toUpperCase().includes('CREW CHANGE TRACKER')?managedDeliveryHTML():''}<p class="detail-case-enquiry">${link('#contact','สนใจงานลักษณะนี้ · คุยขอบเขตงาน')}</p>${w.href?link(w.href,w.linkLabel||'เปิดเว็บไซต์ผลงาน'):''}</article>`).join('')
 const images = '<div class="detail-image-grid">'+L10N.th.gallery.items.map(g=>`<figure><a href="${esc(g.src)}" aria-label="ดูภาพ ${esc(g.title)}"><img src="${esc(g.src)}" alt="${esc(g.title)}" width="720" height="500" loading="lazy" decoding="async"></a><figcaption><strong>${esc(g.title)}</strong><span>${esc(g.cap)}</span></figcaption></figure>`).join('')+'</div>'
 save('portfolio/',document('ผลงานเว็บไซต์ เว็บแอป และระบบอัตโนมัติ','รวมผลงาน Sudo Command พร้อมภาพผลงานและโฟลว์แนวคิดของระบบ และตัวอย่างคลิปจากงานอัตโนมัติรายวัน','portfolio/',`<p class="intro">${esc(L10N.th.work.note)}</p><details class="portfolio-index"><summary>เลือกดูโครงการ · ${DATA.th.works.length} ผลงาน</summary><nav aria-label="รายชื่อโครงการ">${DATA.th.works.map((w,i)=>link(`#project-${i+1}`,`${String(i+1).padStart(2,'0')} / ${w.client}`)).join('')}</nav></details><nav class="detail-jump" aria-label="ประเภทตัวอย่าง">${link('#project-1','รายละเอียดโครงการ')}${link('#screenshots','ภาพผลงานและโฟลว์')}${link('#automation-video','คลิปจากระบบอัตโนมัติ')}</nav>${works}<section id="screenshots"><h2>ภาพตัวอย่างจากงาน</h2>${images}</section>${astroCard}<section id="automation-video">${reelCards}<h2>${esc(L10N.th.gallery.video.title)}</h2><p>${esc(L10N.th.gallery.video.desc)}</p><ol>${L10N.th.gallery.video.steps.map(step=>`<li>${esc(step)}</li>`).join('')}</ol><p>${link(L10N.th.gallery.video.href,L10N.th.gallery.video.cta)}</p><p>${link(L10N.th.gallery.video.extraHref,L10N.th.gallery.video.extraLabel)}</p></section>`))
 const notFound = document('ไม่พบหน้านี้', 'กลับไปดูผลงานหรือคุยกับ Sudo Command', '404.html', `<p class="intro">ลิงก์นี้อาจเปลี่ยนไป เลือกกลับหน้าหลักหรือเปิดผลงานได้จากด้านล่าง</p><nav class="detail-jump">${link(base,'กลับหน้าหลัก')}${link(base+'portfolio/','ดูผลงานทั้งหมด')}</nav>`).replace('index,follow,max-image-preview:large','noindex,follow')
